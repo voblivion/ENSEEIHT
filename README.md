@@ -1,17 +1,18 @@
 Ensemble des documents et projets relatifs à l'ENSEEIHT.
 
-# Ajout des sub-repo
+# Clone du projet avec submodules
 
-- Aller dans le dossier du sub-repo concerné.
-- Initialiser un repo :
+### À la main
 ```
-    git init
+    git clone https://github.com/voblivion/ENSEEIHT.git
+    cd ENSEEIHT
+
+    git submodule init
+    git submodule update
 ```
-- Ajouter le remote correspondant au sub-repo :
+
+### Automatiquement
 ```
-    git remote add <remote-name> <address>
-```
-- Récupérer le contenu du sub-repo et définir le remote principal :
-```
-    git pull -u <remote-name> <branch-name>
+    git clone --recursive https://github.com/voblivion/ENSEEIHT.git
+    cd ENSEEIHT
 ```
