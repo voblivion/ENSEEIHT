@@ -1,18 +1,20 @@
 Ensemble des documents et projets relatifs à l'ENSEEIHT.
 
-# Clone du projet avec submodules
-
-### À la main
-```
-    git clone https://github.com/voblivion/ENSEEIHT.git
-    cd ENSEEIHT
-
-    git submodule init
-    git submodule update
-```
-
-### Automatiquement
+# Cloning project with submodules
 ```
     git clone --recursive https://github.com/voblivion/ENSEEIHT.git
-    cd ENSEEIHT
 ```
+
+# Working with submodules
+
+## Pulling in Upstream changes
+In submodule directory :
+```
+    git fetch
+    git rebase
+```
+In main directory :
+```
+    git submodule update --remode <submodule-name>
+```
+
