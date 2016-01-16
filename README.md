@@ -5,16 +5,7 @@ Ensemble des documents et projets relatifs à l'ENSEEIHT.
     git clone --recursive https://github.com/voblivion/ENSEEIHT.git
 ```
 
-# Working with submodules
-
-## Pulling in Upstream changes
-In submodule directory :
+# If HEAD of submodule detached
 ```
-    git fetch
-    git rebase
+    git checkout master
 ```
-In main directory :
-```
-    git submodule update --remode <submodule-name>
-```
-
