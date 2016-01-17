@@ -1,0 +1,12 @@
+Scenario Simple {
+	schedule Schedule {
+		components {
+			Activity Manger {
+				next Dormir
+			},
+			Activity Dormir {
+				
+			}
+		}
+	}
+}

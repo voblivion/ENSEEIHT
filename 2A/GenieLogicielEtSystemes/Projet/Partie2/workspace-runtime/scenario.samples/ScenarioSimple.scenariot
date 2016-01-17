@@ -1,0 +1,14 @@
+Scenario simple [
+	- Act Manger
+	- Act Dormir
+	- Div Parallel [
+		[
+			- Act Manger2
+		],
+		[
+			- Act Dormir2
+		]
+	]
+]
+
+

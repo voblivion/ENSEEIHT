@@ -1,0 +1,5 @@
+Scenario Sample Schedule [
+	- Act Manger -> Baiser
+	- Act Baiser -> Dormir
+	- Act Dormir
+]

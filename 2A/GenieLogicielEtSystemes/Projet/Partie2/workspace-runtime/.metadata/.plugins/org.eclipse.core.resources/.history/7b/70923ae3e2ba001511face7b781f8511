@@ -1,0 +1,4 @@
+Scenario Sample Schedule [
+	- Act Manger -> Dormir
+	- Act Dormir
+]

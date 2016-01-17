@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario:Scenario
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:scenario="http://www.example.org/scenario"
+    xsi:schemaLocation="http://www.example.org/scenario scenario.ecore">
+  <schedule>
+    <components
+        xsi:type="scenario:Activity"
+        name="Se Lever"/>
+    <components
+        xsi:type="scenario:Activity"
+        name="Petit déjeuner"/>
+    <components
+        xsi:type="scenario:Activity"
+        name="Envoyer cartes postales"/>
+    <components
+        xsi:type="scenario:Divergence">
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Déjeuner"/>
+      </schedules>
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Jeuner"/>
+      </schedules>
+    </components>
+    <components
+        xsi:type="scenario:Activity"
+        name="Jouer aux échecs"/>
+    <components
+        xsi:type="scenario:Activity"
+        name="Diner"/>
+    <components
+        xsi:type="scenario:Activity"
+        name="Se coucher"/>
+  </schedule>
+</scenario:Scenario>

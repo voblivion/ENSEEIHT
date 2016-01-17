@@ -1,0 +1,24 @@
+!SESSION 2016-01-14 13:09:47.535 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.modeling.product
+
+!ENTRY org.apache.log4j 4 0 2016-01-14 13:40:17.648
+!MESSAGE org.eclipse.xtext.parser.impl.PartialParsingHelper  - Invalid replace region [0 / length: 756] '/* Please Wait */' originalLength=17
+
+!SESSION 2016-01-15 15:06:08.534 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=fr_FR
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.modeling.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-01-15 15:06:16.290
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.emf.ecp.cdo.core 1 0 2016-01-15 18:13:10.528
+!MESSAGE Could not open socket on port 7778

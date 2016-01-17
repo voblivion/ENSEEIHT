@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="scenario" version="10.0.0.201505222000">
+  <ownedViewpoints name="ScenarioViewpoint" modelFileExtension="xmi">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ScenarioDiagramDescription" domainClass="scenario.Scenario" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="Activity" domainClass="scenario.Activity">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[self.name/]" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="DivergenceStart" domainClass="scenario.Divergence">
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="[if self.type = DivergenceType::Choice then 'X' else '//' endif/]" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="5" verticalDiameterComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="DivergenceEnd" domainClass="scenario.Divergence">
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="1" labelSize="16" showIcon="false" labelExpression="[''/]" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" horizontalDiameterComputationExpression="5" verticalDiameterComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ActivityToComponent" sourceMapping="//@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='Activity']" targetMapping="//@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='Activity'] //@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='DivergenceStart']" targetFinderExpression="[self.parent.components->at(self.parent.components->indexOf(self)+1)/]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="DivergenceStartToComponents" sourceMapping="//@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='DivergenceStart']" targetMapping="//@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='Activity'] //@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='DivergenceStart']" targetFinderExpression="[self.schedules->collect(s | s.components->first())/]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ComponentToDivergenceEnd" sourceMapping="//@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='Activity'] //@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='DivergenceEnd']" targetMapping="//@ownedViewpoints[name='ScenarioViewpoint']/@ownedRepresentations[name='ScenarioDiagramDescription']/@defaultLayer/@nodeMappings[name='DivergenceEnd']" targetFinderExpression="[if self.parent.components->indexOf(self) = self.parent.components->size() then self.parent.parent endif /]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

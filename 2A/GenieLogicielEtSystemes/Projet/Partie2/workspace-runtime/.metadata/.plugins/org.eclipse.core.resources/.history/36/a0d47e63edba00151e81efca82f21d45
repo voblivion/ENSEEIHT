@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario:Scenario
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:scenario="http://www.example.org/scenario"
+    xsi:schemaLocation="http://www.example.org/scenario scenario.ecore"
+    name="Simple">
+  <schedule>
+    <components
+        xsi:type="scenario:Activity"
+        name="Dormir"/>
+    <components
+        xsi:type="scenario:Divergence">
+      <schedules>
+        <components
+            xsi:type="scenario:Divergence">
+          <schedules>
+            <components
+                xsi:type="scenario:Activity"
+                name="Baiser"/>
+          </schedules>
+          <schedules>
+            <components
+                xsi:type="scenario:Activity"
+                name="Manger"/>
+          </schedules>
+        </components>
+      </schedules>
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Baiser"/>
+      </schedules>
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Manger"/>
+      </schedules>
+    </components>
+  </schedule>
+</scenario:Scenario>

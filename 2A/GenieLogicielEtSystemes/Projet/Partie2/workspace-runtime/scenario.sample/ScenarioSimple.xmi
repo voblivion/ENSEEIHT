@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario:Scenario xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:scenario="http://www.example.org/scenario" name="Simple">
+  <schedule/>
+</scenario:Scenario>

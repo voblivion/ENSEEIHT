@@ -1,0 +1,4 @@
+Scenario simple [
+	- Act Manger
+	- Act Dormir
+]

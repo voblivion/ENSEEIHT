@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario:Scenario
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:scenario="http://www.example.org/scenario"
+    xsi:schemaLocation="http://www.example.org/scenario scenario.ecore"
+    name="ExempleClient">
+  <schedule>
+    <components
+        xsi:type="scenario:Activity"
+        name="Lever"/>
+    <components
+        xsi:type="scenario:Divergence"
+        type="Parallel">
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Petit déjeuner"/>
+        <components
+            xsi:type="scenario:Activity"
+            name="Lavage dents"/>
+      </schedules>
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Douche"/>
+      </schedules>
+    </components>
+    <components
+        xsi:type="scenario:Activity"
+        name="Plannings"/>
+    <components
+        xsi:type="scenario:Divergence">
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Courses"/>
+      </schedules>
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Détente"/>
+      </schedules>
+    </components>
+    <components
+        xsi:type="scenario:Activity"
+        name="Repas"/>
+    <components
+        xsi:type="scenario:Divergence">
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Sport"/>
+      </schedules>
+      <schedules>
+        <components
+            xsi:type="scenario:Activity"
+            name="Musique"/>
+      </schedules>
+    </components>
+    <components
+        xsi:type="scenario:Activity"
+        name="Diner"/>
+    <components
+        xsi:type="scenario:Activity"
+        name="Film"/>
+    <components
+        xsi:type="scenario:Activity"
+        name="Repos"/>
+  </schedule>
+</scenario:Scenario>

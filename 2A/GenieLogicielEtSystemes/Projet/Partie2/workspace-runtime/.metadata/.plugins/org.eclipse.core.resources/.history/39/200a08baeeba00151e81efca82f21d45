@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="__jKEwLrsEeWXQID2ETtS_w" selectedViews="_qnzaQLruEeWXQID2ETtS_w" version="10.0.0.201505222000">
+  <semanticResources>ScenarioSimple.xmi</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_qnzaQLruEeWXQID2ETtS_w">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/scenario.design/description/scenario.odesign#//@ownedViewpoints[name='ScenarioViewpoint']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
