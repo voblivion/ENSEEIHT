@@ -1,0 +1,127 @@
+V "GNAT Lib v2014"
+M P W=b
+A -gnat2012
+A -gnata
+P SS ZX
+
+RN
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U tri_insertion%b	tri_insertion.adb	cd609b66 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.assertions%s	a-assert.adb		a-assert.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.discrete_random%s
+W ada.tags%s		a-tags.adb		a-tags.ali
+Z system%s		system.ads		system.ali
+W system.assertions%s	s-assert.adb		s-assert.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
+W system.val_int%s	s-valint.adb		s-valint.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20140406181354 3ffc8e18 ada%s
+D a-assert.ads		20140406181356 0a052b2b ada.assertions%s
+D a-except.ads		20140406181356 43d57f8c ada.exceptions%s
+D a-finali.ads		20140406181359 69f99942 ada.finalization%s
+D a-inteio.ads		20140406181359 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20140406181358 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20140406181358 bb51c45a ada.numerics%s
+D a-nudira.ads		20140406181356 2fef2912 ada.numerics.discrete_random%s
+D a-nudira.adb		20140406181358 e57ce22b ada.numerics.discrete_random%b
+D a-stream.ads		20140406181355 1a984740 ada.streams%s
+D a-tags.ads		20140406181357 dc4d0634 ada.tags%s
+D a-textio.ads		20140406181359 386df5d4 ada.text_io%s
+D a-tiinio.ads		20140406181359 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20140406181359 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20140406181359 69adb1b9 interfaces%s
+D i-cstrea.ads		20140406181357 febc86ed interfaces.c_streams%s
+D system.ads		20140406181354 90249111 system%s
+D s-assert.ads		20140406181355 cd8d2c94 system.assertions%s
+D s-crtl.ads		20140406181356 2c012597 system.crtl%s
+D s-exctab.ads		20140406181354 54135002 system.exception_table%s
+D s-ficobl.ads		20140406181355 078245e4 system.file_control_block%s
+D s-finmas.ads		20140406181356 814daec4 system.finalization_masters%s
+D s-finroo.ads		20140406181359 4ff27390 system.finalization_root%s
+D s-imgint.ads		20140406181359 02dbe0c2 system.img_int%s
+D s-imguns.ads		20140406181355 9ff43cf7 system.img_uns%s
+D s-parame.ads		20140406181358 06da98b2 system.parameters%s
+D s-pooglo.ads		20140406181357 542f33d0 system.pool_global%s
+D s-rannum.ads		20140406181354 5eb33f0a system.random_numbers%s
+D s-rannum.adb		20140406181354 34372cc7 system.random_numbers%b
+D s-ransee.ads		20140406181358 01a57b33 system.random_seed%s
+D s-secsta.ads		20140406181359 86a2856d system.secondary_stack%s
+D s-soflin.ads		20140406181358 aa763b52 system.soft_links%s
+D s-stache.ads		20140406181355 a37c21ec system.stack_checking%s
+D s-stalib.ads		20140406181355 fa0a3617 system.standard_library%s
+D s-stoele.ads		20140406181357 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20140406181355 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20140406181357 b16154c2 system.storage_pools%s
+D s-traent.ads		20140406181355 b5116092 system.traceback_entries%s
+D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
+D s-valint.ads		20140406181357 48a52a3f system.val_int%s
+D s-valuns.ads		20140406181358 10a8ed3b system.val_uns%s
+D s-wchcon.ads		20140406181358 1b7d22d2 system.wch_con%s
+D text_io.ads		20140406181359 45d626c9 text_io%s
+D tri_insertion.adb	20141021061546 5b173632 tri_insertion%b
+X 1 ada.ads
+16K9*Ada 19e8 44|2r6 2r26 4r6 4r31 5r6 11r28
+X 2 a-assert.ads
+24K13*Assertions 36e19 44|2w10 2r30
+X 5 a-inteio.ads
+18K13*Integer_Text_IO[13|46] 44|4w10 4r35
+X 7 a-numeri.ads
+16K13*Numerics 32e17 44|5r10 11r32
+X 8 a-nudira.ads
+44k22*Discrete_Random 73e33 44|5w19 11r41
+48R9 Generator<28|58R9> 44|13r17[11]
+50V13 Random{44|10I14} 44|27s67[11]
+53U14 Reset<28|95p14> 44|25s17[11]
+X 9 a-nudira.adb
+51V16 Random[28|78]{44|10I14} 29|390b13[44|11]
+X 13 a-tiinio.ads
+66U14*Put 44|74s17[5|18]
+X 15 interfac.ads
+63M9*Unsigned_32
+66M9*Unsigned_64
+X 28 s-rannum.ads
+70V13*Random{15|63M9} 29|219i21
+71V13*Random{15|66M9} 29|219i21
+X 43 text_io.ads
+24K9*Text_IO=24:29 44|3w6 3r19
+X 44 tri_insertion.adb
+7U11*tri_insertion 7b11 77l5 77t18
+8i9 NMAX{integer} 15r36 26r29 29r29
+9i9 MMAX{integer} 10r35
+10I14 interval<integer> 11r57 27r52
+11K17 gen[8|44] 12r13
+13r9 gnrtr{8|48R9[11]} 25r23 27r74
+15A14 INT_ARRAY(integer)<integer> 16r15 22r46 34r59 38r59 57r46
+16a9 tab{15A14} 67m20 67r20 70m20 70r20 74r21
+17i9 nbr_elts{integer} 67m25 70r25 73r21
+22U19 fill_array 22b19 22=30 22<57 30l13 30t23 67s9
+22a30 Farray{15A14} 27m25
+22i57 nbr_elts{integer} 29m17
+26i21 i{integer} 27r32
+34U19 insert_element_in_array 34=43 34=70 34=101 38b19 50l13 50t36 62s25
+34a43 Farray{15A14} 36r62 36r75 37r63 37r76 38b43 42r39 43r40 44m33 49m17
+34i70 FarrayLength{integer} 36r42 37r43 38b70 41r29 48m17 48r33 49r24
+34i101 Felement{integer} 38b101 42r28 44r46 45m33 49r41
+36i33 i{integer} 36r69 36r82
+37i34 i{integer} 37r70 37r83
+39i17 tmp{integer} 43m33 45r45
+41i21 i{integer} 42r46 43r47 44r40
+57U19 sort_array 57b19 57=30 57>57 64l13 64t23 70s9
+57a30 Farray{15A14} 62m49 62m60 62r60
+57i57 FarrayLength{integer} 60r29
+58i17 j{integer} 61m25 62m57 62r57
+60i21 i{integer} 61r30 62r67
+73i13 i{integer} 74r25
+

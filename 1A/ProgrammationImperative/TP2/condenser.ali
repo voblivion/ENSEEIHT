@@ -1,0 +1,67 @@
+V "GNAT Lib v4.6"
+M P W=b
+P SS ZX
+R nnnnnnnnnnvnnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+U condenser%b		condenser.adb		3a1b3d5a NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-inteio.ads		20070406091342 f64b89a4
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-tiinio.ads		20090409150019 aa04e5d6
+D a-unccon.ads		20070406091342 f9eb8f06
+D condenser.adb		20141013063907 89869237
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D system.ads		20120503154647 23e1f70b
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+D text_io.ads		20070406091342 45d626c9
+X 1 ada.ads
+16K9*Ada 19e8 12|2r6 2r31
+X 5 a-inteio.ads
+18K13*Integer_Text_IO[10|45] 12|2w10 2r35
+X 9 a-textio.ads
+167U14*New_Line 12|17s9 18s42
+207U14*Get 12|21s17
+209U14*Put 12|34s17
+243U14*Put 12|13s17 18s9 20s17 20s56
+X 10 a-tiinio.ads
+55U14*Get 12|14s17[5|18]
+65U14*Put 12|20s48[5|18]
+X 12 condenser.adb
+4U11*condenser 4b11 36l5 36t14
+5i9 NMAX{integer} 6r36 15r57
+6A14 INT_ARRAY(character)<integer> 7r18
+7a9 un_tab{6A14} 21m21 26r20 28m25 28r49 34r21
+8i9 nbr_elts{integer} 14m21 15r27 15r45 19r21 25r21 31m9 33r21
+9i9 new_nbr_elts{integer} 23m9 27m25 27r41 28r32 31r21
+19i13 i{integer} 20r52 21r28
+25i13 i{integer} 26r27 28r56
+33i13 i{integer} 34r28
+X 32 text_io.ads
+24K9*Text_IO=24:29 12|1w6 1r19
+

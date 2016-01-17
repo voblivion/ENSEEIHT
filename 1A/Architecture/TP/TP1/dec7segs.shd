@@ -1,0 +1,6 @@
+module dec7segs(sw[3..0] : ssg[7..0], an[3..0])
+	dec7segsH(sw[3..0] : si[6..0]);
+	ssg[6..0] = /si[6..0];
+	an[3..0] = 0b1110;
+	ssg[7] = 1;
+end module

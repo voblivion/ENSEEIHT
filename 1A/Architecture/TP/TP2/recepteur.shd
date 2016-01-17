@@ -1,0 +1,12 @@
+module recepteur(dr4,dr3,dr2,cr3,dr1,cr2,cr1 : err, d4,d3,d2,d1)
+	bits_ctrl(dr4,dr3,dr2,dr1 : c3,c2,c1);
+	poserr[2] = cr3*/c3+/cr3*c3;
+	poserr[1] = cr2*/c2+/cr2*c2;
+	poserr[0] = cr1*/c1+/cr1*c1;
+	decoder3to8(poserr[2..0] : derr[7..0]);
+	err = /derr[0];
+	d4 = dr4*/derr[7] + /dr4*derr[7];
+	d3 = dr3*/derr[6] + /dr3*derr[6];
+	d2 = dr2*/derr[5] + /dr2*derr[5];
+	d1 = dr1*/derr[3] + /dr1*derr[3];
+end module

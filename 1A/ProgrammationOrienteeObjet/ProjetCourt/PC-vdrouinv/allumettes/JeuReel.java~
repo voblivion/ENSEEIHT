@@ -1,0 +1,56 @@
+/**	=OK= =COMPILE=
+ *	Jeu réel avec toutes les méthodes de jeu accessibles.
+ *
+ *	@author Victor Drouin Viallard
+ *	@version 0.1
+ */
+
+
+public class JeuReel implements Jeu {
+	
+	/** Nombre d'allumettes présentes sur le jeu. */
+	protected int nombreAllumettes;
+
+
+	/**
+	 *	Initialise le jeu des 13 allumettes avec le nombre d'allumettes fourni.
+	 *
+	 *	@param nombreAllumettes Le nombre d'allumettes présentes au départ sur le plateau de jeu. Doit être positif.
+	 *	@throws IllegalArgumentException Le nombre d'allumettes au départ doit être strictement positif.
+	 */
+	public JeuReel(int nombreAllumettes) {
+		// Lever une exception si le nombre d'allumettes en jeu est négatif ou nul.
+		if(nombreAllumettes <= 0) {
+			throw new IllegalArgumentException("Le nombre d'allumettes au départ doit être strictement positif : " + nombreAllumettes);
+		}
+		
+		this.nombreAllumettes = nombreAllumettes;
+	}
+	
+	/**
+	 *	Retourne le nombre d'allumettes encore dans le jeu.
+	 *
+	 *	@return Le nombre d'allumettes présentes dans le jeu.
+	 */
+	public int getNombreAllumettes() {
+		return this.nombreAllumettes;
+	}
+	
+	/**
+	 *	Retire nombrePrises
+	 *
+	 *	@throws CoupInvalideException Le nombre d'allumettes à retirer n'est pas valide.
+	 */
+	 public void retirer(int nombrePrises) throws CoupInvalideException {
+	 
+ 		if(nombrePrises > this.nombreAllumettes || nombrePrises > PRISE_MAX ) {
+ 			throw new CoupInvalideException(nombrePrises);
+ 		} else if(nombrePrises < 1) {
+ 			throw new CoupInvalideException(nombrePrises);
+ 		}
+ 		
+ 		this.nombreAllumettes -= nombrePrises;
+	 }
+
+
+}

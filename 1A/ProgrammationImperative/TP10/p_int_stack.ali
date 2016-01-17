@@ -1,0 +1,48 @@
+V "GNAT Lib v4.6"
+P ZX
+R nnnvnnnnnnnnnnnnnnvnnvnnnnnnnnnvnnnnnnnnnnnnvnnnnnnnnnnnnnvnnnnvnnnnnnnnnnnnnnnn
+
+U p_int_stack%b		p_int_stack.adb		ecf83afc NE OO PK IL
+W ada.exceptions%s	a-except.adb		a-except.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+
+U p_int_stack%s		p_int_stack.ads		51438e5c EE OO PK IL
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-except.ads		20090727140100 0c711ac9
+D a-unccon.ads		20070406091342 f9eb8f06
+D p_int_stack.ads	20141212134249 51438e5c
+D p_int_stack.adb	20141212134318 bdbbb4a0
+D system.ads		20120503154647 23e1f70b
+D s-exctab.ads		20090417131547 66e51330
+D s-parame.ads		20091130110856 9c5d83fa
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-traent.ads		20090417130712 5221ee41
+X 4 p_int_stack.ads
+3K9*p_int_stack 35l5 35e16 5|3b14 48l5 48t16
+4P14*t_int_stack(29R14) 9r40 12r53 16r52 21r47 26r49 30c14 33r24 5|6r40 12r53
+. 13r33 23r52 33r47 43r49
+5X9*INT_STACK_IS_EMPTY 5|28r56 37r56
+9V18*init_int_stack{4P14} 5|6b18 9l13 9t27
+12U19*push_int_stack 12=34 12>66 5|12b19 19l13 19t27
+12p34 int_stack{4P14} 5|12b34 17r43 18m17
+12i66 int{integer} 5|12b66 16r44
+16U19*pop_int_stack 16=33 5|23b19 29l13 29t26
+16p33 int_stack{4P14} 5|23b33 25m17 25r30
+21V18*top_int_stack{integer} 21>32 5|33b18 38l13 38t26
+21p32 int_stack{4P14} 5|33b32 35r24
+26V18*empty_int_stack{boolean} 26>34 5|43b18 46l13 46t28
+26p34 int_stack{4P14} 5|43b34 45r24
+29R14 t_int_stack_case 30r36 31c14 34e19 5|15r38
+32i17*value{integer} 5|16m35 35r38
+33p17*next{4P14} 5|17m35 25r44
+X 5 p_int_stack.adb
+13p17 tmp_int_stack{4|4P14} 15m17 16r17 17r17 18r30
+

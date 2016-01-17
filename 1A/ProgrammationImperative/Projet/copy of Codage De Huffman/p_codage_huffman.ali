@@ -1,0 +1,151 @@
+V "GNAT Lib v4.6"
+P SS ZX
+R nnnnnnnnnnnnnnnnnnvnnvnnnvnnnnnnnnnnnnnnnnnnvnnnnnnnnnnnnnvnnnnnvnnnnnnnnnnnnnnn
+
+U p_codage_huffman%b	p_codage_huffman.adb	356d82f5 NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U p_codage_huffman%s	p_codage_huffman.ads	e2c49fe8 BN EE NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W p_arbre_huffman%s	p_arbre_huffman.adb	p_arbre_huffman.ali
+W p_chaine%s		p_chaine.adb		p_chaine.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-inteio.ads		20070406091342 f64b89a4
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-tiinio.ads		20090409150019 aa04e5d6
+D a-unccon.ads		20070406091342 f9eb8f06
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D p_arbre_huffman.ads	20150122213345 ae8b1c06
+D p_arbre_huffman.adb	20150123161051 2622dbb8
+D p_chaine.ads		20150123021339 f3557a4c
+D p_codage_huffman.ads	20150123095920 bf1af9a2
+D p_codage_huffman.adb	20150123145719 44510727
+D system.ads		20120503154647 23e1f70b
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 18|1r6 1r23 2r6 2r31
+X 5 a-inteio.ads
+18K13*Integer_Text_IO[10|45] 18|2w10 2r35
+X 9 a-textio.ads
+49K13*Text_IO 472e16 18|1w10 1r27
+X 14 p_arbre_huffman.ads
+11k9*P_Arbre_Huffman 242e20 17|2w6 20r45
+20P14 A_Arbre_Huffman(229R14[17|20]) 18|61r33[17|20] 120r33[17|20] 121r33[17|20]
+34V18 Ah_Valeur{character} 18|172s46[17|20]
+104V18 Ah_Creer_Vide{20P14[17|20]} 18|66s34[17|20] 129s34[17|20]
+124V18 Ah_Est_Null{boolean} 18|75s32[17|20]
+134V18 Ah_Est_Vide{boolean} 18|157s28[17|20]
+144V18 Ah_Est_Feuille{boolean} 18|171s31[17|20]
+185V18 Ah_Rechercher_Feuille{20P14[17|20]} 18|75s44[17|20]
+196V18 Ah_Mot_Binaire{17|8+14} 18|77s67[17|20] 84s67[17|20]
+206V18 Ah_Lire_Binaire{20P14[17|20]} 18|152s42[17|20]
+215U19 Maj_Nouvelle_Feuille 18|88s33[17|20] 144s25[17|20] 165s33[17|20]
+224U19 Maj_Arbre 18|79s33[17|20] 90s33[17|20] 146s25[17|20] 167s33[17|20]
+. 176s33[17|20]
+229R14 T_Arbre_Huffman
+X 16 p_chaine.ads
+2K9*P_Chaine 64e13 17|1w6 1r20
+11R14*T_Chaine 63e19 17|45r37 51r86 18|60r37 102r86 122r34
+33V18*Ch_Creer_Vide{11R14} 18|131s35
+44U19*Ch_Ajouter_Queue 18|142s25 163s33 174s33
+50V18*Ch_Caractere{character} 18|72s38
+56V18*Ch_Taille{integer} 18|71s29
+X 17 p_codage_huffman.ads
+5+14 T_Binaire 6r42 7r44 10r75 11r61 14r76 20r61
+6V23 Bi_Creer_Un{5+14} 20r72 18|26s53 47s28
+7V23 Bi_Creer_Zero{5+14} 20r85 18|24s53
+8+14 T_Mot_Binaire 9r44 10r52 11r39 12r56 12r80 13r52 14r53 15r43 16r62 20r100
+. 33r92 39r45 45r81 51r37 18|15r92 16r22 38r45 39r26 60r81 62r32 102r37 107r51
+. 107r89 108r34 109r37 124r30
+9V23 Mb_Creer_Vide{8+14} 20r115 18|19s23 68s33 112s38
+10U24 Mb_Ajouter_Tete 10=40 10>67 20r130 18|24s33 26s33
+10*40 Mb{8+14}
+10*67 Bi{5+14}
+11V23 Mb_Tete{5+14} 11>31 20r147 18|47s42 114s61 152s73
+11*31 Mb{8+14}
+12U24 Mb_Concatener_Queue 12=44 12>71 18|77s33 84s33 86s33
+12*44 Mb{8+14}
+12*71 Mbb{8+14}
+13U24 Mb_Retirer_Tete 13=40 18|50s25 115s33 155s25
+13*40 Mb{8+14}
+14U24 Mb_Ajouter_Queue 14=41 14>68 18|114s33
+14*41 Mb{8+14}
+14*68 Bi{5+14}
+15V23 Mb_Est_Vide{boolean} 15>35 18|136s24 150s27
+15*35 Mb{8+14}
+16U24 Mb_Retirer_Plusieurs_Tete 16=50 16>77 18|140s25 161s33
+16*50 Mb{8+14}
+16i77 n{integer}
+18k9*P_Codage_Huffman 5z14 6z23 7z23 8z14 9z23 10z24 11z23 12z24 13z24 14z24
+. 15z23 16z24 53l5 53e21 18|4b14 188l5 188t21
+20K17*P_Arbre_Huffman_Inst[14|11] 21r13
+23X9*CODE_INVALIDE 18|185r38
+33V18*Caractere_En_ASCII{8+14} 33>37 33>58 18|15b18 33l13 33t31 86s67
+33e37 Char{character} 18|15b37 20r45
+33i58 Taille_ASCII{integer} 18|15b58 22r29
+39V18*ASCII_En_Caractere{character} 39>37 39>60 18|38b18 55l13 55t31 138s38
+. 159s46
+39*37 Mb{8+14} 18|38b37 42r27
+39i60 Taille_ASCII{integer} 18|38b60 45r29
+45V18*Ch_Encoder{8+14} 45>29 45>47 18|60b18 97l13 97t23
+45r29 Ch{16|11R14} 18|60b29 71r39 72r51
+45i47 Taille_ASCII{integer} 18|60b47 86r97
+51V18*Ch_Decoder{16|11R14} 51>29 51>52 18|102b18 186l13 186t23
+51*29 Mb{8+14} 18|102b29 127r31
+51i52 Taille_ASCII{integer} 18|102b52 138r86 138r101 140r63 159r94 159r109
+. 161r71
+X 18 p_codage_huffman.adb
+16*17 Mb{17|8+14} 19m17 24m49 26m49 32r24
+17i17 Code_ASCII{integer} 20m17 23r29 28m25 28r39
+22i21 k{integer}
+39*17 Mb_tmp{17|8+14} 42m17 47r50 50m41
+40i17 Code_ASCII{integer} 43m17 46m25 46r39 48m33 48r47 54r38
+45i21 k{integer}
+61p17 Arbre_Huffman{14|20P14[17|20]} 66m17 75r66 77r82 79m43 84r82 88m54
+. 90m43
+62*17 Message_Code{17|8+14} 68m17 77m53 84m53 86m53 96r24
+63e17 Caractere{character} 72m25 75r81 77r97 79r58 86r86 88r69 90r58
+71i21 k{integer} 72r55
+107V26 Sous_Mot_Binaire{17|8+14} 107b26 107>43 107>66 118l21 118t37 138s57
+. 159s65
+107*43 Mb{17|8+14} 111r35
+107i66 n{integer} 113r37
+108*25 Mb_Tmp{17|8+14} 111m25 114r69 115m49
+109*25 Mb_Retour{17|8+14} 112m25 114m50 117r32
+113i29 k{integer}
+120p17 Arbre_Huffman{14|20P14[17|20]} 129m17 133r34 144m46 146m35 165m54
+. 167m43 169r50 176m43 178r50
+121p17 Noeud_Courant{14|20P14[17|20]} 133m17 152m25 152r58 157r40 169m33
+. 171r46 172r56 178m33
+122r17 Message_Decode{16|11R14} 131m17 142m42 163m50 174m50 183r24
+123e17 Caractere{character} 138m25 142r58 144r61 146r50 159m33 163r66 165r69
+. 167r58 172m33 174r66 176r58
+124*17 Mb_Courant{17|8+14} 127m17 136r36 138r74 140m51 150r39 152r81 155m41
+. 159r82 161m59
+

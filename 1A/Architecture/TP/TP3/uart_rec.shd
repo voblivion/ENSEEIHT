@@ -1,0 +1,21 @@
+module uart_rec(rst, clk, sin : dout[7..0], rcvd)
+	// On n'incrémente le compteur que si sin ne vaut pas 1 ou qu'il n'était pas à 0
+	en = /dBit[0]+/sin;
+	count0to39(rst, clk, en : bit[5..0]);
+	
+	// On décode le compteur
+	decoder6to64(bit[5..0] : dBit[63..0]);
+	
+	dout[6..0] := dout[7..1];
+	dout[7] := sin;
+	ena = dBit[2]+dBit[6]+dBit[10]+dBit[14]+dBit[18]+dBit[22]+dBit[26]+dBit[30]+dBit[34];
+	dout[6..0].clk = clk;
+	dout[6..0].ena = ena;
+	dout[6..0].rst = rst;
+	dout[7].clk = clk;
+	dout[7].rst = rst;
+	dout[7].ena = ena;
+	
+	rcvd = dBit[36]+dBit[37]+dBit[38]+dBit[39];
+	
+end module

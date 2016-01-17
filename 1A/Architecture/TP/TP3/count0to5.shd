@@ -1,0 +1,11 @@
+module count0to5(rst, clk, en : s[3..0])
+	nCinq = s[3]+/s[2]+s[1]+/s[0];
+	si[3] = /s[3]*s[2]*s[1]*s[0]*nCinq+s[3]*/s[2]*nCinq+s[3]*/s[1]*nCinq+s[3]*/s[0]*nCinq;
+	si[2] = /s[2]*s[1]*s[0]*nCinq+s[2]*/s[1]*nCinq+s[2]*/s[0]*nCinq;
+	si[1] = /s[1]*s[0]*nCinq+s[1]*/s[0]*nCinq;
+	si[0] = /s[0]*nCinq;
+	s[3..0] := si[3..0];
+	s[3..0].clk = clk;
+	s[3..0].rst = rst;
+	s[3..0].ena = en;
+end module

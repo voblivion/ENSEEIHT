@@ -1,0 +1,11 @@
+import java.awt.Color;
+package afficheur;
+
+
+public interface AfficheurTexte implements Afficheur {
+	
+	public void dessinerCercke(double x, double y, double rayon, java.awt.Color c) {
+	
+	}
+}
+

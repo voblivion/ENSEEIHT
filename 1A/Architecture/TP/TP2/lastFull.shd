@@ -1,0 +1,4 @@
+module lastFull(w[3..0], r[3..0] : s)
+	adder4(w[3..0], 0, 1 : nw[3..0], cout);
+	ucmp4(nw[3..0], r[3..0] : sup, s);
+end module

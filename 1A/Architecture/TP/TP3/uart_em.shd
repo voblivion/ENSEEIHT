@@ -1,0 +1,20 @@
+module uart_em(rst, clk, data[7..0], send : sent, sout)
+	// On n'incrémente le compteur que si il n'est pas à 0 ou que send est activé
+	en = /dBit[0]+send;
+	count0to9(rst, clk, en : bit[3..0]);
+	
+	tSend = send*dBit[0];
+	tData[7..0] := data[7..0];
+	tData[7..0].clk = clk;
+	tData[7..0].ena = tSend;
+	tData[7..0].rst = rst;
+	
+	// On décode le compteur
+	decoder4to16(bit[3..0] : dBit[15..0]);
+	
+	// On détermine la donnée à envoyer
+	sout =  dBit[2]*tData[0]+dBit[3]*tData[1]+dBit[4]*tData[2]+dBit[5]*tData[3]+dBit[6]*tData[4]+dBit[7]*tData[5]+dBit[8]*tData[6]+dBit[9]*tData[7]+dBit[0];
+	
+	// On dit que c'est fini d'envoyer si le bit envoyé est le 9
+	sent = dBit[9];
+end module

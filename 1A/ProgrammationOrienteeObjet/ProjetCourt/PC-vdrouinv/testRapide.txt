@@ -1,0 +1,7 @@
+
+Nombre d'allumettes restantes : 13
+Au tour de Xavier.
+Combien prenez-vous d'allumettes ? 
+Nombre d'allumettes restantes : 13
+Au tour de Xavier.
+Combien prenez-vous d'allumettes ? 

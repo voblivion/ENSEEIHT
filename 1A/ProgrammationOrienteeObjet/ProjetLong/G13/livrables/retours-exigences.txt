@@ -1,0 +1,13 @@
+Sujet détaillé :
+
+Vous n'avez pas déposé le sujet détaillé. Déposez le avant vendredi 3 avril 21h sinon la note attribuée à cette partie sera 0.
+
+Exigences :
+
+Il est difficile d'évaluer la qualité des exigences sans disposer du sujet détaillé.
+
+Les exigences disponibles sont correctement formulées. Elles pourraient être mieux structurées : regrouper les exigences communes en utilisant une exigence parente plus abstraite qui factorise les points communs (par exemple : prise en compte des forces, raffinées ensuite en forces de frottement, forces gravitationnelles, etc). Il serait utile de décrire les exigences sur l'interface homme machine, sur les performances, ...
+
+Scénarios :
+
+Vous n'avez pas déposé les scénarios. Déposez les avant vendredi 3 avril 21h sinon la note attribuée à cette partie sera 0.

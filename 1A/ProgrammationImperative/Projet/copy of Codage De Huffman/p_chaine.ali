@@ -1,0 +1,74 @@
+V "GNAT Lib v4.6"
+P SS ZX
+R nnnnnnnnnnnnnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+U p_chaine%b		p_chaine.adb		39799331 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U p_chaine%s		p_chaine.ads		f3557a4c EE NE OO PK
+
+D ada.ads		20070406091342 3ffc8e18
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-unccon.ads		20070406091342 f9eb8f06
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D p_chaine.ads		20150123021339 f3557a4c
+D p_chaine.adb		20150123021346 f2411ca9
+D system.ads		20120503154647 23e1f70b
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 13|1r6 1r23
+X 8 a-textio.ads
+49K13*Text_IO 472e16 13|1w10 1r27
+243U14*Put 13|22s17
+250U14*Get_Line 13|14s17
+X 12 p_chaine.ads
+2K9*P_Chaine 64l5 64e13 13|3b14 71l5 71t13
+4i9*Taille_Max{integer} 61r36
+11R14*T_Chaine 21r35 27r31 33r39 38r67 44r48 50r39 56r36 60c14 63e19 13|12r35
+. 20r31 28r39 29r22 38r67 39r22 49r48 58r39 66r36
+21U19*Get 21=23 13|12b19 15l13 15t16
+21r23 Ch{11R14} 13|12b23 14m26 14m37
+27U19*Put 27>23 13|20b19 23l13 23t16
+27r23 Ch{11R14} 13|20b23 22r21 22r34
+33V18*Ch_Creer_Vide{11R14} 13|28b18 33l13 33t26
+38V18*Ch_Creer{11R14} 38>27 38>44 13|38b18 44l13 44t21
+38s27 Str{string} 13|38b27 41r36 41r40
+38i44 n{integer} 13|38b44 41r30 41r51 42r30
+44U19*Ch_Ajouter_Queue 44=36 44>58 13|49b19 53l13 53t29
+44r36 Ch{11R14} 13|49b36 51m17 51r30 52m17 52r27
+44e58 Char{character} 13|49b58 52r41
+50V18*Ch_Caractere{character} 50>31 50>49 13|58b18 61l13 61t25
+50r31 Ch{11R14} 13|58b31 60r24
+50i49 k{integer} 13|58b49 60r34
+56V18*Ch_Taille{integer} 56>28 13|66b18 69l13 69t22
+56r28 Ch{11R14} 13|66b28 68r24
+61a17*Chaine{string} 13|14m29 22r24 41r20 52m20 60r27
+62i17*Taille{integer} 13|14m40 22r37 31m20 42m20 51m20 51r33 52r30 68r27
+X 13 p_chaine.adb
+29r17 Ch{12|11R14} 31m17 32r24
+39r17 Ch{12|11R14} 41m17 42m17 43r24
+

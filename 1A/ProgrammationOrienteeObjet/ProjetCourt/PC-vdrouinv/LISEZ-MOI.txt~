@@ -1,0 +1,65 @@
+Nom       : Drouin Viallard
+Prénom    : Victor
+Groupe TP : A
+
+Les « ... » indiquent les endroits à compléter.
+
+=====[ Questions ]==============================================================
+
+--------------------------------------------------------------------------------
+Pourquoi l'exception RetraitDirectExcepetion ne peut pas être contrôlée
+par le compilateur ?
+--------------------------------------------------------------------------------
+
+RetraitDirectException (lancée quand le tricheur essaye d'accéder à la méthode "retirer" de la procuration qu'on lui donne) ne peut être controlée par le compilateur car la méthode "retirer" de jeu ne peut pas lancée une telle exception. Cette exception doit donc être une RuntimeException que le compilateur ne peut controller.
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qu'il faut faire pour ajouter un nouveau niveau de jeu, par
+exemple la stratégie lente (C13).  Pour plus de précision, on numérotera
+les étapes à faire.
+--------------------------------------------------------------------------------
+
+1. Créer la classe StrategieLente implémentant l'interface Strategie.
+2. Y implémenter les méthodes getNom et getNombrePrises.
+3. Ajouter au début de la méthode principale de la classe Partie un nouvel élément dans la hashtable recensant la liste des stratégies disponibles.
+
+
+--------------------------------------------------------------------------------
+Expliquer ce qui permet, dans votre conception, de changer dynamiquement
+(en cours d'exécution du programme) la stratégie d'un joueur (C14).
+--------------------------------------------------------------------------------
+
+Le fait que le joueur possède un attribut strategie et une méthode permettant de le modifier fait que la stratégie du joueur peut se changer dynamiquement au cours de l'exécution du programme.
+
+
+=====[ Explications ]===========================================================
+
+--------------------------------------------------------------------------------
+Donner ici les explications supplémentaires utiles à la compréhension du
+travail rendu.
+--------------------------------------------------------------------------------
+
+C1	respecté
+C2	respecté
+C3	respecté
+C4	à compléter	(documentation complète)
+C5	respecté
+C6	à faire		(toutes les classes dans un unique paquetage)
+C7	respecté
+C8	respecté
+C9	respecté
+C10	respecté
+C11	respecté
+C12	respecté
+C13	respecté
+C14	respecté
+C15	à faire		(tests suffixé par Test et appuyés sur JUnit)
+C16	à faire		(tests strategie rapide complets)
+C17	à faire		(tests pour le reste de l'application)
+C18	respecté
+C19	à vérifier	(classes fournies non modifiées)
+C20	à vérifier	(méthodes courtes)
+C21	à vérifier	(répétitions imbriquées interdites)
+
+--------------------------------------------------------------------------------

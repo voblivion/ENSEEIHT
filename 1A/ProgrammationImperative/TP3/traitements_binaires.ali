@@ -1,0 +1,76 @@
+V "GNAT Lib v4.6"
+M P W=b
+P SS ZX
+R nnnnnnnnnnnnnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+U traitements_binaires%b  traitements_binaires.adb  f10ae153 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-inteio.ads		20070406091342 f64b89a4
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-tiinio.ads		20090409150019 aa04e5d6
+D a-unccon.ads		20070406091342 f9eb8f06
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D system.ads		20120503154647 23e1f70b
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+D text_io.ads		20070406091342 45d626c9
+D traitements_binaires.adb  20141014065225 42974e3e
+X 1 ada.ads
+16K9*Ada 19e8 32|2r6 2r31
+X 5 a-inteio.ads
+18K13*Integer_Text_IO[10|45] 32|2w10 2r35
+X 9 a-textio.ads
+167U14*New_Line 32|60s19 60s29 62s35 62s45 63s51 63s61
+X 10 a-tiinio.ads
+55U14*Get 32|59s17[5|18]
+65U14*Put 32|13s25[5|18] 62s9[5|18] 63s42[5|18]
+X 31 text_io.ads
+24K9*Text_IO=24:29 32|1w6 1r19
+X 32 traitements_binaires.adb
+4U11*traitements_binaires 4b11 65l5 65t25
+5A14 BINAIRE(integer)<integer> 10r39 19r44 30r59 31r22 51r45 51r64 51r80
+. 56r14
+10U19 affichage 10b19 10>30 15l13 15t22 61s9 63s9 64s9
+10a30 Fnb{5A14} 13r29
+12i21 k{integer} 13r33
+19V18 binaireDecimale{integer} 19b18 19>35 26l13 26t28 53s40 53s62 62s13
+19a35 Fnb{5A14} 23r34
+20i17 n{integer} 23m25 23r32 25r24
+22i21 k{integer} 23r38
+30V18 decimaleBinaire{5A14} 30b18 30>35 47l13 47t28 53s24 63s19 64s39
+30i35 Fn{integer} 36r22
+31a17 bn{5A14} 39m33 42m33 46r24
+32i17 i{integer} 38r30 40r40 44m25 44r30
+33i17 m{integer} 36m17 38r28 40m33 40r38
+37i21 k{integer} 39r36 42r36
+51V18 additionBinaire{5A14} 51b18 51>35 51>54 54l13 54t28 64s19
+51a35 Fnb1{5A14} 53r56
+51a54 Fnb2{5A14} 53r78
+56a9 nb{5A14} 59m21 61r19 62r29 64r35
+58i13 k{integer} 59r24
+

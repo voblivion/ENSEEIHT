@@ -1,0 +1,8 @@
+module count2(rst, clk, en : s[1..0])
+	si[1] = /s[1]*s[0]+s[1]*/s[0];
+	si[0] = /s[0];
+	s[1..0] := si[1..0];
+	s[1..0].clk = clk;
+	s[1..0].rst = rst;
+	s[1..0].ena = en;
+end module

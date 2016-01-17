@@ -1,0 +1,6 @@
+module affmux(rst, clk, data[15..0] : anodes[3..0], seg[6..0])
+	count2(rst, clk, 1 : si[1..0]);
+	decoder2to4(si[1..0] : anodes[3..0]);
+	tmp[3..0] = anodes[3]*data[15..12]+anodes[2]*data[11..8]+anodes[1]*data[7..4]+anodes[0]*data[3..0];
+	dec7segsH(tmp[3..0] : seg[6..0]);
+end module

@@ -1,0 +1,4 @@
+module addbin(btn[1..0], sw[7] : s, cout)
+	s = btn[0]*/btn[1]*/sw[7]+/btn[0]*btn[1]*/sw[7]+/btn[0]*/btn[1]*sw[7]+btn[0]*btn[1]*sw[7];
+	cout = btn[0]*btn[1]+btn[0]*sw[7]+btn[1]*sw[7];
+end module

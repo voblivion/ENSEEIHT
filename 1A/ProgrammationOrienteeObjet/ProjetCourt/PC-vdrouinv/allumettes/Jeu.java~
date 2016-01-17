@@ -1,0 +1,31 @@
+/**	=OK= =COMPILE=
+ *	Etat du plateau de jeu.
+ *
+ *	@author Victor Drouin Viallard
+ *	@version 0.1
+ */
+
+
+public interface Jeu {
+
+	/** Nombre maximal d'allumettes pouvant être prises. */
+	int PRISE_MAX = 3;
+
+	/**
+	 *	Retourne le nombre d'allumettes encore en jeu.
+	 *
+	 */
+	public int getNombreAllumettes();
+
+
+	/**
+	 *	Retire nombrePrises allumettes du jeu, devant être compris entre 1 et min(PRISE_MAX, getNombreAllumettes()).
+	 *
+	 *	@param nombrePrises Nombre d'allumettes prises par le joueur et à retirer du jeu.
+	 *	@throws CoupInvalideException Tentative de prendre un nombre d'allumettes invalide.
+	 */
+
+	public void retirer(int nombrePrises) throws CoupInvalideException;
+
+
+}

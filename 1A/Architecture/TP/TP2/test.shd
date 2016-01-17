@@ -1,0 +1,7 @@
+module test(mclk, data[15..0] : ssg[6..0], an[3..0])
+	clock28(0, mclk : si[27..0]);
+	ld[7..0] = si[27..20];
+	an[3..0] = /a[3..0];
+	ssg[6..0] = /seg[6..0];
+	affmux(0, si[7], data[15..0] : a[3..0], seg[6..0]);
+end module

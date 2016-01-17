@@ -1,0 +1,5 @@
+module decoder3to8(e[2..0] : s[7..0])
+	decoder2to4(e[1..0] : si[3..0]);
+	s[3..0] = si[3..0]*/e[2];
+	s[7..4] = si[3..0]*e[2];
+end module

@@ -1,0 +1,22 @@
+import java.awt.Color;
+
+abstract class ObjetGeometrique {
+		
+	protected Color couleur;
+	
+	protected ObjetGeometrique(Color couleur){
+		this.couleur = couleur;
+	}
+	
+	public void setCouleur(Color couleur){
+		this.couleur = couleur;
+	}
+	
+	public Color getCouleur(){
+		return this.couleur;
+	}
+	
+	public void afficher();
+	public void dessiner(afficheur.Afficheur afficheur);
+	public void translater(double x, double y);
+}

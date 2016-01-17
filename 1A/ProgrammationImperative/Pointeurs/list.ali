@@ -1,0 +1,105 @@
+V "GNAT Lib v4.6"
+M P W=b
+P SS ZX
+R nnnvnnnnnnnnnnnnnnnnnvnnnvvnnnnvnnnnnvnnnnnnvnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnnnnn
+
+U list%b		list.adb		2a9fbf93 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-inteio.ads		20070406091342 f64b89a4
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-tiinio.ads		20090409150019 aa04e5d6
+D a-unccon.ads		20070406091342 f9eb8f06
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D list.adb		20141124164854 e4b9c3e3
+D system.ads		20120503154647 23e1f70b
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+X 1 ada.ads
+16K9*Ada 19e8 14|1r6 1r31 2r6 2r23
+X 5 a-inteio.ads
+18K13*Integer_Text_IO[10|45] 14|1w10 1r35
+X 9 a-textio.ads
+49K13*Text_IO 472e16 14|2w10 2r27
+167U14*New_Line 14|146s26 149s37 151s35 158s26 160s26
+243U14*Put 14|44s33 50s17 55s17 149s17
+X 10 a-tiinio.ads
+65U14*Put 14|45s33[5|18] 52s25[5|18] 151s17[5|18]
+X 14 list.adb
+4U11*list 4b11 163l5 163t9
+6R14 t_list_case 7r31 8c14 11e19 33r30 87r46 110r46
+7P14 t_list(6R14) 10r24 18r36 24r43 30r44 31r25 40r43 41r55 59r41 59r73 71r51
+. 72r28 73r25 94r52 95r28 96r25 117r43 118r25 119r28 137r13 138r13
+9i17 value{integer} 34m27 45r47 52r39 63r33 79r70 88r63 102r70 110r72 125r41
+. 126m46 126r77 132r33 151r27
+10p17 next{7P14} 35m27 46r60 53r52 66r54 80r58 87r76 103r58 110r92 123r62
+. 126r68 127m46 127r67 127r76 129r58 133m35
+14X9 LIST_IS_EMPTY 76r31 99r31
+15X9 DATA_IS_NOT_IN_LIST 84r39 107r39
+18V18 empty_list{7P14} 18b18 21l13 21t23 140s14
+24V18 is_list_empty{boolean} 24b18 24>32 27l13 27t26 43s32 51s24 61s20 75s20
+. 83s28 98s20 106s28
+24p32 Flist{7P14} 26r24
+30U19 push_list 30b19 30=29 30>52 37l13 37t22 141s9 142s9 143s9 144s9 145s9
+30p29 Flist{7P14} 35r35 36m17
+30i52 Fe{integer} 34r36
+31p17 tList{7P14} 33m17 34r17 35r17 36r26
+40U19 display_list 40b19 40>32 56l13 56t25 146s9 158s9 160s9
+40p32 Flist{7P14} 51r38 52r29 53r42
+41U27 sub_display_list 41b27 41>44 46s33 48l21 48t37 53s25
+41p44 Flist{7P14} 43r46 45r37 46r50
+59V18 search_list{7P14} 59b18 59>30 59>49 66s32 68l13 68t24 147s14
+59p30 Flist{7P14} 61r34 63r23 64r32 66r44
+59i49 Fe{integer} 63r41 66r60
+71U19 swift_after_list 71b19 71=36 71>59 71>76 91l13 91t29 153s9 154s9 157s9
+71p36 Flist{7P14} 75r34 78r37
+71i59 Fe{integer} 87r59
+71i76 Fd{integer} 79r79
+72p17 tCurrent{7P14} 78m25 79r31 79r57 80m33 80r45 83r42 87r63 88r33 88r50
+73p17 tNext{7P14} 87m33 88r70
+94U19 swift_before_list 94b19 94=37 94>60 94>77 114l13 114t30 155s9 156s9
+94p37 Flist{7P14} 98r34 101r37
+94i60 Fe{integer} 111r50
+94i77 Fd{integer} 102r79
+95p17 tCurrent{7P14} 101m25 102r31 102r57 103m33 103r45 106r42 110r59 110r79
+. 111r33
+96p17 tNext{7P14} 110m33 111r54
+117U19 pop_list 117b19 117=28 117>51 135l13 135t21 159s9
+117p28 Flist{7P14} 121r26 122r29
+117i51 Fe{integer} 125r49 132r41
+118p17 tPrev{7P14} 121m17 124m25 133r25
+119p17 tCurrent{7P14} 122m17 123r23 123r49 124r34 125r28 126r33 126r55 127r33
+. 127r54 129m33 129r45 132r20
+137p9 l{7P14} 140m9 141m19 142m19 143m19 144m19 145m19 146r22 147r26 153m26
+. 154m26 155m27 156m27 157m26 158r22 159m18 160r22
+138p9 f{7P14} 147m9 148r12 151r21
+

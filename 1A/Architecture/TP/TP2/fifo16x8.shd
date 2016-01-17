@@ -1,0 +1,20 @@
+module fifo16x8(rst, clk, put, get,din[7..0],dout[7..0],empty, full)
+	rams_dual_asyn_read16x8(clk, incWrAddr, wrAddr[3..0], rdAddr[3..0], din[7..0], doutWr[7..0], dout[7..0]);
+	incWrAddr = put*/full;
+	incRdAddr = get*/empty;
+	count4(rst, clk, incWrAddr : wrAddr[3..0]);
+	count4(rst, clk, incRdAddr : rdAddr[3..0]);
+	
+	lastFull(wrAddr[3..0], rdAddr[3..0] : lFull);
+	lastEmpty(wrAddr[3..0], rdAddr[3..0] : lEmpty);
+	tFull = put*lFull*/get+full*/get;
+	tEmpty = get*lEmpty*/put+empty*/put;
+	
+	full := tFull;
+	full.clk = clk;
+	full.rst = rst;
+	nempty := /tEmpty;
+	nempty.clk = clk;
+	nempty.rst = rst;
+	empty = /nempty;
+end module

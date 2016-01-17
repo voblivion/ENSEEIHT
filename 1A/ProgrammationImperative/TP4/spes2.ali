@@ -1,0 +1,83 @@
+V "GNAT Lib v4.6"
+M P W=b
+P SS ZX
+R nnnnnnnnnnnnnnnnnnnnnnnnnvnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+
+U spes2%b		spes2.adb		086e9b10 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system.concat_3%s	s-conca3.adb		s-conca3.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20070406091342 3ffc8e18
+D a-except.ads		20090727140100 0c711ac9
+D a-finali.ads		20090409150019 e5e85fa4
+D a-filico.ads		20090409150019 872dc219
+D a-inteio.ads		20070406091342 f64b89a4
+D a-ioexce.ads		20091130110856 8b9de6cd
+D a-stream.ads		20090409150019 2ca4ee37
+D a-tags.ads		20101021101406 c7695348
+D a-textio.ads		20091028140912 386df5d4
+D a-tiinio.ads		20090409150019 aa04e5d6
+D a-unccon.ads		20070406091342 f9eb8f06
+D interfac.ads		20090409150019 f77d8799
+D i-cstrea.ads		20100622165701 1bd72c32
+D spes2.adb		20141021075514 bbf3347d
+D system.ads		20120503154647 23e1f70b
+D s-conca3.ads		20090420091404 762a026a
+D s-crtl.ads		20100617122610 ac77b159
+D s-exctab.ads		20090417131547 66e51330
+D s-ficobl.ads		20100909103250 443b9d66
+D s-finimp.ads		20090409150019 46853fe8
+D s-finroo.ads		20090409150019 dbb860c9
+D s-parame.ads		20091130110856 9c5d83fa
+D s-secsta.ads		20090707124243 eea35a36
+D s-soflin.ads		20090729085153 9414c974
+D s-stache.ads		20090417130712 596fc1b4
+D s-stalib.ads		20101021102512 c4241c00
+D s-stoele.ads		20090417130712 facd7d98
+D s-stoele.adb		20100617152355 afc5dc80
+D s-stratt.ads		20100909123135 aedef97e
+D s-traent.ads		20090417130712 5221ee41
+D s-unstyp.ads		20090409150019 6ae15c76
+D s-wchcon.ads		20090417130712 bfeb2e3d
+D text_io.ads		20070406091342 45d626c9
+X 1 ada.ads
+16K9*Ada 19e8 14|2r6 2r31
+X 5 a-inteio.ads
+18K13*Integer_Text_IO[10|45] 14|2w10 2r35
+X 9 a-textio.ads
+243U14*Put 14|16s17 50s33
+250U14*Get_Line 14|17s17
+264U14*Put_Line 14|47s17 51s48
+X 10 a-tiinio.ads
+65U14*Put 14|51s33[5|18]
+X 14 spes2.adb
+4U11*spes2 4b11 71l5 71t10
+5i9 CMAX{integer} 7r37
+6R14 ztring 9e19 13r42 13r57 14r27 22r44 35r45 56r19 57r19
+7a17 content{string} 16r29 17m34 27r31 61r17
+8i17 length{integer} 16r48 17m51 26r32 62m17
+10A14 alpha_array(integer)<integer> 35r60 36r35 45r47 58r19
+13V18 get_ztring{6R14} 13b18 13>29 19l13 19t23 63s20
+13r29 Fztring{6R14} 16r21 16r40
+14r17 Gztring{6R14} 17m26 17m43 18r24
+22V18 occurences_letter{integer} 22b18 22>36 22>52 32l13 32t30 39s47
+22r36 Fz{6R14} 26r29 27r28
+22e52 Fc{character} 27r44
+23i17 n{integer} 25m17 28m33 28r38 31r24
+26i21 i{integer} 27r39
+35V18 occurences_letters{10A14} 35b18 35>37 42l13 42t31 66s20
+35r37 Fz{6R14} 39r65
+36a17 occurencesArray{10A14} 39m25 41r24
+38i21 i{integer} 39r41 39r83
+45U19 display_alpha_array 45b19 45>39 54l13 54t32 69s9
+45a39 Aa{10A14} 49r28 51r37
+48i21 i{integer} 49r31 50r58 51r40
+56r9 Qztring{6R14} 61m9 62m9 63r31
+57r9 Pztring{6R14} 63m9 66r39
+58a9 Alarray{10A14} 66m9 69r29
+X 33 text_io.ads
+24K9*Text_IO=24:29 14|1w6 1r19
+

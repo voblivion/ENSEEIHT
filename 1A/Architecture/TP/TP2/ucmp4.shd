@@ -1,0 +1,6 @@
+module ucmp4(a[3..0], b[3..0] : sup, eq)
+	ucmp2(a[3..2], b[3..2] : supi, eqi);
+	ucmp2(a[1..0], b[1..0] : supj, eqj);
+	eq = eqi*eqj;
+	sup = supi+eqi*supj;
+end module

@@ -1,0 +1,11 @@
+module test_uart(mclk, sw[7..0], btn[0], jc_in[0] : ja_out[0], an[3..0], ssg[6..0], ld[7..0])
+	clock28(0, mclk : clk[27..0]);
+	uart_em(0, clk[22], sw[7..0], btn[0] : ld[1], ja_out[0]);
+	uart_rec(0, clk[20], jc_in[0] : dout[7..0], ld[0]);
+	data[15..8] = sw[7..0];
+	data[7..0] = dout[7..0];
+	ld[7..2] = 0;
+	affmux(0, clk[16], data[15..0] : nan[3..0], nseg[6..0]);
+	an[3..0] = /nan[3..0];
+	ssg[6..0] = /nseg[6..0];
+end module

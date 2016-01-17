@@ -1,0 +1,5 @@
+module bits_ctrl(d4,d3,d2,d1 : c3,c2,c1)
+	ouex3(d4, d2, d1 : c1);
+	ouex3(d4, d3, d1 : c2);
+	ouex3(d4, d3, d2 : c3);
+end module

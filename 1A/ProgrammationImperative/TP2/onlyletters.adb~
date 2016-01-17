@@ -1,0 +1,29 @@
+with text_io; use text_io;
+with ada.integer_text_io; use ada.integer_text_io;
+
+procedure onlyletters is
+	CMAX : constant integer := 80;
+	chaine : string(1..CMAX);
+	lchaine : integer;
+	e : integer;
+	NMAX : constant interger := 26;
+	type alpha_array is array('a'..'z') of integer;
+	nbr_elts : integer := 26;	
+	tab : alpha_array;
+	n : integer;
+begin
+	-- Lecture de la chaine
+	put("Entrez une chaîne de caractères : ");
+	get_line(chaine, lchaine);
+	-- Calcul du nombre d'occurence des lettres
+	for i in 'a'..'z' loop
+		n := 0;
+		for j in 1..lchaine loop
+			if chaine(j) = i then
+				n := n+1;
+			end if;
+		end loop;
+		tab(i) := n;
+		put(i);put("|");put(tab(i));NEW_LINE;
+	end loop;
+end onlyletters;

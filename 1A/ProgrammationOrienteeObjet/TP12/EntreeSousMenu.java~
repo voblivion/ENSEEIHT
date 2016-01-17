@@ -1,0 +1,45 @@
+/** Définition d'une entrée de Menu.
+ * @author	Victor Drouin
+ * @version	1.0
+ */
+class EntreeSousMenu extends Entree {
+
+    /** Construire une entrée de sous menu à partir d'un intitulé, du menu, d'un type de menu (u=usageUnique)
+     */
+    //@ requires unIntitule != null && unIntitule.length() > 0;
+    //@					// l'intitulé existe
+    //@ ensures getIntitule() == unIntitule;
+    public EntreeSousMenu(String unIntitule, Menu m, boolean u) {
+	intitule = unIntitule;
+	commande = uneCommande;
+    }
+
+    /** L'intitulé de l'entrée. */
+    public /*@ pure @*/ String getIntitule() {
+	return intitule;
+    }
+
+    /** La commande associée à l'entrée. */
+    public /*@ pure @*/ Commande getCommande() {
+	return commande;
+    }
+
+    /** Afficher l'entrée.
+     * @param numero le numéro de l'entrée dans le menu
+     */
+    public /*@ pure @*/ void afficher(int numero) {
+	if (commande.estExecutable()) {
+	    String num = "" + numero;
+	    if (num.length() < 2) {
+		System.out.print(" ");
+	    }
+	    System.out.print(num);
+	} else {
+	    System.out.print(" -");
+	}
+	System.out.print("] ");
+	System.out.print(getIntitule());
+	System.out.println();
+    }
+
+}

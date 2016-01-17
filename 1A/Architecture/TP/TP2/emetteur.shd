@@ -1,0 +1,4 @@
+module emetteur(d4,d3,d2,d1 : de4,de3,de2,c3,de1,c2,c1)
+	de4 = d4; de3 = d3; de2 = d2; de1 = d1;
+	bits_ctrl(d4,d3,d2,d1 : c3,c2,c1);
+end module

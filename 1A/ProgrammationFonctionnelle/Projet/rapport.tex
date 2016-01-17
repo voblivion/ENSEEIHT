@@ -1,0 +1,199 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{graphicx}
+\usepackage{titlesec}
+
+\titleformat{\chapter}{}{}{20pt}{\huge}
+ 
+\title{Projet de programmation fonctionnelle : le résolveur de démineur}
+\author{Victor Drouin Viallard}
+\date{\today}
+ 
+\begin{document}
+ 
+\maketitle
+ 
+\tableofcontents
+ 
+\part \champter \section \subsection \subsubsection \paragraph
+\chapter{Introduction}
+
+\section{But du projet}
+Le but de ce projet est l'écriture en ocaml d'un programme permettant d'aider un joueur de démineur à marquer ou découvrir les cases du plateau de façon à le faire gagner.
+
+\section{Cahier des charges}
+L'appel des fonctions permettant d'aider le joueur étant effectué par le programme du démineur lui même (auquel nous n'avons pas accès), le contrat des fonctions à écrire nous est donné dans un fichier demineur\_solveur.mli.
+\paragraph{}
+L'objectif est alors de compléter le fichier demineur\_solveur.ml en respectant les spécifications fournies dans le fichier demineur\_solveur.mli.
+Ainsi après chaque action du joueur, la fonction $information$ doit être capable si cela est théoriquement possible de fournir au joueur une case à jouer (à découvrir ou à marquer).
+\paragraph{}
+Pour des tailles de plateau de jeu raisonnables (10 lignes, 10 colonnes, 10 bombes au moins), les fonctions qu'il m'est demandé d'écrire doivent être capables de fournir en un temps raisonnable des indications de jeu au joueur.
+
+ 
+\chapter{Conception}
+
+\section{Fonctions avancées sur les bdd}
+	La structure des bdd étant déjà implémentée, il m'est demandé de programmer certaines fonctions déstinés à effectuer des opérations avancées sur ces derniers.
+	Puisque ces derniers serviront à représenter des formules logiques, les opération de combinaison ("et" logique entre deux formule) et de substitution (remplacement de plusieurs variables par "vrai" ou "faux" dans les formules) devront être programmer.
+	\paragraph{}
+	A celles-ci se rajoute la fonction $combinaison$ qui permettra de construire, à partir d'un ensemble de variables et d'un nombre k, l'arbre représentant la formule qui est vrai si et seulement k variable axactement parmi celles de l'ensemble vallent "vraie".
+	\paragraph{Comprendre le fonctionnement des bdd}
+	Afin de bien comprendre la suite il est nécessaire de comprendre comment fonctionnent les bdd :
+	
+	\begin{itemize}
+		\item $Bot$ représente la formule logique qui vaut "faux" ($\bot$)
+		\item $Top$ représente la formule logique qui vaut "vrai" ($\top$)
+		\item $Node(g, x, d)$ représente la formule $x \vee G \wedge \neg x \vee D$ où G et D sont les formules représentées par les sous-bdd g et d respectivement.
+	\end{itemize}
+ 
+	\subsection{Conjonction}
+	Comme expliqué ci dessus, $conjonction$ doit retourner le bdd correspondant à la combinaison logique des deux formules représentées par les deux bdd fournis (bdd1 et bdd2).
+	\paragraph{}
+	On va donc parcourir récursivement les deux bdd et procéder à la conjonction en respectant les règles de logique suivantes :
+	\paragraph{}
+\itshape Dans la suite $F, F_1, F_2, D_1, G_1, D_2, G_2$ sont des formules logiques, et $x, x_i$ des variables propositionnelles.\upshape
+
+	\begin{itemize}
+		\item $F \wedge \top = F$
+		\item $F \wedge \bot = \bot$
+		\item $(x \wedge G_1 \vee \neg x \wedge D_1) \wedge (x \wedge G_2 \vee \neg x \wedge D_2) = (x \wedge (G_1 \wedge G_2) \vee \neg x \wedge (D_1 \wedge D_2))$
+	\end{itemize}
+
+	\paragraph{}
+	Pour le dernier cas, où les deux formules dont on doit faire la conjonction sont de la forme $x_i \wedge G_i \vee \neg x_i \wedge D_i$, il faut en plus retenir que les bdds que nous allons utiliser retiendront les cases dans l'ordre croissant (la racine d'un bdd est plus grande que chacune des étiquettes de ses fils).
+	\paragraph{}
+	De là si par exemple $x_1 < x_2$ alors on retourne le noeud de racine $x_1$ et dont les fils sont la conjonction respectivement de $G_1$ avec $F_2$ et de $D_1$ avec $F_2$.
+
+	\subsection{Substitution}
+	Utiliser la fonction $substitution$ sur une liste de couples (variable, valeur) et un bdd consiste à renvoyer un autre bdd qui représente à la formule logique du premier dans laquelle on aurait remplacé les variables fournies par leur valeur respective.
+	En d'autres termes dans l'ancien bdd on avait encore pour chacune des variables fournies les deux cas envisagés (que la variable soit vraie ou qu'elle soit fausse) tandis que dans le nouveau bdd seul le cas correspondant à la valeur associée à la variable est envisagé.
+	\paragraph{}
+	Pour programmer une telle fonction j'ai raisonné comme suit : je dois "dire" au bdd pour chaque variable de la liste que sa valeur est connue; je doit donc le faire pour un couple (variable, valeur) puis itérer sur la liste des couples.
+	J'ai donc créé une fonction auxiliaire $substitute$ qui se charge de substituer une case par sa valeur dans la formule représentée par le bdd fourni.
+	Enfin l'utilisation de $List.fold\_left$ me permet d'appliquer la fonction $substitute$ à chaque élément de la liste de couples et au bdd.
+	\paragraph{}
+	Pour effectuer la substitution d'une variable par sa valeur dans un bdd je doit donc le parcourir récursivement en respectant la logique mathématique et la structure des bdd, comme suit :
+	\paragraph{}
+\itshape Dans la suite $D, G$ sont des formules logiques, $x$ une variable propositionnelle, $y$ la variable propositionnelle que l'on doit substituer par la valeur $v$.\upshape
+
+	\begin{itemize}
+		\item $[v/y] \top = \top$
+		\item $[v/y] \bot = \bot$
+		\item $[\top /y] (x \wedge G \vee \neg x \wedge D) = D$ si $x = y$
+		\item $[\bot /y] (x \wedge G \vee \neg x \wedge D) = G$ si $x = y$
+		\item $[v/y] (x \wedge G \vee \neg x \wedge D) = x \wedge ([v/y] G) \vee \neg x \wedge ([v/y] D)$ si $x \neq y$
+	\end{itemize}
+	
+	\subsection{Combinaison}
+	Le sujet l'explique : la fonction $combinaisons$ appliquée à une liste de variables et un un entier $k$ retourne le bdd associé à la formule logique qui vaut "vrai" si et seulement si exactement $k$ variables parmi celles de la liste ont pour valeur "vrai".
+	\paragraph{Exemple}
+	$combinaison$ appliquée à 2 et à la liste $x_1, x_2, x_3$ doit retourner le bdd associé à la formule logique $ \neg x_1 \wedge x_2 \wedge x_3 \vee x_1 \wedge \neg x_2 \wedge x_3 \vee x_1 \wedge x_2 \wedge \neg x_3$.
+	\paragraph{}
+	Ainsi on procède récursivement sur la liste comme suit : si la liste des variables à placer n'est pas vide, on retourne un noeud avec la variable en tête de la liste comme étiquette, la combinaison de $k$ cases parmi la queue comme fils gauche (puisque le fils gauche représente le cas où la tête vaut "faux"), et a combinaison de $k-1$ cases parmi la queue comme fils droit (puisque le fils droit représente le cas où la tête vaut "vrai"). Si la liste des variables est vide et si $k = 0$ c'est qu'on a considéré dans cette interprétation exactement le bon nombre de variables comme étant "vraies" et qu'elles sont toutes placées : l'interprétation est valide donc on retourne $\top$. Sinon la liste est vide mais on a considéré dans l'interprétation courante trop ou pas assez de variables comme vraies : on retourne $\bot$.
+	\paragraph{Remarque}
+	Comme je l'ai précisé dans les commentaire du code, le contrat de la fonction $combinaison$ est incomplet si l'on veut pouvoir écrire un code (un peu plus) efficace en temps. En effet il est pratique de pouvoir placer les cases comme je l'ai fait dans le bdd retourné mais cela ne peut se faire que si la liste de celles fournies était préalablement triée (ce que n'impose pas le contrat original) de façon à avoir un bdd qui respecte la définition d'un bdd. Par "chance" cette fonction sera appelée uniquement par $mise\_a\_jour\_decouvrir$ dans notre programme, qui elle l'appelera sur une liste triée.
+
+\section{Choix du type configuration}
+	Le sujet nous invite à décider nous m\^eme de l'ensemble des données que devra maintenir entre deux tours de jeu le démineur, sachant qu'après chaque tour de jeu le démineur ne nous fournira que la case qui vient d'être marquée ou les cases qui ont été découverte (il fourni aussi en début de partie les nombres de lignes, colonnes, mines).
+	\paragraph{lines $\wedge$ colones}
+	- Retenir les nombres de lignes et de colonnes est obligatoire si l'on veut pouvoir calculer la liste des cases voisines d'une case (notamment en utilisant la fonction $voisines$) sans considérer des cases inexistantes (hors du plateau de jeu).
+	\paragraph{bdd}
+	- Il faut aussi maintenir en mémoire le bdd puisque c'est lui qui va nous permettre d'analyser rapidement le plateau de jeu.
+	\paragraph{fronteer}\smallskip
+	- La rétention dans une liste des cases frontières est accessoires puisque ce sont exactement les cases contenues dans le bdd mais cela permettra de plus facilement y avoir accès sans pour autant avoir à parcourir tout le bdd.
+	\paragraph{treated}
+	- Enfin il est pertinant de conserver la liste des cases sûres (celles dont on connait la valeur car le joueur les a joué ou car le jeu les a découverte) de façon à s'assurer qu'elles ne seront pas réintroduites dans le bdd à la suite des opération de mise à jour.
+	\paragraph{bombs}
+	- En revanche maintenir le nombre de bombe n'est pas utile dans la solution que je propose.
+
+\section{Fonctions générales sur les configurations}
+
+	Les fonctions suivantes seront (presque toutes) celles explicitement utilisée par le programme du démineur de façon à fournir des conseil de jeu au joueur.
+	
+	\subsection{Initialisation}
+	Cette fonction retourne la configuration initiale du plateau de jeu en fonction des nombres de lignes, de colonnes, et de bombes.
+	 
+	\subsection{Polarite}
+	La fonction $polarite$ est appelé sur une case (de la frontière a priori) et sur un bdd. Elle retourne $None$ si il est impossible de déterminer si la case est sûre (i.e. si elle contient une mine ou si elle est vide à coup sûr), et $Some (case,statut)$ si à coup sûr la dite $case$ a le même $statut$ dans toutes les configurations possibles maintenues dans le bdd.
+	 
+	\paragraph{}
+	La programmer de manière efficace consiste à raisonner en terme de formules logiques, par l'absurde : on est certain qu'une variable $x$ vaut $\bot$ (resp. $\top$) dans une formule logique $F$ si et seulement si $x \wedge F = \bot$ (resp. $\neg x \wedge F = \bot$) car cela signifie qu'on abouti à un contradiction lorsque l'on fait une telle supposition sur la variable $x$.
+	 
+	\subsection{Information}
+	$information$ est assez simple à comprendre une fois $polarite$ faite : on itère cette dernière sur chacune des cases de la frontières (car ce sont les seules cases non jouées pour lesquelles on a a priori des informations dans le bdd) tant que la case courante considéré n'a pas une polarité s\^ure (tant que $polarite$ retourne $None$). Si il n'y a plus de cases à traiter dans le fronière, alors on ne peut donner aucune information au joueur et on renvoi $None$. Sinon si $polarite$ retourne une fois une valeur non $None$ c'est que la case courante de la frontière peut \^etre jouée.
+	 
+	\subsection{Mise à jour "marquer"}
+	Cette fonction doit mettre à jour une configuration à partir de la donnée d'une case que le joueur vient de marquer. De façon à ne rien oublier on va mettre à jour chaque composante de la configuration fournie :
+	\paragraph{lines $\wedge$ colones}
+	Le nombre de lignes et celui de colonnes ne varie pas d'un tour de jeu à l'autre.
+	\paragraph{fronteer}
+	Une case marquée ne doit plus \^etre dans la frontière (la frontières ce sont les cases non s\^ures en bordure directe de cases découvertes), on retire donc celle fournie de la liste des cases de la frontière.
+	\paragraph{treated}
+	On ajoute la case fournie à la liste des cases traitées.
+	\paragraph{bdd}
+	Le bdd doit \^etre mis à jour et savoir que désormais la case fournie a un statut s\^ur (c'est une $Mine$) : on appelle alors substitution sur le bdd et sur la liste contenant pour seul couple $(case, Mine)$.
+	 
+	\subsection{Mise à jour "découvrir"}
+	$mise\_a\_jour\_decouvrir$ doit permettre à la configuration fournie d'enregistrer comme information que chaque case de la liste fournie est une case vide entourée de $k$ mines où $k$ est l'entier associé à la case.
+	\paragraph{}
+	J'ai donc créé une fonction auxiliaire traitant une case que j'appelerai sur chacune des cases. De la même façon que pour $mise\_a\_jour\_marquer$, cette fonction auxiliaire doit s'assurer que chaque composante de la configuration est mise à jour; en particulier ce qui change par rapport à $mise\_a\_jour\_marquer$ c'est la frontière et le bdd :
+	\paragraph{fronteer}
+	Les nouvelles cases de la frontière c'est l'union des anciennes avec les voisines de la case, mais il faut retirer à cette union les cases déjà traitées (car il se peut qu'une case voisine de la case découverte soit déjà sûre et traitée).
+	\paragraph{bdd}
+	Le bdd doit être mis à jour et contenir les information de la case fournie (avec son nombre de mines adjacentes). On crée donc un bdd pour la case fournie grâce à $combinaisons$ que l'on applique à k (le nombre de mines autour de cette case) et à ses voisines. Le nouveau bdd devant contenir à la fois les anciennes informations et celle de la case, on effectue la conjonction des deux bdd.
+	
+	Cependant il est fort probable que l'arbre créé par l'appel de $combinaisons$ contienne des cases déjà sûres et jouées. Ainsi il faut prendre soin de substituer à ce dernier les cases déjà traitées grâce à leur statut qu'on a enregistré.
+
+\chapter{Tests}
+
+\section{Tests unitaires des fonctions sur les bdd}
+	Puisqu'il est complexe de créer une $configuration$ ayant du sens et n'étant pas trivial, je me suis limité a effectuer des tests unitaires sur les fonctions relatives au traitement des bdd.
+	\paragraph{}
+	J'ai pour ces fonction effectué avec succès des tests sur des arbres de hauteur variables en essayant de représenter la plupart des cas de figure envisageables. Voici quelques exemples :
+	\paragraph{}
+let test\_conjonction = \\
+	let bdd1 = node (negvariable (make 2 0), make 1 0, node (posvariable (make 1 1), make 0 1, top))\\
+	and bdd2 = node (bot, make 0 1, negvariable (make 1 1)) in\\
+	let bdd3 = node (node (node (bot, make 0 1, negvariable (make 1 1)), make 2 0,bot), make 1 0, node (bot, make 0 1, negvariable (make 1 1))) in\\
+	conjonction bdd1 bdd2 = bdd3;;
+	\paragraph{}
+let test\_substitution =\\
+	let t = make 2 0 in\\
+	let bdd4 = node (bot, make 0 1, negvariable (make 1 1)) in\\
+	substitution [(t, Vide)] (conjonction bdd1 bdd2) = bdd4;;
+	\paragraph{}
+let test\_combinaisons =\\
+	let t\_list = (make 0 0)::(make 1 0)::[make 0 1] in\\
+	let bdd5 = node (node (bot, make 1 0, posvariable (make 0 1)), make 0 0,node (posvariable (make 0 1), make 1 0, negvariable (make 0 1))) in\\
+	combinaisons 2 t\_list = bdd5;;
+
+\section{Tests d'intégration}
+	Les tests d'intégration effectués sur des plateaux de jeu de taille variable et des nombres de mines variables m'ont permi de vérifier le bon fonctionnement de fonctions sur les configurations.
+
+\section{Compléxité et temps de calcul}
+	J'ai au cours de la conception porté une attention certaine à la compléxité de mes fonctions, conscient des mauvais résultats qui auraient pu \^etre engendré m\^eme sur de petits plateaux de jeu.
+	\paragraph{}
+	Plus particulièrement la fonction $mise\_a\_jour\_decouvrir$ (qui doit mettre à jour un certain nombre de structures de type arbre et liste) pourrait \^etre le foyer d'une grande compléxité du programme et donc créer de longs temps de calculs entre deux coups du joueur.
+	A l'origine j'effectuais par exemple la substitution des cases traités sur le bdd issu de la conjonction (Cf. conception de la fonction $mise\_a\_jour\_decouvrir$) ce qui engendrait de longs temps de calculs pour des plateaux carrés de taille 16. En effectuant la substitution des cases traitées directement sur le bdd issu de la combinaison, j'ai gagné un temps de calcul conséquent pour la phase de mise à jour.
+	\paragraph{}
+	Cependant le temps de calcul pour la fonction $information$ appara\^it encore bien long pour des plateaux carrés de taille supérieure à 20 (environ une dizaine de secondes).
+
+\chapter{Conclusion}
+	\section{Bilan de ce qui a été fait}
+	J'ai globalement pu terminer la partie "obligatoire" du projet permettant d'avoir un programme fonctionnel qui aide effectivement le joueur en respectant le contrat. Néanmoins je n'ai pas pris le temps d'observer les mécanismes de mémo\"ization.
+	\paragraph{}
+	Les fonctions avancées sur les bdds étaient dans la lignée de ce qui avait été fait en TP et bien que l'énnoncé ne m'ait pas toujours paru clair à leur sujet, prendre le temps de bien comprendre ce qui était demandé m'a permi de les coder sans trop de problème. Ce qui a compté je trouve c'était de bien comprendre en quoi un arbre de cette forme là permet la représentation d'une formule logique. Il fallait en outre penser à bien rester extérieur au propos général du projet, c'est à dire ne pas penser au démineur, lors de l'écriture de ces fonctions.
+	\paragraph{}
+	Le choix de la structure du type configuration s'est fait en plusieurs étapes (au fur et à mesure que je comprennais de quelles données j'allai avoir besoin. Cela n'a pas été évident à gérer car j'avais à constamment modifier les fonctions précédentes lorsque je découvrait un nouveau besoin dans une fonction.
+	\paragraph{}
+	Les fonctions $information$ et $mise\_a\_jour\_decouvrir$ sont celles qui m'ont donné le plus de fil à retordre. Pour la première je n'ai pas trouvé le sujet très explicite quand il suggérait l'écriture de la fonction $polarite$ et j'ai donc cherché longuement comment procéder. Lorsque j'ai fini par trouver par moi même, j'ai finalement vu que le sujet proposait dans le paragraphe "polarite" un moyen encore plus efficace pour déterminer si une variable était "sûre" ou non (jusqu'alors je parcourais tout l'arbre en regardant si le fils gauche (resp. le fils droit) était toujours Bot pour la variable que je condidérais). Pour la seconde j'ai là aussi mis du temps à trouver une version qui permettait d'utiliser naturellement (sans presqu'avoir à modifier les listes auxquelles j'avais accès ni sans utiliser trop de $List.fold\_left$) les fonctions que j'avais précédement écrit.
+
+	\section{Ce que je changerais avec plus de temps}
+	Si d'avantage de temps j'avais pu prendre, il me parrait important de préciser que je l'aurai utilisé à essayer d'améliorer la compléxité de $information$ qui prend trop de temps à s'executer pour des plateaux de jeu grands. En l'occurence l'emploi des méthodes de $memoization$ aurait pu m'aider dans cette optique.
+	
+	\section{Bilan du projet}
+	La programmation d'une solution à ce problème, sous la contrainte de contrats, m'a été très intéressante (et je pense très utile pour ma future vie professionnelle). Le sujet laissait suffisamment de liberté à mon go\^ut pour permettre de se poser des questions ce qui je pense aide à mieux comprendre les choix que l'on doit faire pour trouver la solution que si d'avantage de contraintes nous avaient été données (comme c'est le cas en TP).
+	
+\end{document}

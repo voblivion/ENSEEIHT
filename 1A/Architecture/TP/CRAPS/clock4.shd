@@ -1,0 +1,15 @@
+module clock4(rst, clk : s[3..0])
+	tmp[3..0] = /s[3..0];
+	s[0] := tmp[0];
+	s[1] := tmp[1];
+	s[2] := tmp[2];
+	s[3] := tmp[3];
+	s[0].clk = clk;
+	s[1].clk = /s[0];
+	s[2].clk = /s[1];
+	s[3].clk = /s[2];
+	s[0].rst = rst;
+	s[1].rst = rst;
+	s[2].rst = rst;
+	s[3].rst = rst;
+end module

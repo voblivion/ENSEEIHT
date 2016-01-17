@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/!svn/ver/84906/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes
+END
+CoupInvalideException.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/CoupInvalideException.java
+END
+JeuProcuration.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/JeuProcuration.java
+END
+Joueur.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/Joueur.java
+END
+StrategieRapide.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/StrategieRapide.java
+END
+StrategieExpert.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/StrategieExpert.java
+END
+Jeu.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/Jeu.java
+END
+Partie.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/Partie.java
+END
+RetraitDirectException.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/RetraitDirectException.java
+END
+StrategieNaif.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/StrategieNaif.java
+END
+ConfigurationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/ConfigurationException.java
+END
+Strategie.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/Strategie.java
+END
+Arbitre.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/Arbitre.java
+END
+StrategieHumain.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/84952/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/StrategieHumain.java
+END
+JeuReel.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/JeuReel.java
+END
+StrategieTricheur.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/84951/2014/1IMA/TOB/PC/PC-vdrouinv/allumettes/StrategieTricheur.java
+END

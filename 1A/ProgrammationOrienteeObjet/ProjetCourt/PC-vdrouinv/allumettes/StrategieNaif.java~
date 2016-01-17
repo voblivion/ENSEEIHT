@@ -1,0 +1,38 @@
+/* 	=OK= =COMPILE=
+ *	Stratégie naive : une allumette à la fois.
+ */
+
+import java.util.*;
+
+class StrategieNaif implements Strategie {
+	
+	/**
+	 *	Constructeur de la stratégie.
+	 *
+	 */
+	public StrategieNaif(){
+	
+	}
+
+	/**
+	 *	Retourne le nom de la stratégie.
+	 *
+	 */
+	public String getName() {
+		return "Naif";
+	}
+
+
+	/*
+	 *	Retourne le nombre d'allumettes à prendre sur le plateau en accord avec la stratégie employée.
+	 *
+	 *	@param jeu Le jeu sur lequel appliquer la stratégie.
+	 */
+	public int getPrises(Jeu jeu) {
+		int max = Math.min(3, jeu.getNombreAllumettes());
+		Random r = new Random();
+		return 1 + r.nextInt(max);
+	}
+
+
+}

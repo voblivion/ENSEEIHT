@@ -1,0 +1,66 @@
+module micromachine(rst, clk, areg[4..0], breg[4..0], dreg[4..0], cmd_ual[5..0], oe_num[1..0], write, monitor[31..0], switch[7..0], swClk : dbus[31..0], N, Z, V, C, ir[31..0], break, leds[7..0])
+	registres(rst, clk, areg[4..0], breg[4..0], dreg[4..0], dbus[31..0] : abus[31..0], bbus[31..0], ir[31..0], break);
+	
+	// OE
+	decoder2to4(oe_num[1..0] : oe[3..0]);
+	// CS
+	decoder4to16(abus[31..28] : cs[15..0]);
+	
+	// N
+	N := N_ual;
+	N.clk = clk;
+	N.rst = rst;
+	N.ena = setN;
+	// Z
+	Z := Z_ual;
+	Z.clk = clk;
+	Z.rst = rst;
+	Z.ena = setZ;
+	// V
+	V := V_ual;
+	V.clk = clk;
+	V.rst = rst;
+	V.ena = setVC;
+	// C
+	C := N_ual;
+	C.clk = clk;
+	C.rst = rst;
+	C.ena = setVC;
+	
+	// WRITE (s)
+	writeRam = write*cs[0];
+	writeLeds = write*cs[11];
+	
+	// DATA (s)
+	oeMon = oe[3];
+	oeSwi = oe[2]*cs[9];
+	oeRam = oe[2]*cs[0];
+	oeUal = oe[1];
+	
+	// SWITCH
+	dswitch[7..0] := switch[7..0];
+	dswitch[7..0].clk = swClk;
+	dswitch[7..0].rst = rst;
+	
+	// LEDS
+	leds[7..0] := dbus[7..0];
+	leds[7..0].clk = clk;
+	leds[7..0].rst = rst;
+	leds[7..0].ena = writeLeds;
+	
+	// RAM
+	rams_asyn_read512x32(clk, writeRam, abus[8..0], dbus[31..0] : data_out[31..0]);
+	
+	// DBUS
+	dbus[31..0] = data_out[31..0]:oeRam;
+	dbus[31..0] = monitor[31..0]:oeMon;
+		super_switch[31..8] = 0;
+		super_switch[7..0] = switch[7..0];
+	dbus[31..0] = super_switch[31..0]:oeSwi;
+	dbus[31..0] = dbus_ual[31..0]:oeUal;
+	
+	// UAL
+	ual(abus[31..0], bbus[31..0], cmd_ual[5..0] : dbus_ual[31..0], setN, setZ, setVC, N_ual, Z_ual, V_ual, C_ual);
+
+end module
+	

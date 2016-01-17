@@ -1,0 +1,11 @@
+module count0to9(rst, clk, en : s[3..0])
+	nNeuf = /s[3]+s[2]+s[1]+/s[0];
+	si[3] = /s[3]*s[2]*s[1]*s[0]*nNeuf+s[3]*/s[2]*nNeuf+s[3]*/s[1]*nNeuf+s[3]*/s[0]*nNeuf;
+	si[2] = /s[2]*s[1]*s[0]*nNeuf+s[2]*/s[1]*nNeuf+s[2]*/s[0]*nNeuf;
+	si[1] = /s[1]*s[0]*nNeuf+s[1]*/s[0]*nNeuf;
+	si[0] = /s[0]*nNeuf;
+	s[3..0] := si[3..0];
+	s[3..0].clk = clk;
+	s[3..0].rst = rst;
+	s[3..0].ena = en;
+end module

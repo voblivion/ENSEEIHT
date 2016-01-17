@@ -1,0 +1,34 @@
+/**	=OK= =COMPILE=
+ *	Le coup joué n'est pas valide.
+ *
+ *	@author :	Victor Drouin Viallard
+ *	@version :	0.1
+ */
+
+
+class CoupInvalideException extends Exception {
+
+
+	/** Nombre d'allumettes qu'a essayé de prendre le joueur. */
+	private int nombrePrises;
+	
+	/**
+	 *	Initialiser CoupInvalideException à partir du nombre d'allumettes prises.
+	 *
+	 *	@param nombrePrises Le nombre d'allumettes qu'il a été tenté de prendre.
+	 */
+	public CoupInvalideException(int nombrePrises) {
+		super("Prise invalide de " + nombrePrises + " allumettes.");
+		this.nombrePrises = nombrePrises;
+	}
+	
+	/**
+	 *	Retourne le nombre d'allumettes que le joueur a voulu prendre.
+	 *
+	 *	@return Le nombre d'allumettes que le joueur a voulu prendre.
+	 */
+	public int getNombrePrises() {
+		return this.nombrePrises;
+	}
+
+}
