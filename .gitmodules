@@ -1,3 +1,6 @@
 [submodule "2A/SystemesConcurents/Projet"]
 	path = 2A/SystemesConcurents/Projet
 	url = https://github.com/SystemesConcurents/Projet.git
+[submodule "2A/Intergiciel/Projet"]
+	path = 2A/Intergiciel/Projet
+	url = git@git.inpt.fr:inp-net/tresorerie.git
