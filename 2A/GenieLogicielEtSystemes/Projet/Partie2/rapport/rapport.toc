@@ -1,0 +1,21 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Structure du m\IeC {\'e}ta-mod\IeC {\`e}le}{3}
+\contentsline {subsection}{\numberline {2.1}M\IeC {\'e}ta-mod\IeC {\`e}le ECORE}{3}
+\contentsline {paragraph}{Analyse des besoins}{3}
+\contentsline {paragraph}{Description du m\IeC {\'e}ta-mod\IeC {\`e}le}{3}
+\contentsline {paragraph}{Tentatives avort\IeC {\'e}es}{3}
+\contentsline {subsection}{\numberline {2.2}Contraintes OCL}{5}
+\contentsline {paragraph}{Peu de contraintes n\IeC {\'e}cessaires}{5}
+\contentsline {paragraph}{Contraintes avort\IeC {\'e}es}{5}
+\contentsline {section}{\numberline {3}Syntaxes concr\IeC {\`e}tes}{6}
+\contentsline {subsection}{\numberline {3.1}Syntaxe graphique avec Sirius}{6}
+\contentsline {paragraph}{Affichage des \IeC {\'e}l\IeC {\'e}ments de type $Divergence$}{6}
+\contentsline {paragraph}{Des \IeC {\'e}l\IeC {\'e}ments $Edge$ complexes}{6}
+\contentsline {subsection}{\numberline {3.2}Syntaxe textuelle avec Xtext}{6}
+\contentsline {paragraph}{Des changements dans le m\IeC {\'e}ta-mod\IeC {\`e}le}{6}
+\contentsline {paragraph}{Une syntaxe concise}{8}
+\contentsline {section}{\numberline {4}Export HTML et requ\IeC {\^e}tes EMF}{8}
+\contentsline {subsection}{\numberline {4.1}Exportateur HTML en Acceleo}{8}
+\contentsline {subsection}{\numberline {4.2}Requ\IeC {\^e}tes EMF}{9}
+\contentsline {section}{\numberline {5}Conclusion}{9}
