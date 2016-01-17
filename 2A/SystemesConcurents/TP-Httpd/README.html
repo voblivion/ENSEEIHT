@@ -1,0 +1,158 @@
+<h1>Serveur web concurrent</h1>
+
+<h2>Objectif</h2>
+
+<p>L'objectif est de réaliser la partie multi-activités d'un serveur web.</p>
+
+<p>On ne s'intéressera ni à la partie connexion (vue ultérieurement dans le
+cours /intergiciels/), ni à l'aspect web/html (qui sera détaillé en
+/applications sur internet/).</p>
+
+<p>Le principe simplifié d'un serveur web est :</p>
+
+<ol>
+<li>recevoir une demande de connexion d'un client pour établir la
+  communication entre ce client et le serveur</li>
+<li>recevoir une requête via ce lien de communication</li>
+<li>traiter cette requête</li>
+<li>renvoyer la réponse sur le lien de communication</li>
+</ol>
+
+<p>Par exemple, lorsque l'on tape dans un navigateur l'URL
+http://foo.com/bar.html</p>
+
+<ol>
+<li>la navigateur se connecte à la machine foo.com</li>
+<li>le navigateur envoie /bar.html</li>
+<li>le serveur traite cette demande (par exemple, il trouve un fichier
+  bar.html)</li>
+<li>le serveur renvoie la réponse (sur cet exemple, le contenu de
+  bar.html)</li>
+</ol>
+
+<h2>À faire</h2>
+
+<p>Deux versions à réaliser :</p>
+
+<ul>
+<li><p>étape 1 : le serveur crée une activité pour chaque nouvelle connexion (= chaque demande de client).</p></li>
+<li><p>étape 2 : le serveur utilise un ensemble fixe d'activités (un pool de threads). 
+Un thread veilleur gère les demandes de connexion. Le veilleur et les activités du pool
+(les ouvriers) se coordonnent en suivant un <em>schéma producteurs-consommateurs</em> classique :
+quand le veilleur reçoit une demande de connexion, il la délègue à un ouvrier en la 
+déposant dans une file partagée entre les différentes activités ; chaque ouvrier, 
+lorsqu'il a fini de traiter une demande, extrait de la file la prochaine demande à traiter,
+ou attend si la file est vide.</p></li>
+</ul>
+
+<p>Le code de traitement des requêtes est intégralement fourni.</p>
+
+<p>Pour compiler :</p>
+
+<p><code>   javac *.java</code></p>
+
+<p>Pour exécuter (lancer un serveur) :</p>
+
+<p><code>   java Server</code> </p>
+
+<p>         lance un serveur avec création dynamique d'activités (étape 1)</p>
+
+<p><code>   java Server2</code></p>
+
+<p>         lance un serveur avec un pool de 2 activités (étape 2)</p>
+
+<p>Une fois un serveur lancé, on peut demander à partir d'un navigateur :</p>
+
+<ul>
+<li><p><code>http://localhost:5000/toto</code></p>
+
+<p>=> le serveur renvoie à peu de choses près la chaîne "toto".</p></li>
+<li><p><code>http://localhost:5000/18</code> (ou tout autre nombre)</p>
+
+<p>=> le serveur renvoie des numéros successifs, à la vitesse de un
+  par seconde puis indique que c'est fini.</p>
+
+<p>[ attention : depuis un navigateur donné, il faut demander des url
+  <em>différentes</em> simultanément dans plusieurs onglets ]</p></li>
+</ul>
+
+<h2>Classes</h2>
+
+<ul>
+<li><code>LienCommunication.java</code> : fournit une interface simplifiée pour
+les flux de communication entre client et serveur.</li>
+<li><code>StupidHttpParser.java et ParseError.java</code> : le décodage des requêtes
+  envoyées par un navigateur web.</li>
+<li><code>TraitantConnexion.java</code> : le traitement d'une requête. Le traitement 
+est très simple (génération d'une page html minimale, en réponse à la requête reçue).</li>
+<li><code>Server.java</code> : la classe de base pour la version 1.</li>
+<li><code>Server2.java</code> et <code>ThreadPool.java</code> : les classes pour la version 2.</li>
+</ul>
+
+<h2>Notes</h2>
+
+<ul>
+<li>Vous n'avez pas à comprendre ni à modifier <code>LienCommunication</code>,
+  <code>StupidHttpParser</code> ni la méthode <code>gererRequete</code> de <code>TraitantConnexion</code>.
+   Vous avez besoin d'intervenir dans <code>TraitantConnexion.java</code>, 
+   dans <code>Server.java</code> puis <code>Server2.java</code> et <code>ThreadPool.java</code>.
+   A chaque fois, les endroits où des modifications ou des compléments
+   sont nécessaires dans ces 4 classes, sont signalés par un commentaire
+   /* À COMPLÉTER * / ou /* À MODIFIER */</li>
+<li>Au cours des tests, lorsque vous corrigez le code d'un serveur,
+  pensez à tuer le processus exécutant la version précédente du
+  serveur, avant de lancer un processus exécutant la nouvelle
+  version. En revanche, il est inutile de relancer le navigateur.</li>
+<li>Il est préconisé, pour faciliter les tests, d'utiliser <em>Firefox</em>, compte tenu
+de l'environnement des TPs. En effet, les pages renvoyées par le serveur 
+s'affichent de manière interactive avec Firefox et InternetExplorer, ce 
+qui est le comportement souhaité pour les tests. Par contre, elles sont 
+simplement téléchargées par Safari et Chrome (qui ignorent purement et
+simplement un certain nombre d'en-têtes  de gestion de l'affichage, 
+bien que ces en-têtes soient normalisés). Le test reste possible avec ces
+navigateurs, mais il peut être plus laborieux.</li>
+</ul>
+
+<h2>Bonus</h2>
+
+<p>Les fournitures comportent une classe <code>Epreuve.java</code> qui illustre l'intérêt de
+la régulation de l'activité d'un serveur via l'utilisation d'un pool d'activités
+(par opposition à la création dynamique d'activités).</p>
+
+<p>Cette application (très simple) vise à placer le serveur dans une situation 
+de "déni de service", en l'inondant par un afflux massif de requêtes, de sorte
+ qu'il s'écroule ou tombe en panne.
+Cette application peut être lancée par la commande </p>
+
+<p><code>   java Epreuve nbRequetes tempsDAttente</code> </p>
+
+<p>         qui envoie <code>nbRequetes</code> au serveur, puis attend <code>tempsDAttente</code> 
+secondes (pour garder les connexions ouvertes)</p>
+
+<p>Il est alors possible de tester la différence de comportement entre les 
+deux versions du serveur.</p>
+
+<p>La version régulée souffre cependant de limitations : en effet, en envoyant 
+suffisamment de requêtes, il reste possible de saturer les ressources allouées au serveur : 
+mémoire vive, nombre de connexions ouvertes..., 
+car chaque requête mise en attente utilise un peu d'espace et nécessite de conserver un
+descripteur de fichier ouvert (afin de pouvoir renvoyer une réponse).</p>
+
+<p>Il est bien sûr possible de repousser ces limites, par exemple </p>
+
+<ul>
+<li>en augmentant la taille de mémoire allouée au serveur (il suffit pour cela d'utiliser 
+l'option  <code>-Xmx</code> au lancement de la JVM : ainsi <code>java -Xmx200m Serveur</code> lance la première
+version du serveur, en lui allouant 200 Mo de mémoire),</li>
+<li>ou encore en ajustant les limites d'allocation de ressources aux processus 
+au niveau système (avec la commande <code>ulimit</code>, par exemple).</li>
+</ul>
+
+<p>Ces expédients ne sont cependant satisfaisants, puisqu'en définitive, les ressources 
+ne sont pas illimitées, et qu'il suffit donc d'augmenter le nombre de requêtes émises pour finir
+par les épuiser.</p>
+
+<p>Après avoir éprouvé les différentes versions du serveur pour différentes situations 
+(nombre de requêtes, taille mémoire...), vous pouvez terminer ce TP en améliorant la 
+robustesse de la seconde version, afin qu'elle puisse rester opérationnelle face à un
+client comme  <code>Epreuve.java</code>.</p>

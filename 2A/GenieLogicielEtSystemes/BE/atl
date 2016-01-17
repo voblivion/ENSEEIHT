@@ -1,0 +1,112 @@
+module SimplePDL2PetriNet;
+create OUT: petrinet from  IN: simplepdl;
+
+-- Obtenir le processus qui contient ce process element.
+-- Remarque: Ce helper ne serait pas utile si une référence opposite
+-- avait été placée entre Process et ProcessElement
+helper context simplepdl!ProcessElement
+def: getProcess(): simplepdl!Process =
+    simplepdl!Process.allInstances()
+        ->select(p | p.processElements->includes(self))
+        ->asSequence()->first();
+
+-- Traduire un Process en un PetriNet de même nom
+rule Process2PetriNet {
+    from p: simplepdl!Process
+    to pn: petrinet!Reseau (name <- p.name)
+}
+
+-- Traduire une WorkDefinition en un motif sur le réseau de Petri
+rule WorkDefinition2PetriNet {
+    from wd: simplepdl!WorkDefinition
+    to
+        -- PLACES d'une WorkDefinition
+        p_ready: petrinet!Place(
+            nom <- wd.name + '_ready',
+            initjetons <- 1,
+            reseau <- wd.getProcess()),
+        
+        p_running: petrinet!Place(
+            nom <- wd.name + '_running',
+            initjetons <- 0,
+            reseau <- wd.getProcess()),
+            
+        p_started: petrinet!Place(
+            nom <- wd.name + '_started',
+            initjetons <- 0,
+            reseau <- wd.getProcess()),
+        
+        p_finished: petrinet!Place(
+            nom <- wd.name + '_finished',
+            initjetons <- 0,
+            reseau <- wd.getProcess()),
+        
+        -- TRANSITIONS d'une WorkDefinition
+        t_start: petrinet!Transition(
+            nom <- wd.name + '_start',
+            reseau <- wd.getProcess()),
+            
+        t_finish: petrinet!Transition(
+            nom <- wd.name + '_finish',
+            reseau <- wd.getProcess()),
+        
+        -- ARCS d'une WorkDefinition
+        a_ready_start: petrinet!Arc(
+            depuis <- p_ready,
+            vers <- t_start,
+            poids <- 1,
+            readOnly <- false,
+            reseau <- wd.getProcess()),
+        
+        a_start_started: petrinet!Arc(
+            depuis <- t_start,
+            vers <- p_started,
+            poids <- 1,
+            readOnly <- false,
+            reseau <- wd.getProcess()),
+        
+        a_start_running: petrinet!Arc(
+            depuis <- t_start,
+            vers <- p_running,
+            poids <- 1,
+            readOnly <- false,
+            reseau <- wd.getProcess()),
+        
+        a_running_finish: petrinet!Arc(
+            depuis <- p_running,
+            vers <- t_finish,
+            poids <- 1,
+            readOnly <- false,
+            reseau <- wd.getProcess()),
+        
+        a_finish_finished: petrinet!Arc(
+            depuis <- t_finish,
+            vers <- p_finished,
+            poids <- 1,
+            readOnly <- false,
+            reseau <- wd.getProcess())
+}
+
+-- Traduire une WorkSequence en plusieurs arcs
+rule WorkSequence2PetriNet {
+    from
+        ws: simplepdl!WorkSequence
+    
+    to
+        a_first_second: petrinet!Arc(
+            depuis <-    if (ws.linkType = #startToFinish or ws.linkType = #startToStart) then
+                            thisModule.resolveTemp(ws.predecessor, 'p_started')
+                        else -- linkType est du type finishTo*quelquechose*
+                              thisModule.resolveTemp(ws.predecessor, 'p_finished')
+                        endif,
+            vers <-        if (ws.linkType = #startToStart or ws.linkType = #finishToStart) then
+                            thisModule.resolveTemp(ws.successor, 't_start')
+                        else -- linkType est du type *quelquechose*ToFinish
+                            thisModule.resolveTemp(ws.successor, 't_finish')
+                        endif,
+            poids <- 1,
+            readOnly <- true,
+            reseau <- ws.successor.getProcess())
+}
+
+

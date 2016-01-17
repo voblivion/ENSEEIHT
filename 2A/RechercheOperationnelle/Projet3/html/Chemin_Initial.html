@@ -1,0 +1,345 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Chemin_Initial</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-01-08"><meta name="DC.source" content="Chemin_Initial.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Creation de la carte numerique</a></li><li><a href="#3">Lecture des positions de depart et d'arrivee</a></li><li><a href="#4">Lecture des parametres du robot</a></li><li><a href="#5">Squelettisation de l'espace libre des obstacles +  Raccordement des positions de depart et d'arrive</a></li><li><a href="#6">Analyse du squelette etendu et conversion du squelette en un graphe</a></li><li><a href="#7">Recherche du plus court chemin entre A et B dans G'</a></li><li><a href="#8">Lissage du chemin calcule par une courbe NURBS</a></li><li><a href="#9">Analyse des Resultas</a></li></ul></div><pre class="codeinput"><span class="comment">%--------------------------------------------------------------------------</span>
+<span class="comment">%------------------------Planification offline-----------------------------</span>
+<span class="comment">%--------------------------------------------------------------------------</span>
+<span class="comment">% Recherche du plus court chemin valide (verifiant les contraintes du probleme)</span>
+
+close <span class="string">all</span>;
+clear <span class="string">all</span>;
+clc;
+</pre><h2>Creation de la carte numerique<a name="2"></a></h2><pre class="codeinput">CreateScene; <span class="comment">% creation de la scene 'im'</span>
+imscene = im; <span class="comment">% sauvegarde de l'image de la scene</span>
+</pre><pre class="codeoutput error">Error using input
+Cannot call INPUT from EVALC.
+
+Error in CreateScene (line 2)
+lig = input('*** Donner le nombre de lignes de la scene :','s');
+
+Error in Chemin_Initial (line 12)
+CreateScene; % creation de la scene 'im'
+</pre><h2>Lecture des positions de depart et d'arrivee<a name="3"></a></h2><pre class="codeinput">disp (<span class="string">'*** Pointez le point de depart du robot ! ***'</span>);<span class="comment">% Lecture point de depart du robot</span>
+p = ginput(1);
+idep = round(p(2));
+jdep = round(p(1));
+
+disp (<span class="string">'*** Pointez le point d''arrivee du robot ! ***'</span>);<span class="comment">% Lecture point d'arrivee du robot</span>
+p = ginput(1);
+iarr = round(p(2));
+jarr = round(p(1));
+</pre><h2>Lecture des parametres du robot<a name="4"></a></h2><pre class="codeinput">diametre_robot = input(<span class="string">'diametre du robot en nombre de pixels:'</span>,<span class="string">'s'</span>); <span class="comment">% Lecture du diametre du robot en pixels</span>
+diametre_robot = str2double(diametre_robot);
+r = round(diametre_robot/2); <span class="comment">%rayon du robot</span>
+
+rho_min = input(<span class="string">'Rayon de courbure minimum:'</span>,<span class="string">'s'</span>); <span class="comment">% Lecture du diametre du robot en pixels</span>
+rho_min = str2double(rho_min);
+<span class="keyword">global</span> cseuil;
+cseuil=1/rho_min; <span class="comment">%contrainte de courbure</span>
+</pre><h2>Squelettisation de l'espace libre des obstacles +  Raccordement des positions de depart et d'arrive<a name="5"></a></h2><pre class="codeinput">disp(<span class="string">'Squelettisation en cours...'</span>);
+Squelettisation;
+</pre><h2>Analyse du squelette etendu et conversion du squelette en un graphe<a name="6"></a></h2><pre class="codeinput">ModelisationGraphe;
+</pre><h2>Recherche du plus court chemin entre A et B dans G'<a name="7"></a></h2><pre class="codeinput">PlusCourtChemin;
+figure(<span class="string">'Name'</span>,<span class="string">'Plus court chemin entre A et B dans le graphe'</span>); <span class="comment">%Affichage du chemin trouve</span>
+imagesc(im);
+</pre><h2>Lissage du chemin calcule par une courbe NURBS<a name="8"></a></h2><pre class="codeinput"><span class="comment">% Ordre de la courbe ; deg=order-1</span>
+order=4;
+
+<span class="comment">% Calcul des points de controle (coefs)</span>
+coefs=zeros(2,niter); <span class="comment">% tableau contenant les coordonnees cartesiennes des sommets</span>
+                                   <span class="comment">%niter : nombre des sommets du chemin calcule (= size(chemin,2))</span>
+
+<span class="keyword">for</span> k=1:niter
+    numsom = chemin(k);
+    iint = double(icar(numsom));
+    jint = double(jcar(numsom));
+    coefs(:,k)=[jint,iint];
+<span class="keyword">end</span>
+
+<span class="comment">% Parameterisation du vecteur nodal</span>
+knots=nrbKnots(niter,order); <span class="comment">% Calcul du vecteur nodal</span>
+<span class="comment">% Nombre des points aa evaluer</span>
+subdiv1=100;
+<span class="comment">% Les ui</span>
+ti = linspace(0.0,1.0,subdiv1);
+<span class="comment">%--------------------------------------------------------------------------</span>
+<span class="comment">% utilisation d'un algorithme genetique pour la parameterisation des poids des points de controle</span>
+<span class="comment">%---------Parametres de l'AG-----------------------------------------------</span>
+<span class="keyword">global</span> max_weight;
+max_weight=10;<span class="comment">% valeur max des poids</span>
+PopulationSize=100; <span class="comment">% taille de la population</span>
+p_mut=1;<span class="comment">% Probabilite de mutation</span>
+modif_rate = 5;<span class="comment">% pourcentage de croisement</span>
+nb_iter=15; <span class="comment">%nombre d'iterations</span>
+<span class="comment">%--------Execution de l'AG----------------------------------------------</span>
+tic;
+disp(<span class="string">'GAforNURBScurveFitting en cours d execution...'</span>);
+[Eval,W_Elu,indice_elu,sol,weightsInit,weights]= GAforNURBScurveFitting(im,coefs,knots,subdiv1,PopulationSize,max_weight,cseuil,r,modif_rate, nb_iter,p_mut);
+toc;
+</pre><h2>Analyse des Resultas<a name="9"></a></h2><pre class="codeinput"><span class="comment">%W_Elu = solution retenue (vecteur poids)</span>
+coefs1 = zeros(4,niter); <span class="comment">% Passage en coordonnees homogenes</span>
+coefs1(1,:) = coefs(1,:) .* W_Elu(1,:);
+coefs1(2,:) = coefs(2,:) .* W_Elu(1,:);
+coefs1(4,:) = W_Elu(:,:);
+
+nurbsf = nrbmak2(coefs1,knots);   <span class="comment">% Construction de la structure NURBS</span>
+
+nbPrbCur=Eval(indice_elu).nb_CC; <span class="comment">% nombre de points de la courbe qui ne respectent pas la contrainte de courbure</span>
+nbPrbCol=Eval(indice_elu).nb_CO; <span class="comment">% nombre de points de la courbe qui ne respectent pas la contrainte de la non-collision</span>
+
+figure;
+colormap(jet);
+im = imscene;
+imagesc(im);hold <span class="string">on</span>;
+
+colormap(jet);
+plot(coefs(1,:),coefs(2,:),<span class="string">'.r'</span>);<span class="comment">%% les sommets de la courbe aa approximer (formant le polygone de controle)</span>
+hold <span class="string">on</span>
+
+colormap(jet);
+[p1f,nurbs_corf] = nrbplot(nurbsf,subdiv1,<span class="string">'m'</span>);<span class="comment">%% Affichage de la courbe NURBS</span>
+title(<span class="string">'Solution Offline retenue'</span>)
+hold <span class="string">on</span>;
+colormap(jet);
+saveas(gcf,<span class="string">'trajectoiref.tif'</span>);
+
+<span class="keyword">if</span> sol  <span class="comment">% si la solution est admissible</span>
+    [nurbsFinal] = TransformationImageRepere(nurbsf);
+    [courburenurbsFinal, courbure_moynurbsFinal]= CalculCourbure(nurbsFinal,subdiv1);
+    figure;
+    plot(ti,courburenurbsFinal(1,:),<span class="string">'r'</span>);xlabel(<span class="string">'ui'</span>);ylabel(<span class="string">'curvature'</span>);title(<span class="string">'Courbure de la trajectoire'</span>);hold <span class="string">on</span>;
+<span class="keyword">else</span>
+    <span class="comment">% localisation des positions non acceptables si pas de solution</span>
+    trackRobot(Eval,nbPrbCur,nbPrbCol,indice_elu,sol,ti,cseuil,subdiv1,im,r);
+
+    [nurbsFinal] = TransformationImageRepere(nurbsf);
+    [courburenurbsFinal, courbure_moynurbsFinal]= CalculCourbure(nurbsFinal,subdiv1);
+    figure;
+    plot(ti,courburenurbsFinal(1,:),<span class="string">'r'</span>);xlabel(<span class="string">'ui'</span>);ylabel(<span class="string">'curvature'</span>);title(<span class="string">'Courbure de la trajectoire'</span>);hold <span class="string">on</span>;
+    <span class="comment">% Localisation des points critiques courbure</span>
+    [vect_CC]=DetectionCC(ti,courburenurbsFinal,cseuil,nbPrbCur);
+<span class="keyword">end</span>;
+</pre><pre class="codeinput"> <span class="comment">%%%%%%%%Affichage des parametre input%%%%%%%%%%%%%%%%%%%</span>
+ disp(<span class="string">'******************Input parameters**********************'</span>);
+ disp([<span class="string">'Space size : N='</span>,num2str(nlig),<span class="string">' M= '</span>,num2str(ncol)]);
+ disp([<span class="string">'Start position : xi='</span>,num2str(jdep),<span class="string">' yi= '</span>,num2str(idep)]);
+ disp([<span class="string">'Target position : xf='</span>,num2str(jarr),<span class="string">' yf= '</span>,num2str(iarr)]);
+ disp([<span class="string">'Robot diameter : d='</span>,num2str(diametre_robot)]);
+ disp([<span class="string">'Minimum radius of curvature : rho_min='</span>,num2str(rho_min)]);
+
+ disp(<span class="string">'********************************************************'</span>);
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHPlanification offlineREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+% Recherche du plus court chemin valide (verifiant les contraintes du probleme)
+
+close all;
+clear all;
+clc;
+
+%% Creation de la carte numerique
+
+CreateScene; % creation de la scene 'im'
+imscene = im; % sauvegarde de l'image de la scene
+
+%% Lecture des positions de depart et d'arrivee
+
+disp ('*** Pointez le point de depart du robot ! ***');% Lecture point de depart du robot
+p = ginput(1);
+idep = round(p(2));
+jdep = round(p(1));
+
+disp ('*** Pointez le point d''arrivee du robot ! ***');% Lecture point d'arrivee du robot
+p = ginput(1);
+iarr = round(p(2));
+jarr = round(p(1));
+
+%% Lecture des parametres du robot
+
+diametre_robot = input('diametre du robot en nombre de pixels:','s'); % Lecture du diametre du robot en pixels
+diametre_robot = str2double(diametre_robot);
+r = round(diametre_robot/2); %rayon du robot
+
+rho_min = input('Rayon de courbure minimum:','s'); % Lecture du diametre du robot en pixels
+rho_min = str2double(rho_min);
+global cseuil;
+cseuil=1/rho_min; %contrainte de courbure 
+
+%% Squelettisation de l'espace libre des obstacles +  Raccordement des positions de depart et d'arrive 
+
+disp('Squelettisation en cours...');
+Squelettisation;
+
+%% Analyse du squelette etendu et conversion du squelette en un graphe
+
+ModelisationGraphe;
+
+%% Recherche du plus court chemin entre A et B dans G'
+
+PlusCourtChemin;
+figure('Name','Plus court chemin entre A et B dans le graphe'); %Affichage du chemin trouve
+imagesc(im);
+
+%% Lissage du chemin calcule par une courbe NURBS
+
+% Ordre de la courbe ; deg=order-1                    
+order=4; 
+
+% Calcul des points de controle (coefs)
+coefs=zeros(2,niter); % tableau contenant les coordonnees cartesiennes des sommets
+                                   %niter : nombre des sommets du chemin calcule (= size(chemin,2))
+
+for k=1:niter
+    numsom = chemin(k);
+    iint = double(icar(numsom));
+    jint = double(jcar(numsom));
+    coefs(:,k)=[jint,iint];
+end
+
+% Parameterisation du vecteur nodal
+knots=nrbKnots(niter,order); % Calcul du vecteur nodal
+% Nombre des points aa evaluer 
+subdiv1=100;   
+% Les ui
+ti = linspace(0.0,1.0,subdiv1);   
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+% utilisation d'un algorithme genetique pour la parameterisation des poids des points de controle
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-Parametres de l'AGREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+global max_weight;  
+max_weight=10;% valeur max des poids
+PopulationSize=100; % taille de la population
+p_mut=1;% Probabilite de mutation
+modif_rate = 5;% pourcentage de croisement
+nb_iter=15; %nombre d'iterations 
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHExecution de l'AGREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+tic;
+disp('GAforNURBScurveFitting en cours d execution...');
+[Eval,W_Elu,indice_elu,sol,weightsInit,weights]= GAforNURBScurveFitting(im,coefs,knots,subdiv1,PopulationSize,max_weight,cseuil,r,modif_rate, nb_iter,p_mut);
+toc;
+%% Analyse des Resultas
+
+%W_Elu = solution retenue (vecteur poids)
+coefs1 = zeros(4,niter); % Passage en coordonnees homogenes
+coefs1(1,:) = coefs(1,:) .* W_Elu(1,:);
+coefs1(2,:) = coefs(2,:) .* W_Elu(1,:);
+coefs1(4,:) = W_Elu(:,:); 
+
+nurbsf = nrbmak2(coefs1,knots);   % Construction de la structure NURBS
+
+nbPrbCur=Eval(indice_elu).nb_CC; % nombre de points de la courbe qui ne respectent pas la contrainte de courbure
+nbPrbCol=Eval(indice_elu).nb_CO; % nombre de points de la courbe qui ne respectent pas la contrainte de la non-collision
+
+figure;
+colormap(jet);
+im = imscene;
+imagesc(im);hold on;
+
+colormap(jet);
+plot(coefs(1,:),coefs(2,:),'.r');%% les sommets de la courbe aa approximer (formant le polygone de controle)
+hold on
+
+colormap(jet);
+[p1f,nurbs_corf] = nrbplot(nurbsf,subdiv1,'m');%% Affichage de la courbe NURBS
+title('Solution Offline retenue')
+hold on;
+colormap(jet);
+saveas(gcf,'trajectoiref.tif');
+
+if sol  % si la solution est admissible
+    [nurbsFinal] = TransformationImageRepere(nurbsf);
+    [courburenurbsFinal, courbure_moynurbsFinal]= CalculCourbure(nurbsFinal,subdiv1);
+    figure;
+    plot(ti,courburenurbsFinal(1,:),'r');xlabel('ui');ylabel('curvature');title('Courbure de la trajectoire');hold on;
+else
+    % localisation des positions non acceptables si pas de solution
+    trackRobot(Eval,nbPrbCur,nbPrbCol,indice_elu,sol,ti,cseuil,subdiv1,im,r);
+    
+    [nurbsFinal] = TransformationImageRepere(nurbsf);
+    [courburenurbsFinal, courbure_moynurbsFinal]= CalculCourbure(nurbsFinal,subdiv1);
+    figure;
+    plot(ti,courburenurbsFinal(1,:),'r');xlabel('ui');ylabel('curvature');title('Courbure de la trajectoire');hold on;
+    % Localisation des points critiques courbure
+    [vect_CC]=DetectionCC(ti,courburenurbsFinal,cseuil,nbPrbCur);
+end;
+
+ %%
+ %%%%%%%%Affichage des parametre input%%%%%%%%%%%%%%%%%%%
+ disp('******************Input parameters**********************');
+ disp(['Space size : N=',num2str(nlig),' M= ',num2str(ncol)]);          
+ disp(['Start position : xi=',num2str(jdep),' yi= ',num2str(idep)]);
+ disp(['Target position : xf=',num2str(jarr),' yf= ',num2str(iarr)]);
+ disp(['Robot diameter : d=',num2str(diametre_robot)]);
+ disp(['Minimum radius of curvature : rho_min=',num2str(rho_min)]);
+
+ disp('********************************************************');
+
+
+##### SOURCE END #####
+--></body></html>

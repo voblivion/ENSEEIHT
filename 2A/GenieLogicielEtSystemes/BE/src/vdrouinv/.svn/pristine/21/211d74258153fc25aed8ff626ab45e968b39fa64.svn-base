@@ -1,0 +1,50 @@
+grammar fr.enseeiht.SimplePDL with org.eclipse.xtext.common.Terminals
+
+generate SimplePDL "http://www.enseeiht.fr/SimplePDL"
+
+Process :
+    'process' name=ID '{'
+        processElements+=ProcessElement*
+    '}'
+    ;
+
+ProcessElement :
+    WorkDefinition
+    | WorkSequence
+    | Guidance
+    | Ressource
+    | Allocation
+    ;
+
+WorkDefinition :
+    'wd' name=STRING
+    'needing' allocations+=Allocation*
+    ;
+
+WorkSequence :
+    'ws' linkType=WorkSequenceType
+    'from' predecessor=[WorkDefinition]
+    'to' successor=[WorkDefinition]
+    ;
+
+Guidance:
+    text=STRING
+    ;
+
+Ressource:
+    'rs' name=STRING
+    'with number' count=INT
+    ;
+
+Allocation:
+    'alloc' count=INT
+    'of'  ressource=[Ressource]
+
+enum WorkSequenceType :
+    start2start = 's2s'
+    | finish2start = 'f2s'
+    | start2finish = 's2f'
+    | finish2finish = 'f2f'
+    ;
+
+

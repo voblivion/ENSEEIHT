@@ -1,0 +1,3 @@
+[Flots, max] = fordFulkersonFlots([1 3 5 7 9 11 12], [2 4 3 5 1 6 3 6 6 7 7], [10 10 7 3 2 5 2 8 3 2 20], 1, 7);
+
+ [f, m] = fordFulkersonFlots([1 3 5 7 9 11 12],

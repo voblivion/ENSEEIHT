@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinet:Network
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:petrinet="https://petrinet"
+    xsi:schemaLocation="https://petrinet ../PetriNet.ecore"
+    name="Grains">
+  <nodes xsi:type="petrinet:Place"
+      name="PlaceA"/>
+  <nodes xsi:type="petrinet:Place"
+      name="PlaceB"/>
+</petrinet:Network>

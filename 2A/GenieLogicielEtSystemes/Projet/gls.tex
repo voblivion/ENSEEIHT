@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[frenchb]{babel}
+\usepackage{graphicx}
+
+\title{Projet de Génie Logiciel et Systèmes \\ Première partie \\ Analyse des besoins du client}
+\author{Victor Drouin Viallard}
+
+\begin{document}
+
+\maketitle
+\clearpage
+\tableofcontents
+
+\clearpage
+\section{Autres exemples}
+\subsection{Exemple 1}
+Voici l'exemple d'un emploi du temps Enseeihtien un jeudi après-midi, au cours duquel l'élève se prépare, effectue ses cours de la matiné, se rend déjeuner au réfectoire, travaille pour les cours ou code pour des projets personnels, va se coucher tôt ou profite de sa soirée avec ses amis avant d'aller se coucher. Voir figure~\ref{exemple1}.
+% Inclusion du schéma de l'exemple 1
+\begin{figure}[h]
+	\begin{center}
+	\caption{\label{exemple1} Exemple 1}
+	\includegraphics[scale=0.5]{gls_exemple1.png}
+	\end{center}
+\end{figure}
+
+\subsection{Exemple 2}
+Le deuxième exemple porte sur le samedi type du même élève. Il se lève tard à cause de sa sortie la veille, se rend à l'école pour étudier ou travailler sur des projets personnels, va manger dans un fast-food, revient étudier ou travailler, va faire des courses et sa lessive, regarde un film puis se couche. Voir figure~\ref{exemple2}.
+% Inclusion du schéma de l'exemple 2
+\begin{figure}[h]
+	\begin{center}
+	\caption{\label{exemple2} Exemple 2}
+	\includegraphics[scale=0.49]{gls_exemple2.png}
+	\end{center}
+\end{figure}
+
+\clearpage
+\section{Contraintes informelles}
+Lors du déroulement de son emploi du temps, l'utilisateur effectue successivement les activités de son planning qui peuvent prendre différente forme :
+\begin{itemize}
+\item Activité atomique : il "doit" effectuer l'activité (éventuellement composée d'un sous-emploi du temps, auquel cas elle est dite "complexe").
+\item Activité à choisir : il doit choisir un sous-emploi du temps parmi ceux proposés (de 2 à n).
+\item Activités désordonées : il doit effectuer chacun des sous-emploi du temps parmi ceux proposés (de 2 à n), dans un ordre quelconque.
+\end{itemize}
+La composition des activités atomiques est la suivante :
+\begin{itemize}
+\item Identifiant : le nom de l'activité. Ex: "Sport".
+\item Durée (facultatif) : la durée approximative de l'activité.
+\item Importance (facultatif) : si l'activité peut être omise (par exemple par manque de temps) ou non.
+\end{itemize}
+
+\section{Visualisation et exports}
+\subsection{Rendu graphique}
+% Inclusion de l'affichage
+\begin{figure}[h]
+	\begin{center}
+	\caption{\label{affichage} Affichage graphique}
+	\includegraphics[scale=0.6]{gls_affichage.pdf}
+	\end{center}
+\end{figure}
+Voir figure~\ref{exemple1}
+Un affichage graphique envisageable qui soit simple et conviviable est proposé dans la figure~\ref{affichage} page~\pageref{affichage}.
+
+\subsection{Export Html}
+% Inclusion du code Html
+\begin{figure}[h]
+	\begin{center}
+	\caption{\label{code} Code Html}
+	\includegraphics[scale=0.7]{gls_code.png}
+	\end{center}
+\end{figure}
+
+% Inclusion de la visualisation Html
+\begin{figure}[h]
+	\begin{center}
+	\caption{\label{html} Visualisation Html}
+	\includegraphics[scale=1]{gls_html.png}
+	\end{center}
+\end{figure}
+
+Un export au format Html sera aussi possible. Une visualisation de l'affichage et du code de ce dernier, pour l'exemple précédent, est visible sur la figure~\ref{code} page~\pageref{code} et la figure~\ref{html} page~\pageref{html}.
+
+\clearpage
+\section{Autres fonctionnalités}
+\subsection{Format texte}
+Afin de permettre une édition aisée des emplois du temps depuis un format texte simple et utilisable par quiconque. Un exemple de la syntax proposée est visible sur la figure~\ref{text}.
+
+% Inclusion du text
+\begin{figure}[h]
+	\begin{center}
+	\caption{\label{text} Format texte}
+	\includegraphics[scale=1]{gls_text.png}
+	\end{center}
+\end{figure}
+
+\subsection{Requêtes}
+Les requêtes suivantes pourront être effectuées sur les emplois du temps :
+\begin{itemize}
+\item Décompte du nombre d'activités élémentaires maximal/minial dans la journée.
+\item Décompte du temps d'activité total maximal/minimal.
+\item Décompte du nombre d'activités facultative et du temps associé.
+\item Ajouter, retirer ou modifier une activité.
+\item Exporter un modèle au format texte / html.
+\end{itemize}
+
+\subsection{Autres}
+Comme précisé plus haut, d'autre fonctionnalités peuvent être implémentées comme l'ajout d'attributs aux activités (durée, etc.).
+
+\end{document}

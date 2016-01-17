@@ -1,0 +1,7 @@
+tr h2p [0,w[ Hiver -> Printemps
+tr p2e [0,w[ Printemps -> Ete
+tr e2a [0,w[ Ete -> Automne
+tr a2h [0,w[ Automne -> Hiver
+pl Hiver (1)
+net saisons
+

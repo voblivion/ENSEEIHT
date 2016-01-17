@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinet:Network
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:petrinet="https://petrinet"
+    xsi:schemaLocation="https://petrinet PetriNet.ecore"
+    name="Paris-Toulouse">
+  <nodes xsi:type="petrinet:Place"
+      name="Paris"
+      successors="//@arcs.0"/>
+  <nodes xsi:type="petrinet:Transition"
+      name="Autoroute"
+      predecessors="//@arcs.0"
+      successors="//@arcs.1"/>
+  <nodes xsi:type="petrinet:Place"
+      name="Toulouse"
+      predecessors="//@arcs.1"/>
+  <arcs source="//@nodes.0"
+      target="//@nodes.1"/>
+  <arcs tokensCount="0"
+      source="//@nodes.1"
+      target="//@nodes.2"/>
+</petrinet:Network>

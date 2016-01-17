@@ -1,0 +1,146 @@
+module SimplePDL2PetriNet;
+create OUT: PetriNet from  IN: SimplePDL;
+
+
+rule Process2PetriNet {
+    from process: SimplePDL!Process
+	
+    to petriNet: PetriNet!PetriNet (
+    	name <- process.name
+	)
+}
+
+
+rule WorkDefinition2PetriNet {
+    from workDefinition: SimplePDL!WorkDefinition
+    to
+        -- Places crées par WorkDefinition
+        p_ready: PetriNet!Place(
+            name <- workDefinition.name + '_ready',
+            tokensCount <- 1,
+            reseau <- workDefinition.process
+		),
+        
+        p_running: PetriNet!Place(
+            name <- workDefinition.name + '_running',
+            tokensCount <- 0,
+            reseau <- workDefinition.process
+		),
+        
+        p_finished: PetriNet!Place(
+            name <- workDefinition.name + '_finished',
+            tokensCount <- 0,
+            reseau <- workDefinition.process
+		),
+            
+        p_started: PetriNet!Place(
+            name <- workDefinition.name + '_started',
+            tokensCount <- 0,
+            reseau <- workDefinition.process
+		),
+        
+        -- Transitions crées par WorkDefinition
+        t_start: PetriNet!Transition(
+            name <- workDefinition.name + '_start',
+            reseau <- workDefinition.process
+		),
+            
+        t_finish: PetriNet!Transition(
+            name <- workDefinition.name + '_finish',
+            reseau <- workDefinition.process
+		),
+        
+        -- Arcs créés par WorkDefinition
+        a_ready_start: PetriNet!Arc(
+            source <- p_ready,
+            target <- t_start,
+            tokensCount <- 1,
+            readOnly <- false,
+            reseau <- workDefinition.process
+		),
+        
+        a_start_started: PetriNet!Arc(
+            source <- t_start,
+            target <- p_started,
+            tokensCount <- 1,
+            readOnly <- false,
+            reseau <- workDefinition.process
+		),
+        
+        a_start_running: PetriNet!Arc(
+            source <- t_start,
+            target <- p_running,
+            tokensCount <- 1,
+            readOnly <- false,
+            reseau <- workDefinition.process
+		),
+        
+        a_running_finish: PetriNet!Arc(
+            source <- p_running,
+            target <- t_finish,
+            tokensCount <- 1,
+            readOnly <- false,
+            reseau <- workDefinition.process
+		),
+        
+        a_finish_finished: PetriNet!Arc(
+            source <- t_finish,
+            target <- p_finished,
+            tokensCount <- 1,
+            readOnly <- false,
+            reseau <- workDefinition.process
+		)
+}
+
+rule WorkSequence2PetriNet {
+    from workSequence: SimplePDL!WorkSequence
+    
+    to
+        a_first_second: PetriNet!Arc(
+            source <-    if (workSequence.linkType = #startToFinish or workSequence.linkType = #startToStart) then
+                            thisModule.resolveTemp(workSequence.predecessor, 'p_started')
+                        else -- linkType est du type finishTo*quelquechose*
+                              thisModule.resolveTemp(workSequence.predecessor, 'p_finished')
+                        endif,
+            target <-        if (workSequence.linkType = #startToStart or workSequence.linkType = #finishToStart) then
+                            thisModule.resolveTemp(workSequence.successor, 't_start')
+                        else -- linkType est du type *quelquechose*ToFinish
+                            thisModule.resolveTemp(workSequence.successor, 't_finish')
+                        endif,
+            tokensCount <- 1,
+            readOnly <- true,
+            reseau <- workSequence.successor.process)
+}
+
+
+rule Ressource2PetriNet {
+	from ressource: SimplePDL!Ressource
+	
+	to
+		p_ressource: PetriNet!Place(
+			name <- ressource.name,
+			tokensCount <- ressource.count,
+			reseau <- ressource.process
+		)
+}
+
+rule Allocation2PetriNet {
+	from allocation: SimplePDL!Allocation
+	
+	to
+		a_take_ressource: PetriNet!Arc(
+			source <- allocation.getRessource(),
+			target <- thisModule.resolveTemp(allocation.workDefinition, 't_start'),
+			tokensCount <- allocation.count,
+			readOnly <- false,
+			reseau <- allocation.getRessource().process
+		),
+		a_release_ressource: PetriNet!Arc(
+			source <- allocation.getRessource(),
+			target <- thisModule.resolveTemp(allocation.workDefinition, 't_finish'),
+			tokensCount <- allocation.count,
+			readOnly <- false,
+			reseau <- allocation.getRessource().process
+		)
+			
+}

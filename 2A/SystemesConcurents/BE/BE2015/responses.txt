@@ -1,0 +1,152 @@
+In this file you have to write the answers to the questions marked
+with the "pencil" symbol that you will find in the subjects of the
+various exam parts.
+
+
+=======================================================================
+Part 1: Schedules
+
+Assuming the OpenMP parallel for construct has been used to
+parallelize the loop in the schedules.c file, identify the scheduling
+type that is best suited for this code and explain your choice. Report
+also the execution time of the code using 1 and 2 threads with the
+scheduling type you have chosen and with the default, static
+scheduling.
+
+Avec une stratégie 'static' la répartition tours dans la boucle for
+entre les threads est faite avant leurs exécutions. Le travail est
+réparti en nombre de tours égaux entre les threads mais si l'un des
+tours est plus long que les autres (car il y a plus de calculs) alors
+le thread concerné sera ralenti et les autres devront l'attendre à la
+sortie sans avoir de tache à effectuer.
+Avec une stratégie 'dynamic' la répartition est faite à l'exécution et
+les threads arrivant au bout des tâches (chunk de tâches) qui leur ont
+été confiées s'en voient confié d'autres. Cependant le choix de la
+taille du chunk est défini statiquement et un chunk trop gros nous fais
+retomber dans les travers du scheduling statique tandis qu'un chunk
+trop petit entraine de multiples opérations supplémentaires (demander
+un nouveau chunk de tâches quand les siennes sont effectuées) pour
+chaque thread.
+Finalement on pourrait choisir une stratégie 'guided' pour avoir une
+modification de la taille des chunks au cours du temps mais vu le
+nombre de tours (1400) le gain risque de ne pas être assez important
+comparé aux calculs supplémentaires que cela entraine (calcul de la
+taille du chunk à chaque demande de chunk).
+On choisit donc une stratégie dynamique.
+
+
+
+Execution times:
+
+Static 1 thread : 2362.38 * 10^-3  seconds
+Static 2 threads: 2229.10 * 10^-3  seconds
+Static 4 threads: 1670.80 * 10^-3  seconds
+Chosen 1 thread : 2353.48 * 10^-3  seconds
+Chosen 2 threads: 1226.21 * 10^-3  seconds
+Chosen 4 threads:  671.72 * 10^-3  seconds
+
+The observed results confirm what you expected?
+On observe donc bien le résultat excompté puisque le temps est presque
+divisé par 3 lorsque l'on utilise 4 threads.
+
+
+
+
+
+=======================================================================
+Part 2: Tree traversal
+
+Depth : 7
+Sequential        :  secondes
+Parallel 1 thread :  secondes
+Parallel 2 threads:  secondes
+Parallel 4 threads:  secondes
+
+Je n'ai pas réussi à paralléliser la boucle donner.
+J'ai essayer autrement en commençant par les lignes les plus basses de
+l'arbre puis en montant de ligne en ligne (avec un taskwait à la fin
+de chaque ligne) mais ça n'a pas été concluant.
+
+
+
+=======================================================================
+Part 2: MergeSort
+
+With 1 thread : 7.64512 secondes
+With 2 threads: 4.63499 secondes
+With 4 threads: 4.35984 secondes
+
+Le gain est donc non négligeable puisque le temps est presque divisé
+par deux lorsque l'on passe de 1 à 4 threads.
+
+
+=======================================================================
+Part 4: ConjugateGradient
+
+Analyze and compare the performance of the parallel code using one or
+two threads. Report file the number of iterations and the execution
+time for both example matrices matrix1.rb and matrix2.rb. 
+
+Results:
+
+matrix1 1 thread :  1026 iterations   0.31497 seconds
+matrix1 2 threads:  1028 iterations   0.27107 seconds
+matrix1 4 threads:  1024 iterations   0.31990 seconds
+matrix2 1 thread :   831 iterations   0.94731 seconds
+matrix2 2 threads:   831 iterations   0.89576 seconds
+matrix2 4 threads:   833 iterations   1.14567 seconds
+matrix3 1 thread :   231 iterations   0.52364 seconds
+matrix3 2 threads:   231 iterations   0.54596 seconds
+matrix3 4 threads:   231 iterations   0.81128 seconds
+
+
+Comment on the observed results: did you observe any speedup
+(reduction of the execution time) using 2 or 4 threads instead of 1?
+did you observe any difference in the number of iterations using 2 or
+4 threads instead of 1?  Is the method still converging when using 2
+or 4 threads?  Did you observe any difference when using a dynamic
+scheduling instead of a static one? can you explain this difference?
+
+Note:
+Je n'ai pas réussi à paralléliser spmv à temps donc je l'ai laissé tel
+quel. J'ai essayé de paralléliser simplement la boucle for intérieur
+mais le fait de déclarer pour chaque ligne un "#pragma omp parallel"
+faisait perdre trop de temps alors je l'ai enlevé.
+
+Speedup:
+On remarque que pour des convergences en beaucoup d'itérations (matrix1
+et matrix2) passer de 1 à 2 thread est un peu avantageux. En revanche
+dès que le nombre d'itérations est trop faible la parallélisation
+n'apport pas assez de gain par rapport à ce qu'elle coûte.
+
+Iterations:
+Le nombre d'itérations est presque le même quel que soit le nombre de
+thread. La différence observée viens certainement des approximations
+faites par chaque thread avant les "reduction".
+
+Convergence:
+La convergence se maintiens avec 2 ou 4 threads.
+
+Dynamic:
+Utiliser un scheduling dynamique n'est ici pas intéressant car le calcul
+opéré lors d'un tour de boucle est simple tandis qu'un scheduling
+dynamique demande du travail à OpenMP à chaque tours. Le scheduling
+dynamique est utile pour des boucles plus complexes et dont le temps de
+chaque tour peut varier fortement.
+
+
+
+
+
+
+
+
+
+=======================================================================
+Part 5: Prefix Scan
+
+Did you observe any speedup (reduction of the execution time) when
+using 2 or 4 threads instead of 1? If not, how can you explain this?
+
+
+Pas traité.

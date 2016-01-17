@@ -1,0 +1,39 @@
+function [x] = newtonNonLineaire(beta, lambda, delta, xmin, xmax)
+
+epsilon = 10*10-10;
+fmin = f(beta, lambda, delta, xmi);
+fmax = f(xmax);
+
+x = xmax;
+fx = f(x);
+dfx = df(x);
+
+while abs(fmin) > epsilon && abs(fmax) > epsilon
+    xn = x - fx/dfx;
+    fxn = f(xn);
+    
+    if xmin <= xn && xn <= xmax && abs(fxn) < abs(fx) / 2
+        x = xn;
+        fx = fxn;
+        dfx = df(x);
+    else
+        xd = (xmin + xmax) / 2;
+        if xmin * xd < 0
+            xmax = xd;
+            x = xd;
+        else
+            xmin = xd;
+            x = xd;
+        end
+        fx = f(x);
+        dfx = df(x);
+    end
+end
+
+if abs(fmin) <= epsilon
+    x = xmin;
+else
+    x = xmax;
+end
+
+end

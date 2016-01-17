@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinet:Network
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:petrinet="https://petrinet"
+    xsi:schemaLocation="https://petrinet ../PetriNet.ecore"
+    name="Veau qui mange">
+  <nodes xsi:type="petrinet:Place"
+      name="Vache"
+      successors="//@arcs.0"
+      tokensCount="100"/>
+  <nodes xsi:type="petrinet:Transition"
+      name="Pis"
+      predecessors="//@arcs.0"
+      successors="//@arcs.1 //@arcs.2"/>
+  <nodes xsi:type="petrinet:Place"
+      name="Veau"
+      predecessors="//@arcs.1"/>
+  <nodes xsi:type="petrinet:Place"
+      name="Sol"
+      predecessors="//@arcs.2"/>
+  <arcs tokensCount="3"
+      source="//@nodes.0"
+      target="//@nodes.1"/>
+  <arcs tokensCount="2"
+      source="//@nodes.1"
+      target="//@nodes.2"/>
+  <arcs source="//@nodes.1"
+      target="//@nodes.3"/>
+</petrinet:Network>

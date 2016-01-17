@@ -1,0 +1,46 @@
+import ecore : 'http://www.eclipse.org/emf/2002/Ecore' ;
+
+package petrinet : petrinet = 'http://petrinet'
+{
+    class Reseau
+    {
+        attribute nom : String[?];
+        property elements#reseau : Element[*] { ordered composes };
+        property arcs#reseau : Arc[*] { ordered composes };
+    }
+    abstract class Element
+    {
+        attribute nom : String[?];
+        property predecessors#depuis : Arc[*] { ordered };
+        property successors#vers : Arc[*] { ordered };
+        property reseau#elements : Reseau[?];
+        invariant nomNonVide: self.nom <> '';
+        invariant notLonely: 
+            self.predecessors->size() > 0 or self.successors->size() > 0;
+    }
+    class Place extends Element
+    {
+        attribute initjetons : ecore::EInt[?] = '0';
+        invariant initjetonsValide: self.initjetons >= 0;
+        invariant placeToTransition: 
+            self.successors->select(a | a.vers.oclIsKindOf(Place))->size() = 0;
+    }
+    class Transition extends Element
+    {
+        invariant transitionToPlace: 
+            self.successors->select(a | a.vers.oclIsKindOf(Transition))->size() = 0;
+        invariant transitionToNotEmpty: 
+            self.successors->size() > 0;
+    }
+    class Arc
+    {
+        attribute readOnly : Boolean[?] = 'false';
+        attribute poids : ecore::EInt[?] = '1';
+        property depuis#predecessors : Element[1];
+        property vers#successors : Element[1];
+        property reseau#arcs : Reseau[?];
+        invariant poidsValide: self.poids > 0;
+    }
+}
+
+

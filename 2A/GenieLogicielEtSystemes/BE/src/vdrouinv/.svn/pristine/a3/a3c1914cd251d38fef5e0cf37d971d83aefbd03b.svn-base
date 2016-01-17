@@ -1,0 +1,28 @@
+[comment encoding = UTF-8 /]
+[module toTina('http://petrinet')]
+
+
+[template public toTina(aReseau : Reseau)]
+[comment @main/]
+[file (aReseau.nom, false, 'UTF-8')]
+net [aReseau.nom/]
+[for (pl : Place | aReseau.elements->getPlaces())]
+pl [pl.nom/] ([pl.initjetons/])
+[/for]
+[for (tr : Transition | aReseau.elements->getTransitions())]
+tr [tr.nom/][tr.predecessors->printIn() /]->[tr.successors->printOut()/]
+[/for]
+[/file]
+[/template]
+[query public getPlaces(elements : OrderedSet(Element)): OrderedSet(Place) = 
+    elements->select(e | e.oclIsTypeOf(Place))->collect(e | e.oclAsType(Place))->asOrderedSet()
+/]
+[query public getTransitions(elements : OrderedSet(Element)): OrderedSet(Transition) = 
+    elements->select(e | e.oclIsTypeOf(Transition))->collect(e | e.oclAsType(Transition))->asOrderedSet()
+/]
+
+
+[template public printIn(arcs : OrderedSet(Arc))][for (a : Arc | arcs)][if (a.readOnly)][a.depuis.nom/]?[a.poids/][else][a.depuis.nom/]*[a.poids/][/if][/for][/template]
+[template public printOut(arcs : OrderedSet(Arc))][for (a : Arc | arcs)][if (a.readOnly)][a.vers.nom/]?[a.poids/][else][a.vers.nom/]*[a.poids/][/if][/for][/template]
+
+

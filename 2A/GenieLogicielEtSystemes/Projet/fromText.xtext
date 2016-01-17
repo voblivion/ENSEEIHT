@@ -1,0 +1,29 @@
+% EXEMPLE %
+scenario <nom> {
+    schedule [
+        - act <nom> schedule [
+           * component 
+        ]
+        - act <nom>
+        - choice [
+            * schedule
+        ]
+        - parallel [
+            * schedule
+        }
+    ]
+}
+
+[scenario]
+scenario <nom> {
+    [schedule]
+}
+
+[schedule]
+schedule [
+    [*Component]
+]
+
+[component]
+    |
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="Running Platform" sequenceNumber="4">
+<locations>
+<location configuration="/home/vdrouinv/.eclipse/org.eclipse.platform_4.5.1_2110521615_linux_gtk_x86_64/configuration/" path="${eclipse_home}" type="Profile"/>
+</locations>
+<environment>
+<os>linux</os>
+<ws>gtk</ws>
+<arch>x86_64</arch>
+<nl>fr_FR</nl>
+</environment>
+<launcherArgs>
+<vmArgs>-Dosgi.requiredJavaVersion=1.7 -XX:MaxPermSize=512m -Xms512m -Xmx1536m</vmArgs>
+</launcherArgs>
+</target>

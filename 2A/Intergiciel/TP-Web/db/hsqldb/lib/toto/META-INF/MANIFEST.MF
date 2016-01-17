@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.4
+Created-By: 1.6.0_30-b12 (Sun Microsystems Inc.)
+Specification-Title: HSQLDB
+Specification-Version: 2.3.2
+Specification-Vendor: The HSQL Development Group
+Implementation-Title: SqlTool Client
+Implementation-Version: 2.3.2
+Implementation-Vendor: The HSQL Development Group
+Main-Class: org.hsqldb.cmdline.SqlTool
+Class-Path: hsqldb-2.3.2.jar hsqljdbc-2.3.2.jar hsqldbmain.jar-2.3.2.j
+ ar hsqldb.jar hsqljdbc.jar hsqldbmain.jar
+
