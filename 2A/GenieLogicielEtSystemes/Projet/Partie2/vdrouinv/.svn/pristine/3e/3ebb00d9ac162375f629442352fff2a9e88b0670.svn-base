@@ -1,0 +1,12 @@
+Scenario ExempleSimple [
+    - Act Se Lever
+    - Act Petit déjeuner
+    - Act Envoyer cartes postales
+    - Div Choice [
+        [ - Act Jeuner ],
+        [ - Act Déjeuner ]
+    ]
+    - Act Jouer aux échecs
+    - Act Diner
+    - Act Se coucher
+]
