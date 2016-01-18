@@ -1,4 +1,9 @@
-function [x] = newtonNonLineaire(beta, lambda, delta, xmin, xmax)
+%%
+%   f(x) = 0 pour f = ║s║² et s : x -> - Somme(beta_i / (lambda_i + x))
+%
+%
+%
+function x = newtonNonLineaire(beta, lambda, delta, xmin, xmax)
 
 epsilon = 10^-10;
 fmin = f(beta, lambda, delta, xmin);
@@ -33,10 +38,6 @@ while abs(fmin) > epsilon && abs(fmax) > epsilon
         dfx = df(beta, lambda, x);
     end
     round = round + 1;
-    
-    if round > 30
-        return
-    end
 end
 
 if abs(fmin) <= epsilon

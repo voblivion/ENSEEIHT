@@ -1,3 +1,8 @@
+%%
+%
+%   df avec f = ║s║² et s : x -> - Somme(beta_i / (lambda_i + x))
+%
+%
 function [y] = df(beta, lambda, x)
 
 gamma = lambda + x;

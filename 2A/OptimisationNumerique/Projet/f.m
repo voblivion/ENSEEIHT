@@ -1,3 +1,8 @@
+%%
+%
+%   f = ║s║² et s : x -> - Somme(beta_i / (lambda_i + x))
+%
+%
 function [y] = f(beta, lambda, delta, x)
 
 gamma = lambda + x;

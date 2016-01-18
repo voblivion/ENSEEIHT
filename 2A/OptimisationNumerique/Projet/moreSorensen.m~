@@ -1,0 +1,11 @@
+function [s] = moreSorensen(g, h, delta)
+
+epsilon = 10^-10;
+
+%% Recherche d'une solution intérieur
+sn = h \ (-g);
+[v, lambda] = eig(h);
+if norm(sn) < delta && lambda
+
+end
+
