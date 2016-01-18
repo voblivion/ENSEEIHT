@@ -1,0 +1,16 @@
+Scenario ExempleComplexe [
+    - Div Choice [
+        [
+            - Act Éplucher
+            - Div Choice [
+                [ - Act Mettre à bouillir ],
+                [
+                    - Act Couper en morceaux
+                    - Act mettre à poëler
+                ]
+            ]
+        ],
+        [ - Mettre à bouillir ]
+    ]
+    - Act Déguster
+]
