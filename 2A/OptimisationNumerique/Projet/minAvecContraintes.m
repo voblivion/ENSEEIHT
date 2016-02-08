@@ -6,7 +6,7 @@ epsilon3 = 10^-8;
 n = size(x0, 1);
 m = size(ce(x0), 2);
 muk = 1;
-tau = 2;
+tau = 1.5;
 etac = 0.1258925;
 alpha = 0.1;
 beta = 0.9;
@@ -16,7 +16,7 @@ etak = etac / (muk^alpha);
 xk = x0;
 lambdak = lambda0;
 round = 0;
-roundMax = 10000;
+roundMax = 50000;
 
 function y = LA(x)
     cex = ce(x);
@@ -73,6 +73,8 @@ while ~converge
             etak = etac / (muk^alpha);
         end
     end
+    lambdak
+    muk
     round = round + 1;
 end
 
