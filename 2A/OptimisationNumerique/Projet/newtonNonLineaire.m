@@ -1,5 +1,5 @@
 %%
-%   f(x) = 0 pour f = ║s║² et s : x -> - Somme(beta_i / (lambda_i + x))
+%   f(x) = 0 pour f = ║s║² - d² et s : x -> - Somme(beta_i.ui / (lambda_i + x))
 %
 %
 %
@@ -45,7 +45,4 @@ if abs(fmin) <= epsilon
 else
     x = xmax;
 end
-
-disp(round);
-
 end

@@ -10,7 +10,11 @@ function s = pasDeCauchy(g, h, delta)
             t = delta / ng;
         end
     else
-        t = delta / ng;
+        if ng == 0
+            t = 1;
+        else
+            t = delta / ng;
+        end
     end
     
     s = - t * g;
