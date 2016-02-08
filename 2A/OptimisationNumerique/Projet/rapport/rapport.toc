@@ -1,0 +1,39 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Algorithme de Newton local}{3}
+\contentsline {subsection}{\numberline {1.1}Tests}{3}
+\contentsline {paragraph}{}{3}
+\contentsline {subsection}{\numberline {1.2}Inconv\IeC {\'e}nients}{4}
+\contentsline {subsection}{\numberline {1.3}R\IeC {\'e}ponses aux questions}{4}
+\contentsline {paragraph}{1.}{4}
+\contentsline {paragraph}{2.}{4}
+\contentsline {section}{\numberline {2}R\IeC {\'e}gions de confiance : pas de Cauchy}{5}
+\contentsline {subsection}{\numberline {2.1}Tests}{5}
+\contentsline {paragraph}{Tests du calcul du pas de Cauchy isol\IeC {\'e}}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{Tests sur l'algorithme complet}{6}
+\contentsline {paragraph}{}{7}
+\contentsline {subsection}{\numberline {2.2}Inconv\IeC {\'e}nients}{8}
+\contentsline {subsection}{\numberline {2.3}R\IeC {\'e}ponses aux questions}{8}
+\contentsline {paragraph}{1.}{8}
+\contentsline {paragraph}{2.}{8}
+\contentsline {subparagraph}{}{8}
+\contentsline {subparagraph}{}{9}
+\contentsline {section}{\numberline {3}Newton pour les \IeC {\'e}quations non lin\IeC {\'e}aires}{9}
+\contentsline {subsection}{\numberline {3.1}Tests}{10}
+\contentsline {subsection}{\numberline {3.2}R\IeC {\'e}ponses aux questions}{10}
+\contentsline {paragraph}{1.}{10}
+\contentsline {paragraph}{2.}{10}
+\contentsline {section}{\numberline {4}R\IeC {\'e}gion de confiance : pas de Mor\IeC {\'e}-Sorensen}{11}
+\contentsline {subsection}{\numberline {4.1}Tests}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {subsection}{\numberline {4.2}R\IeC {\'e}ponses aux questions}{12}
+\contentsline {paragraph}{1.}{12}
+\contentsline {paragraph}{2.}{12}
+\contentsline {section}{\numberline {5}Algorithme du Lagrangien augment\IeC {\'e}}{13}
+\contentsline {subsection}{\numberline {5.1}Tests}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {subsection}{\numberline {5.2}R\IeC {\'e}ponses aux questions}{13}
+\contentsline {paragraph}{1.}{13}
+\contentsline {paragraph}{2.}{14}
+\contentsline {paragraph}{3.}{15}
+\contentsline {section}{\numberline {6}Conclusion}{15}
