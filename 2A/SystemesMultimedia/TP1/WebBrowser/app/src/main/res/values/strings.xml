@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Web Browser</string>
+
+    <string name="default_address">http://www.enseeiht.fr</string>
+    <string name="go_text">Go</string>
+    <string name="action_settings">Settings</string>
+</resources>
