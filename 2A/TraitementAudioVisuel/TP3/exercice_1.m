@@ -3,7 +3,7 @@ close all;
 load donnees;
 
 % Degre :
-d = 5;
+d = 20;
 
 % Modelisation de chaque silhouette par deux courbes de Bezier independantes :
 figure('Name','Modelisation de chaque silhouette par deux courbes de Bezier independantes','Position',[0.33*L,0,0.67*L,H]);
