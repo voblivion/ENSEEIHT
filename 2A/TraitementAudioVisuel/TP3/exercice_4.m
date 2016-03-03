@@ -15,14 +15,20 @@ h = round(0.85*H);			% Hauteur de la flamme
 y = 0:1/(h-1):1;			% Ordonnees normalisees entre 0 et 1
 x_centre = (beta_0+gamma_0)/2;	% Abscisse du centre de la flamme
 N = 400;				% Longueur de la sequence simulee
+x_gauche = bezier(y, beta_0, [delta_aleatoire(1:d-1); delta_aleatoire(d+d-1)]);
+x_droite = bezier(y, gamma_0, delta_aleatoire(d:d+d-1));
 for k = 1:N
 	I = zeros(H,L);
+    % Moyenne entre flamme précédente et flamme nouvellement calculée de
+    % façon a avoir un mouvement fluide de la flamme.
+    x_gauche_old = x_gauche;
+    x_droite_old = x_droite;
     x_gauche = 1;
     x_droite = -1;
     while any(x_gauche > x_droite)
         delta_aleatoire = delta_moyen + delta_ecart .* randn(2*d-1, 1);
-        x_gauche = bezier(y, beta_0, [delta_aleatoire(1:d-1); delta_aleatoire(d+d-1)]);
-        x_droite = bezier(y, gamma_0, delta_aleatoire(d:d+d-1));
+        x_gauche = (x_gauche_old + bezier(y, beta_0, [delta_aleatoire(1:d-1); delta_aleatoire(d+d-1)])) / 2;
+        x_droite = (x_droite_old + bezier(y, gamma_0, delta_aleatoire(d:d+d-1))) / 2;
     end
 
     for j = 1:h
@@ -39,5 +45,6 @@ for k = 1:N
     axis xy;
     axis off;
     colormap(hot);		% Table de couleurs donnant des couleurs chaudes (doc colormap)
-    pause(0.01);
+    % pause(0.001);
+    drawnow;
 end
