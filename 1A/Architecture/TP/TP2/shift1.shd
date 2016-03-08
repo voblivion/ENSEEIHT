@@ -1,5 +1,0 @@
-module shift1(r, en, e[31..0] : s[31..0])
-	s[30..1] = /en*e[30..1]+en*r*e[31..2]+en*/r*e[29..0];
-	s[31] = /en*e[31]+en*/r*e[30];
-	s[0] = /en*e[0]+en*r*e[1];
-end module

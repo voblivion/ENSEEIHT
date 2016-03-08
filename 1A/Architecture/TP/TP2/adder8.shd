@@ -1,4 +1,0 @@
-module adder8(a[7..0], b[7..0], cin : s[7..0], cout)
-	adder4(a[3..0], b[3..0], cin : s[3..0], couti);
-	adder4(a[7..4], b[7..4], couti : s[7..4], cout);
-end module

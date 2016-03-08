@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=G:\Documents\Architecture\TP\ISEproject\craps0.ncd
-OUTFILE=G:\Documents\Architecture\TP\ISEproject\craps0.bit
-FAMILY=Spartan3E
-PART=xc3s1200e-5fg320
-WORKINGDIR=G:\Documents\Architecture\TP\ISEproject
-LICENSE=ISE
-USER_INFO=174131902_174131903_210590970_947
