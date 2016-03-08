@@ -1,9 +1,0 @@
-let abs a = if a < 0 then (-a) else a;;
-
-let pgcd a b =
-	let rec aux a b =
-		if a = b then a
-		else if a < b then aux a (b-a)
-		else aux (a-b) b
-	in
-		aux (abs a) (abs b);;
