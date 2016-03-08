@@ -11,5 +11,6 @@ function p = F(P, T, t)
         Li = L(i, T, t);
         for k = 1:m
             p(:, k) = p(:, k) + Li(k) * P(:, i);
+        end
     end
 end
