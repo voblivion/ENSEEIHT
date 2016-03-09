@@ -1,7 +1,0 @@
-[comment encoding = UTF-8 /]
-[module toHTML('http://www.example.org/scenario')]
-
-
-[template public toHTML(aScenario : Scenario)]
-
-[/template]

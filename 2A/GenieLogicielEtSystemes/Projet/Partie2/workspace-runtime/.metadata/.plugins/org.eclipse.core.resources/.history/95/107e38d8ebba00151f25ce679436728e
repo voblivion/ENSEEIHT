@@ -1,7 +1,0 @@
-Scenario simple [
-	- Act Manger
-	- Act Dormir
-	- Div Choice [
-		- 
-	]
-]
