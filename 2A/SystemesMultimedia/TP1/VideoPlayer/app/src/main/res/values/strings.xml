@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Video Player</string>
 
-    <string name="go_button">Go!</string>
+    <string name="select_button">Select from gallery</string>
+    <string name="restart_button">Restart</string>
+    <string name="pause_button">Pause / Resume</string>
+    <string name="go_button">GO!</string>
     <string name="action_settings">Settings</string>
 </resources>
