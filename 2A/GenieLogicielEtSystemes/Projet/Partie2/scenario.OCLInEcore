@@ -1,0 +1,43 @@
+package scenario : scenario = 'http://www.example.org/scenario'
+{
+    class Scenario
+    {
+        attribute name : String[1];
+        property schedule : Schedule[1] { composes };
+        invariant namesForbidden:
+            Sequence{'', 'Scénario'}
+        ->forAll(n | self.name <> n);
+    }
+    class Schedule
+    {
+        property components#parent : Component[+] { ordered composes };
+        property parent#schedules : Divergence[?];
+        invariant uniqueNameForActivities:
+            self.components
+            ->select(c | c.oclIsKindOf(Activity))
+            ->collect(c | c.oclAsType(Activity))
+            ->forAll(c1, c2 | c1 <> c2 implies c1.name <> c2.name);
+    }
+    abstract class Component
+    {
+        property parent#components : Schedule[1];
+    }
+    class Activity extends Component
+    {
+        attribute name : String[1];
+        property schedule : Schedule[?] { composes };
+        invariant namesForbidden:
+            Sequence{'', 'Activité', 'Choix', 'Parallèle', 'Alternative'}
+        ->forAll(n | self.name <> n);
+    }
+    class Divergence extends Component
+    {
+        attribute type : DivergenceType[1];
+        property schedules#parent : Schedule[2..*] { ordered composes };
+    }
+    enum DivergenceType { serializable }
+    {
+        literal Choice;
+        literal Parallel = 1;
+    }
+}
