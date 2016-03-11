@@ -24,6 +24,6 @@ for i = 1:m
     if i ~= 1
         pause
     end
-    f = F(P, T(i,:), min(T(i,:)):0.01:max(T(i,:)));
+    f = Neville(P, T(i,:), min(T(i,:)):0.01:max(T(i,:)));
     plot(f(1,:), f(2,:));
 end
