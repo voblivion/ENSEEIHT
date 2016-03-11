@@ -11,16 +11,16 @@ for i = 2:n
     T(1, i) = i - 1;
     
     % Distance
-    T(2, i) = T(1, i-1) + norm(P(:, i) - P(:, i-1));
+    T(2, i) = T(2, i-1) + norm(P(:, i) - P(:, i-1));
     
     % Distance ^ 1/2
-    T(3, i) = T(1, i-1) + sqrt(norm(P(:, i) - P(:, i-1)));
+    T(3, i) = T(3, i-1) + sqrt(norm(P(:, i) - P(:, i-1)));
     
     % Tchebitchev
     T(4, i) = cos((2 * (i - 1) + 1) * pi / (2 * n + 2));
 end
 
-for i = 1:m
+for type = 1:m
     if i ~= 1
         pause
     end

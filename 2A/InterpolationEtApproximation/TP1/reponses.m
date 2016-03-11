@@ -1,15 +1,19 @@
-% Non elle n'est pas régulière. On peut par exemple avoir des points de
-% rebroussement où la dérivée s'annule.
+1.
+Une telle courbe peut être irrégulière car rien ne garantie dans le choix
+des abcisses (ti) que la dérivée de F ne va pas s'annuler.
 
-% Ce n'est donc pas une bonne paramétrisation et un bon choix des temps de
-% passage permettrait de faire une paramétrisation régulière.
+2.
+Considérant la question précédente, le choix d'une paramétrisation
+uniforme n'est donc pas judicieux.
 
-% Une transaformation non affine des temps de passage transforme aussi la
-% courbe. Si la transformation est affine la courbe a la même allure mais
-% les points ne sont pas atteints au même moment.
+3.
+Une transformation quelconque des (ti) transforme en général la courbe et sa
+représentation. En revanche si il s'agit d'une transformation affine, seule
+la courbe est changée mais sa réprésentation non (il y a seulement un
+décallage et une dilatation temporelle).
 
-% On pourrait choisir de bons temps de passage en les faisant dépendre de
-% la distance à parcourir par exemple, ou alors en utilisant les abscisses
-% de Thebitchev qui permettent d'obtenir la meilleur approximation
-% polynomiale.
-
+4.
+L'idée pour choisir de bons paramètres est de tenir compte de l'écart entre
+les points à interpoler. L'utilisation des abcisses de Tchebitchev permet
+en outre d'optimiser le choix des abcisses pour éviter d'obtenir une courbe
+irrégulière.
