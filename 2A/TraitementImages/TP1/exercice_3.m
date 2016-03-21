@@ -11,29 +11,32 @@ T_0 = 1.0;
 q_max = 150;
 alpha = 0.99;
 beta = 1.0;
-intervalle_entre_affichages = 10;
+intervalle_entre_affichages = 2;
 temps_affichage = 0.01;
 nb_voisins = 8;
 
 % Lecture et affichage de l'image d'origine :
-I = imread('Images/image.bmp');
+I = imread('Images/guadeloupe.jpg');
 I = double(I);
-[nb_lignes,nb_colonnes] = size(I);
+R = I(:,:,1);
+V = I(:,:,2);
+B = I(:,:,3);
+[nb_lignes,nb_colonnes,nb_couleurs] = size(I);
 figure('Name','Image a segmenter','Position',[0,0,0.33*L,0.3*L]);
-imagesc(I);
+imagesc(I / 255);
 axis equal;
 axis off;
-colormap gray;
+size(I)
 
 % Apprentissage des parametres des classes de pixels :
 N = 6;
 disp(['Selectionnez ' num2str(N) ' echantillons']);
-moyennes_ecarts_types = estimation(I,N,couleurs);
+[moyenne, inv_var_cov, log_det_var_cov] = estimation_RVB(I,N,couleurs);
 
-% Permutation des classes pour pouvoir calculer le pourcentage de bonnes classifications :
-[valeurs,indices] = sort(moyennes_ecarts_types(:,1),'ascend');
-moyennes_ecarts_types = moyennes_ecarts_types(indices,:);
-couleurs = couleurs(indices,:);
+% % Permutation des classes pour pouvoir calculer le pourcentage de bonnes classifications :
+% [valeurs,indices] = sort(moyennes_ecarts_types(:,1),'ascend');
+% moyennes_ecarts_types = moyennes_ecarts_types(indices,:);
+% couleurs = couleurs(indices,:);
 
 % Initialisation aleatoire des classes :
 k = zeros(nb_lignes,nb_colonnes);
@@ -84,11 +87,15 @@ for q = 1:q_max
             end
             
             % Calcul de l'énergie courante et de l'énergie nouvelle
-            UCour = log(moyennes_ecarts_types(k(i,j), 2));
-            UCour = UCour + 1/2*((I(i,j) - moyennes_ecarts_types(k(i,j), 1)) / moyennes_ecarts_types(k(i,j), 2))^2;
+            x_moins_moyenne_k = permute(I(i,j), [3 1 2]) - moyenne(k(i,j))';
+            inv_var_cov_k = permute(inv_var_cov(k(i,j)), [2 3 1]);
+            UCour = log_det_var_cov(k(i,j));
+            UCour = UCour + 1/2*x_moins_moyenne_k'*inv_var_cov_k*x_moins_moyenne_k;
             UCour = UCour + beta_q * sCour;
-            UNouv = log(moyennes_ecarts_types(ks    , 2));
-            UNouv = UNouv + 1/2*((I(i,j) - moyennes_ecarts_types(ks    , 1)) / moyennes_ecarts_types(ks    , 2))^2;
+            x_moins_moyenne_ks = permute(I(i,j), [3 1 2]) - moyenne(ks)';
+            inv_var_cov_ks = permute(inv_var_cov(ks), [2 3 1]);
+            UNouv = log_det_var_cov(ks);
+            UNouv = UNouv + 1/2*x_moins_moyenne_ks'*inv_var_cov_ks*x_moins_moyenne_ks;
             UNouv = UNouv + beta_q * sNouv;
             
             % Mise à jour de n'énergie courante
@@ -118,8 +125,3 @@ for q = 1:q_max
     % Mise à jour de T
     T = alpha*T;
 end
-
-% Calcul du pourcentage de pixels correctement classes :
-load classification_OK;
-pixels_correctement_classes = find(k==y2);
-disp(['Pixels correctement classes : ' num2str(100*length(pixels_correctement_classes(:))/(nb_lignes*nb_colonnes),'%.2f') ' %']);

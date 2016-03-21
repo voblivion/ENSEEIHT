@@ -16,7 +16,7 @@ temps_affichage = 0.01;
 nb_voisins = 8;
 
 % Lecture et affichage de l'image d'origine :
-I = imread('Images/image.bmp');
+I = rgb2gray(imread('Images/guadeloupe.jpg'));
 I = double(I);
 [nb_lignes,nb_colonnes] = size(I);
 figure('Name','Image a segmenter','Position',[0,0,0.33*L,0.3*L]);
@@ -118,8 +118,3 @@ for q = 1:q_max
     % Mise à jour de T
     T = alpha*T;
 end
-
-% Calcul du pourcentage de pixels correctement classes :
-load classification_OK;
-pixels_correctement_classes = find(k==y2);
-disp(['Pixels correctement classes : ' num2str(100*length(pixels_correctement_classes(:))/(nb_lignes*nb_colonnes),'%.2f') ' %']);
