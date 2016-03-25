@@ -95,15 +95,15 @@ while abs(n_1-n_1_precedent)/n_1>seuil
 	% Calcul des vraisemblances des donnees relativement aux deux lois normales estimees :
 	inv_Sigma_1 = inv(Sigma_1);
 	a_1 = inv_Sigma_1(1,1);
-	b_1 = inv_Sigma_1(2,2);
-	c_1 = inv_Sigma_1(1,2);
+	b_1 = inv_Sigma_1(1,2);
+	c_1 = inv_Sigma_1(2,2);
 	x_donnees_centrees_1 = x_donnees-x_mu_1;
 	y_donnees_centrees_1 = y_donnees-y_mu_1;
 	vraisemblances_classe_1 = pi_1 / (2*pi*(a_1*c_1-b_1^2)) * exp(- (a_1 * x_donnees_centrees_1.^2 + 2 * b_1 * x_donnees_centrees_1 .* y_donnees_centrees_1 + c_1 * y_donnees_centrees_1.^2) / 2);
     inv_Sigma_2 = inv(Sigma_2);
 	a_2 = inv_Sigma_2(1,1);
-	b_2 = inv_Sigma_2(2,2);
-	c_2 = inv_Sigma_2(1,2);
+	b_2 = inv_Sigma_2(1,2);
+	c_2 = inv_Sigma_2(2,2);
 	x_donnees_centrees_2 = x_donnees-x_mu_2;
 	y_donnees_centrees_2 = y_donnees-y_mu_2;
 	vraisemblances_classe_2 = pi_2 / (2*pi*(a_2*c_2-b_2^2)) * exp(- (a_2 * x_donnees_centrees_2.^2 + 2 * b_2 * x_donnees_centrees_2 .* y_donnees_centrees_2 + c_2 * y_donnees_centrees_2.^2) / 2);

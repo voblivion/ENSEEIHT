@@ -3,17 +3,17 @@ close all;
 
 % Parametres
 nb_tirages = 500;
-nb_classes = 6;
+nb_classes = 2;
 
 load donnees_reelles;
 
 % Affichage de l'image en niveaux de gris :
-% f1 = figure('Name','Image reelle','Position',[0,0,0.33*L,0.5*H]);
-% imagesc(I);
-% axis equal;
-% axis off;
-% colormap gray;
-% drawnow;
+f1 = figure('Name','Image reelle','Position',[0,0,0.33*L,0.5*H]);
+imagesc(I);
+axis equal;
+axis off;
+colormap gray;
+drawnow;
 
 % Parametres :
 n = length(x_donnees);
@@ -43,7 +43,6 @@ for k = 1:nb_classes
     vs(k, :, :) = permute(v, [2 3 1]);
 end
 vs = vs(:, :, transpose(find(all(sum(vs, 2) > 10^-5, 1))));
-size(vs)
 % Calcul du mélange des vraisemblances
 vraisemblances_melange = sum(vs, 1);
 arguments = sum(log(vraisemblances_melange), 2);
