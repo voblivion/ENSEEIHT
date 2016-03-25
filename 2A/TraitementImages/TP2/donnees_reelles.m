@@ -5,8 +5,9 @@ L = taille_ecran(3);
 H = taille_ecran(4);
 
 % Lecture et affichage d'une image en niveaux de gris :
-%I = imread('Images/lauren.png');
+% I = imread('Images/lauren.png');
 I = imread('Images/zebre.jpg');
+% I = imread('Images/image.bmp');
 [nb_lignes,nb_colonnes,nb_canaux] = size(I);
 I = reshape(I(:,:,1),nb_lignes,nb_colonnes);
 figure('Name','Image reelle','Position',[0,0,0.33*L,0.5*H]);

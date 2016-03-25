@@ -67,105 +67,133 @@ score_2_courant = 0;
 score_2_nouveau = 1;
 seuil = 0.001;
 k = 1;
-% while abs(score_1_nouveau-score_1_courant)>seuil | abs(score_2_nouveau-score_2_courant)>seuil
-% 
-% 	% Calcul des probabilites d'appartenance a la premiere classe :
-% 	...
-% 	probabilite_P_i_1 = ...
-% 
-% 	% Calcul des probabilites d'appartenance a la deuxieme classe :
-% 	...
-% 	probabilite_P_i_2 = ...
-% 
-% 	% Normalisation des probabilites :
-% 	somme_probabilites = probabilite_P_i_1+probabilite_P_i_2;
-% 	non_nul = find(somme_probabilites~=0);
-% 	probabilite_P_i_1(non_nul) = probabilite_P_i_1(non_nul)./somme_probabilites(non_nul);
-% 	probabilite_P_i_2(non_nul) = probabilite_P_i_2(non_nul)./somme_probabilites(non_nul);
-% 	nul = find(somme_probabilites==0);
-% 	probabilite_P_i_1(nul) = 0.5;
-% 	probabilite_P_i_2(nul) = 0.5;
-% 
-% 	% Partition des donnees :
-% 	indices_1 = find(probabilite_P_i_1>=probabilite_P_i_2);
-% 	donnees_bruitees_1 = donnees_bruitees(:,indices_1);
-% 	indices_2 = find(probabilite_P_i_1<probabilite_P_i_2);
-% 	donnees_bruitees_2 = donnees_bruitees(:,indices_2);
-% 
-% 	% Affichage de la partition :
-% 	if k==1
-% 		figure('Name','Partition des donnees','Position',[0.33*L,0,0.33*L,0.5*H]);
-% 	else
-% 		figure(2);
-% 	end
-% 	hx = xlabel('$x$','FontSize',20);
-% 	set(hx,'Interpreter','Latex');
-% 	hy = ylabel('$y$','FontSize',20);
-% 	set(hy,'Interpreter','Latex');
-% 	affichage_ellipse(C_1,theta_1,a_1,b_1,theta_points_ellipse,'c-');
-% 	hold on;
-% 	plot(donnees_bruitees_1(1,:),donnees_bruitees_1(2,:),'c*');
-% 	affichage_ellipse(C_2,theta_2,a_2,b_2,theta_points_ellipse,'m-');
-% 	plot(donnees_bruitees_2(1,:),donnees_bruitees_2(2,:),'m*');
-% 	axis equal;
-% 	axis(echelle);
-% 	legend('Densite estimee 1','Classe 1','Densite estimee 2','Classe 2','Location','Best');
-% 	hold off;
-% 
-% 	% Mise a jour des proportions :
-% 	pi_1 = sum(probabilite_P_i_1)/n;
-% 	pi_2 = sum(probabilite_P_i_2)/n;
-% 	pi_1_sur_sigma_1 = pi_1/sigma_1;
-% 	pi_2_sur_sigma_2 = pi_2/sigma_2;
-% 
-% 	% Estimation des parametres des ellipses correspondant aux deux classes (moindres carres ponderes) :
-% 	...
-% 
-% 	% Affichage du resultat :
-% 	if k==1
-% 		figure('Name','Resultat de l''estimation','Position',[0.66*L,0,0.33*L,0.5*H]);
-% 	else
-% 		figure(3);
-% 	end
-% 	hx = xlabel('$x$','FontSize',20);
-% 	set(hx,'Interpreter','Latex');
-% 	hy = ylabel('$y$','FontSize',20);
-% 	set(hy,'Interpreter','Latex');
-% 	plot(x,y,'r*');
-% 	hold on;
-% 
-% 	% Correspondance entre ellipses et calcul des scores :
-% 	score_1_1 = scores(F_1_1_reel,F_2_1_reel,a_1_reel,F_1_1,F_2_1,a_1);
-% 	score_2_2 = scores(F_1_2_reel,F_2_2_reel,a_2_reel,F_1_2,F_2_2,a_2);
-% 	score_sans_echange = (score_1_1+score_2_2)/2;
-% 	score_2_1 = scores(F_1_2_reel,F_2_2_reel,a_2_reel,F_1_1,F_2_1,a_1);
-% 	score_1_2 = scores(F_1_1_reel,F_2_1_reel,a_1_reel,F_1_2,F_2_2,a_2);
-% 	score_avec_echange = (score_2_1+score_1_2)/2;
-% 	disp(['Tour de boucle numero ' num2str(k) ' :']);
-% 	if score_sans_echange>score_avec_echange
-% 		affichage_ellipse(C_1,theta_1,a_1,b_1,theta_points_ellipse,'b-');
-% 		affichage_ellipse(C_2,theta_2,a_2,b_2,theta_points_ellipse,'g-');
-% 		disp(['Score ellipse 1 = ' num2str(score_1_1,'%.3f')]);
-% 		disp(['Score ellipse 2 = ' num2str(score_2_2,'%.3f')]);
-% 		score_1_courant = score_1_nouveau;
-% 		score_1_nouveau = score_1_1;
-% 		score_2_courant = score_2_nouveau;
-% 		score_2_nouveau = score_2_2;
-% 	else
-% 		affichage_ellipse(C_2,theta_2,a_2,b_2,theta_points_ellipse,'b-');
-% 		affichage_ellipse(C_1,theta_1,a_1,b_1,theta_points_ellipse,'g-');
-% 		disp(['Score ellipse 1 = ' num2str(score_2_1,'%.3f')]);
-% 		disp(['Score ellipse 2 = ' num2str(score_1_2,'%.3f')]);
-% 		score_1_courant = score_1_nouveau;
-% 		score_1_nouveau = score_2_1;
-% 		score_2_courant = score_2_nouveau;
-% 		score_2_nouveau = score_1_2;
-% 	end
-% 	axis equal;
-% 	axis(echelle);
-% 	legend('Donnees bruitees','Ellipse estimee 1','Ellipse estimee 2','Location','Best');
-% 	hold off;
-% 
-% 	pause(0.5);
-% 	k = k+1;
-% end
+while abs(score_1_nouveau-score_1_courant)>seuil | abs(score_2_nouveau-score_2_courant)>seuil
+    
+    % Calcul de E_1_P_i
+	P_i_F_1_1 = donnees_bruitees-F_1_1*ones(1,n);
+	distances_P_i_F_1_1 = sqrt(sum(P_i_F_1_1.*P_i_F_1_1));
+	P_i_F_2_1 = donnees_bruitees-F_2_1*ones(1,n);
+	distances_P_i_F_2_1 = sqrt(sum(P_i_F_2_1.*P_i_F_2_1));
+	E_1_P_i = distances_P_i_F_1_1+distances_P_i_F_2_1-2*a_1;
+    
+    % Calcul de E_2_P_i
+	P_i_F_1_2 = donnees_bruitees-F_1_2*ones(1,n);
+	distances_P_i_F_1_2 = sqrt(sum(P_i_F_1_2.*P_i_F_1_2));
+	P_i_F_2_2 = donnees_bruitees-F_2_2*ones(1,n);
+	distances_P_i_F_2_2 = sqrt(sum(P_i_F_2_2.*P_i_F_2_2));
+	E_2_P_i = distances_P_i_F_1_2+distances_P_i_F_2_2-2*a_2;
+    
+
+	% Calcul des probabilites d'appartenance a la premiere classe :
+    probabilite_P_i_1 = pi_1_sur_sigma_1 * exp(-E_1_P_i.^2 / un_sur_2_sigma_1_carre);
+
+	% Calcul des probabilites d'appartenance a la deuxieme classe :
+	probabilite_P_i_2 = pi_2_sur_sigma_2 * exp(-E_2_P_i.^2 / un_sur_2_sigma_2_carre);
+    
+	% Normalisation des probabilites :
+	somme_probabilites = probabilite_P_i_1+probabilite_P_i_2;
+	non_nul = find(somme_probabilites~=0);
+	probabilite_P_i_1(non_nul) = probabilite_P_i_1(non_nul)./somme_probabilites(non_nul);
+	probabilite_P_i_2(non_nul) = probabilite_P_i_2(non_nul)./somme_probabilites(non_nul);
+	nul = find(somme_probabilites==0);
+	probabilite_P_i_1(nul) = 0.5;
+	probabilite_P_i_2(nul) = 0.5;
+
+	% Partition des donnees :
+	indices_1 = find(probabilite_P_i_1>=probabilite_P_i_2);
+	donnees_bruitees_1 = donnees_bruitees(:,indices_1);
+	indices_2 = find(probabilite_P_i_1<probabilite_P_i_2);
+	donnees_bruitees_2 = donnees_bruitees(:,indices_2);
+
+	% Affichage de la partition :
+	if k==1
+		figure('Name','Partition des donnees','Position',[0.33*L,0,0.33*L,0.5*H]);
+	else
+		figure(2);
+	end
+	hx = xlabel('$x$','FontSize',20);
+	set(hx,'Interpreter','Latex');
+	hy = ylabel('$y$','FontSize',20);
+	set(hy,'Interpreter','Latex');
+	affichage_ellipse(C_1,theta_1,a_1,b_1,theta_points_ellipse,'c-');
+	hold on;
+	plot(donnees_bruitees_1(1,:),donnees_bruitees_1(2,:),'c*');
+	affichage_ellipse(C_2,theta_2,a_2,b_2,theta_points_ellipse,'m-');
+	plot(donnees_bruitees_2(1,:),donnees_bruitees_2(2,:),'m*');
+	axis equal;
+	axis(echelle);
+	legend('Densite estimee 1','Classe 1','Densite estimee 2','Classe 2','Location','Best');
+	hold off;
+
+	% Mise a jour des proportions :
+	pi_1 = sum(probabilite_P_i_1)/n;
+	pi_2 = sum(probabilite_P_i_2)/n;
+	pi_1_sur_sigma_1 = pi_1/sigma_1;
+	pi_2_sur_sigma_2 = pi_2/sigma_2;
+
+	% Estimation des parametres des ellipses correspondant aux deux classes (moindres carres ponderes) :
+	A_1 = [1 0 1 0 0 0; repmat(probabilite_P_i_1', 1, 6) .* [x.^2 x.*y y.^2 x y ones(size(probabilite_P_i_1, 2), 1)]];
+    B_1 = [1; zeros(size(probabilite_P_i_1, 2), 1)];
+    [C_1,theta_1,a_1,b_1] = conversion(A_1\B_1);
+    e_1 = sqrt(1-b_1/a_1);
+    c_1 = e_1*a_1;
+    v_1 = [cos(theta_1) ; sin(theta_1)];
+    F_1_1 = C_1-c_1*v_1;
+    F_2_1 = C_1+c_1*v_1;
+	A_2 = [1 0 1 0 0 0; repmat(probabilite_P_i_2', 1, 6) .* [x.^2 x.*y y.^2 x y ones(size(probabilite_P_i_2, 2), 1)]];
+    B_2 = [1; zeros(size(probabilite_P_i_2, 2), 1)];
+    [C_2,theta_2,a_2,b_2] = conversion(A_2\B_2);
+    e_2 = sqrt(1-b_2/a_2);
+    c_2 = e_2*a_2;
+    v_2 = [cos(theta_2) ; sin(theta_2)];
+    F_1_2 = C_2-c_2*v_2;
+    F_2_2 = C_2+c_2*v_2;
+
+	% Affichage du resultat :
+	if k==1
+		figure('Name','Resultat de l''estimation','Position',[0.66*L,0,0.33*L,0.5*H]);
+	else
+		figure(3);
+	end
+	hx = xlabel('$x$','FontSize',20);
+	set(hx,'Interpreter','Latex');
+	hy = ylabel('$y$','FontSize',20);
+	set(hy,'Interpreter','Latex');
+	plot(x,y,'r*');
+	hold on;
+
+	% Correspondance entre ellipses et calcul des scores :
+	score_1_1 = scores(F_1_1_reel,F_2_1_reel,a_1_reel,F_1_1,F_2_1,a_1);
+	score_2_2 = scores(F_1_2_reel,F_2_2_reel,a_2_reel,F_1_2,F_2_2,a_2);
+	score_sans_echange = (score_1_1+score_2_2)/2;
+	score_2_1 = scores(F_1_2_reel,F_2_2_reel,a_2_reel,F_1_1,F_2_1,a_1);
+	score_1_2 = scores(F_1_1_reel,F_2_1_reel,a_1_reel,F_1_2,F_2_2,a_2);
+	score_avec_echange = (score_2_1+score_1_2)/2;
+	disp(['Tour de boucle numero ' num2str(k) ' :']);
+	if score_sans_echange>score_avec_echange
+		affichage_ellipse(C_1,theta_1,a_1,b_1,theta_points_ellipse,'b-');
+		affichage_ellipse(C_2,theta_2,a_2,b_2,theta_points_ellipse,'g-');
+		disp(['Score ellipse 1 = ' num2str(score_1_1,'%.3f')]);
+		disp(['Score ellipse 2 = ' num2str(score_2_2,'%.3f')]);
+		score_1_courant = score_1_nouveau;
+		score_1_nouveau = score_1_1;
+		score_2_courant = score_2_nouveau;
+		score_2_nouveau = score_2_2;
+	else
+		affichage_ellipse(C_2,theta_2,a_2,b_2,theta_points_ellipse,'b-');
+		affichage_ellipse(C_1,theta_1,a_1,b_1,theta_points_ellipse,'g-');
+		disp(['Score ellipse 1 = ' num2str(score_2_1,'%.3f')]);
+		disp(['Score ellipse 2 = ' num2str(score_1_2,'%.3f')]);
+		score_1_courant = score_1_nouveau;
+		score_1_nouveau = score_2_1;
+		score_2_courant = score_2_nouveau;
+		score_2_nouveau = score_1_2;
+	end
+	axis equal;
+	axis(echelle);
+	legend('Donnees bruitees','Ellipse estimee 1','Ellipse estimee 2','Location','Best');
+	hold off;
+
+	pause(0.5);
+	k = k+1;
+end
