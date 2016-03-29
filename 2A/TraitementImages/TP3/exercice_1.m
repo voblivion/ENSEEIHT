@@ -37,6 +37,6 @@ for i = 1:length(image)
 	imagesc(S);
 	axis off;
 	axis equal;
-%	nb_regions = comptage(...);
-%	title([num2str(nb_regions) ' regions detectees'],'Interpreter','Latex','FontSize',20);
+	nb_regions = comptage(S, 4);
+	title([num2str(nb_regions) ' regions detectees'],'Interpreter','Latex','FontSize',20);
 end
