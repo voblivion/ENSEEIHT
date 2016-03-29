@@ -31,12 +31,16 @@ for i = 1:length(image)
 	drawnow;
 
 	[S,k] = meanshift(I,T,h,k_max,epsilon);
+    
+    S = simplifier(S, 0.1);
+    
 	disp([nom_fichier ' : ' num2str(k) ' iterations']);
     figure(f)
 	subplot(1,2,2);
 	imagesc(S);
 	axis off;
 	axis equal;
-	nb_regions = comptage(S, 1);
+    
+	nb_regions = comptage(S, 8);
 	title([num2str(nb_regions) ' regions detectees'],'Interpreter','Latex','FontSize',20);
 end

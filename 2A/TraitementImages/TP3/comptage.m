@@ -1,6 +1,6 @@
 function p = comptage(I, min_size)
 
-[n, m, o] = size(I);
+[n, m, o] = size(I); %#ok<ASGLU>
 P = zeros(n, m);
 
 p = 0;
@@ -16,7 +16,7 @@ for i = 1:n
             voisins_check = [];
             % Ajout des voisins à vérifier
             if i > 1 && P(i-1, j) == 0
-                voisins = [voisins [i-1; j]]; %#ok<*AGROW,*NASGU>
+                voisins = [voisins [i-1; j]]; %#ok<*AGROW>
                 voisins_check = [voisins_check [i-1; j]];
             end
             if i < n && P(i+1, j) == 0
@@ -49,7 +49,7 @@ for i = 1:n
                                 end
                             end
                             if ~check
-                                voisins_nouv = [voisins_nouv [ii-1; jj]]; %#ok<*AGROW,*NASGU>
+                                voisins_nouv = [voisins_nouv [ii-1; jj]];
                                 voisins_check = [voisins_check [ii-1; jj]];
                             end
                         end
