@@ -16,63 +16,40 @@ barycenters = zeros(size(faces, 1), size(vertices, 2));
 % Itérer selon les faces
 for f = 1:size(faces, 1)
     face = faces(f, :);
-    
-    % Récupérer les voisins sur les faces avec un côté en commun
-    vertices_2 = [];
-    % Itérer selon les côtés
+
+    % Calcul du nombre d'apparition de chaque voisin
+    weights = zeros(size(vertices, 1), 1);
     for v = 1:size(face, 2)
-        % Recherche d'une face ayant seulement le côté courant en commun
-        is = [1+mod(v+1, size(face, 2)) 1+mod(v+2, size(face, 2))];
-        with = face(is);
-        without = face(setdiff(1:size(face, 2), is));
-        neighbors = faces(findFaces(faces, with, without), :);
-        neighbors = neighbors(:)';
-        
-        % Rajouter ses sommets à ceux voisins
-        vertices_2 = [vertices_2 neighbors]; %#ok<AGROW>
+        ns = findNeighbors(face, face(v));
+        for n = 1:length(ns)
+            weights(ns(n)) = weights(ns(n)) + 1;
+        end
     end
-    % Retirer les sommets "traités"
-    vertices_2 = setdiff(vertices_2, face);
-    
-    % Récupérer les voisins sur les faces avec un sommet en commun
-    vertices_1 = [];
-    % Itérer selon les sommets
     for v = 1:size(face, 2)
-        % Recherche d'une face ayant seulement le sommet courant en commun
-        with = face(v);
-        without = face([1:v-1 v+1:3]);
-        neighbors = faces(findFaces(faces, with, without), :);
-        neighbors = neighbors(:)';
-        
-        % Rajouter ses sommets à ceux voisins
-        vertices_2 = [vertices_2 neighbors]; %#ok<AGROW>
+        weights(face(v)) = 0;
     end
-    % Retirer les sommets "traités"
-    vertices_1 = setdiff(vertices_1, [face vertices_2]);
-    
-    % Création du nouveau barycentre
-    b_0 = sum(vertices(face, :), 1);
-    a_0 = 32;
-    if ~isempty(vertices_2)
-        b_1 = sum(vertices(vertices_2, :), 1);
-        a_1 = -1;
-    else
-        b_1 = 0;
-        a_1 = 0;
+
+    % Calcul des sous-barycentres
+    sub_barycenters = zeros(size(face, 1), size(vertices, 2));
+    for v = 1:size(face, 2)
+        ns = findNeighbors(faces, face(v));
+        w = 32;
+        ws = zeros(size(ns));
+        for n = 1:length(ns)
+            ws(n) = - weights(ns(n)) * 2^(weights(ns(n)) - 1);
+        end
+        w_total = w + sum(ws);
+        sub_barycenters(v, :) = w/w_total * vertices(face(v), :);
+        for n = 1:length(ns)
+            sub_barycenters(v, :) = sub_barycenters(v, :) + ws(n)/w_total * vertices(ns(n), :);
+        end
     end
-    if ~isempty(vertices_1)
-        b_2 = sum(vertices(vertices_1, :), 1);
-        a_2 = -2;
-    else
-        b_2 = 0;
-        a_2 = 0;
-    end
-    total = a_0*length(face) + a_1*length(vertices_2) + a_2*length(vertices_1);
-    barycenters(f, :) = a_0/total*b_0+a_1/total*b_1+a_2/total*b_2;
+
+    barycenters(f, :) = sum(sub_barycenters) / size(sub_barycenters, 1);
 end
 new_vertices = [vertices; barycenters];
 
-%% Calcul des nouvelles faces
+%% Calcul des nouvelleaaaais faces
 processed_faces = zeros(size(faces, 1), 1);
 new_faces = zeros(size(faces, 1) * 3, 3);
 n_f = 1;

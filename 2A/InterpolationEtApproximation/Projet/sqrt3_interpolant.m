@@ -4,9 +4,9 @@ figure('Name', 'Interpolation sqrt(3)');
 
 %% Mesh à interpoler
 % mesh_triangle;
-% mesh_double_triangle;
+mesh_double_triangle;
 % mesh_trepied;
-mesh_chapiteau;
+% mesh_chapiteau;
 % mesh_tetraedre;
 
 %% Nombre d'itérations
@@ -23,7 +23,7 @@ iter = 3;
 trimesh(faces, vertices(:, 1), vertices(:, 2), vertices(:, 3));
 
 %% Interpolation
-[v, f] = s3i(vertices, faces, iter);
+[v, f] = s3i(vertices, faces, iter)
 
 %% Affichage de l'interpolation
 % for k = 1:size(f, 1)
