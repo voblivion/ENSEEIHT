@@ -1,0 +1,40 @@
+node robot_concret (
+    capteur_1: bool;
+    capteur_2: bool;
+    capteur_3: bool;
+    capteur_4: bool;
+)
+returns (
+    Avant_A, Arriere_A: bool;
+    Vitesse_A: int;
+    Avant_B, Arriere_B: bool;
+    Vitesse_B: int;
+    Avant_C, Arriere_C: bool;
+    Vitesse_C: int;
+)
+let
+    Vitesse_A = 100;
+    Vitesse_B = 0;
+    Vitesse_C = 100;
+    Avant_B = false;
+    Arriere_B = false;
+
+    Arriere_C = false -> one_then_n(50, capteur_4) or one_then_n(80, capteur_1);
+    Arriere_A = false -> one_then_n(50, capteur_1) or one_then_n(80, capteur_4 and not capteur_1);
+    
+    Avant_A = not Arriere_A;
+    Avant_C = not Arriere_C;
+tel
+
+node one_then_n(const n: int; trigger: bool)
+returns (ok: bool)
+var
+    remaining_time: int;
+let
+    remaining_time = 0 -> if trigger
+        then n
+        else if pre(remaining_time) > 0
+        then pre(remaining_time) - 1
+        else 0;
+    ok = remaining_time <> 0;
+tel
