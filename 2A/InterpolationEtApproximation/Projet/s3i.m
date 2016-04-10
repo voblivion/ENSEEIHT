@@ -51,23 +51,23 @@ for f = 1:size(faces, 1)
     vertices_1 = setdiff(vertices_1, [face vertices_2]);
     
     % Création du nouveau barycentre
-    b_0 = sum(vertices(face, :), 1) / length(face);
+    b_0 = sum(vertices(face, :), 1);
     a_0 = 32;
     if ~isempty(vertices_2)
-        b_1 = sum(vertices(vertices_2, :), 1) / length(vertices_2);
-        a_1 = -4;
+        b_1 = sum(vertices(vertices_2, :), 1);
+        a_1 = -1;
     else
         b_1 = 0;
         a_1 = 0;
     end
     if ~isempty(vertices_1)
-        b_2 = sum(vertices(vertices_1, :), 1) / length(vertices_1);
-        a_2 = -1;
+        b_2 = sum(vertices(vertices_1, :), 1);
+        a_2 = -2;
     else
         b_2 = 0;
         a_2 = 0;
     end
-    total = a_0 + a_1 + a_2;
+    total = a_0*length(face) + a_1*length(vertices_2) + a_2*length(vertices_1);
     barycenters(f, :) = a_0/total*b_0+a_1/total*b_1+a_2/total*b_2;
 end
 new_vertices = [vertices; barycenters];
