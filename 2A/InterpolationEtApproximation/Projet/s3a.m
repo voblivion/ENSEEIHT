@@ -1,5 +1,5 @@
 function [vertices, faces] = s3a(vertices, faces, iter)
-% S3A - find faces containing with and not without.
+% S3A - approximate tri-surface using sqrt-3 algorithm
 % 
 % [vertices, faces] = s3a(vertices, faces, iter)
 %
@@ -19,7 +19,7 @@ end
 end
 
 function [vertices, faces] = aux(vertices, faces)
-% Auxiliary function that process on iteration (2 ?)
+% Auxiliary function that process one iteration
 
 %% Calcul des nouveaux somments
 barycenters = zeros(size(faces, 1), size(vertices, 2));

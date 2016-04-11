@@ -1,8 +1,17 @@
-%%
-% P : i x j x coords
-
 function [vertices, faces] = s3i(vertices, faces, iter)
-
+% S3I - interpolate tri-surface using sqrt-3 algorithm
+% 
+% [vertices, faces] = s3a(vertices, faces, iter)
+%
+% INPUT:
+%     vertices: matrix whom lines represents vertices coordinates.
+%     faces: matrix whom lines represents faces and each line contains
+%            indices of its vertices.
+%     iter: number of iterations.
+%
+% OUTPUT:
+%     vertices: new vertices.
+%     faces: new faces.
 for i = 1:iter
     [vertices, faces] = aux(vertices, faces);
 end
@@ -10,6 +19,7 @@ end
 end
 
 function [vertices, faces] = aux(vertices, faces)
+% Auxiliary function that process one iteration
 
 %% Calcul des nouveaux somments
 barycenters = zeros(size(faces, 1), size(vertices, 2));
@@ -20,7 +30,7 @@ for f = 1:size(faces, 1)
     % Calcul du nombre d'apparition de chaque voisin
     weights = zeros(size(vertices, 1), 1);
     for v = 1:size(face, 2)
-        ns = findNeighbors(face, face(v));
+        ns = findNeighbors(faces, face(v));
         for n = 1:length(ns)
             weights(ns(n)) = weights(ns(n)) + 1;
         end
@@ -28,7 +38,6 @@ for f = 1:size(faces, 1)
     for v = 1:size(face, 2)
         weights(face(v)) = 0;
     end
-
     % Calcul des sous-barycentres
     sub_barycenters = zeros(size(face, 1), size(vertices, 2));
     for v = 1:size(face, 2)
@@ -36,7 +45,7 @@ for f = 1:size(faces, 1)
         w = 32;
         ws = zeros(size(ns));
         for n = 1:length(ns)
-            ws(n) = - weights(ns(n)) * 2^(weights(ns(n)) - 1);
+            ws(n) = - weights(ns(n))^2;
         end
         w_total = w + sum(ws);
         sub_barycenters(v, :) = w/w_total * vertices(face(v), :);
