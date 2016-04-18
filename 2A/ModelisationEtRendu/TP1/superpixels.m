@@ -43,4 +43,5 @@ function [idx, C] = superpixels(I, k, m, maxiter)
     
     %% Modification inverse des données
     C(:, 1:2) = C(:, 1:2) * S / m;
+    idx = reshape(idx, size(I, 2), size(I, 1))';
 end
