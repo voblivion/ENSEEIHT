@@ -34,7 +34,7 @@ axis ij;
 title('Image originale','FontSize',20);
 
 % Calcul de la zone a restaurer :
-D = u0(:,:,1) > 255 & u0(:,:,2) > 255;
+D = u0(:,:,1) >= 255 & u0(:,:,2) >= 255;
 XhiD = D(:);
 
 % Affichage de la zone a restaurer :
