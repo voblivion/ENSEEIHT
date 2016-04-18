@@ -1,0 +1,1 @@
+% Affichage des résultats de l'étude de la transformée de Fourier
