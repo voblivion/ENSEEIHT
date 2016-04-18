@@ -6,9 +6,9 @@ figure('Name', 'Interpolation sqrt(3)');
 % mesh_triangle;
 % mesh_double_triangle;
 % mesh_trepied;
-% mesh_chapiteau;
+ mesh_chapiteau;
 % mesh_tetraedre;
-mesh_dome;
+% mesh_dome;
 
 %% Nombre d'itérations
 iter = 3;
