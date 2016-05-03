@@ -1,16 +1,13 @@
 % RGB2LUV conversion RGB vers LUV
-
-function luv = rgb2luv( rgb )
+function luv = rgb2luv(rgb)
 
 % Conversion en XYZ :
-
 XYZ = [0.4125,  0.3576,  0.1804; ...
        0.2125,  0.7154,  0.0721; ...
        0.0193,  0.1192,  0.9502];
 xyz = XYZ*rgb;
 
 % Conversion en LUV :
-
 luv = xyz;
 Yn = 1;
 Lt = 0.008856;
@@ -28,5 +25,4 @@ luv(2,:) = 13*luv(1,:).*(u_prime-Un_prime);
 luv(3,:) = 13*luv(1,:).*(v_prime-Vn_prime);
 
 % Suppression des NaNs :
-
 luv(find(isnan(luv))) = 0;
