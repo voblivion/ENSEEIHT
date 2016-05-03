@@ -23,3 +23,20 @@
 %jobj.comp_info,
 %jobj.progressive_mode
 %
+clear;
+path = 'Images/Lena.jpg';
+
+I = imread(path);
+imshow(I);
+
+jobj = jpeg_read(path);
+coeffs = cell2mat(jobj.coef_arrays);
+nlin = size(coeffs, 1);
+ncol = size(coeffs, 2);
+J = zeros(nlin, ncol);
+for i = 1:8:nlin
+    for j = 1:8:ncol
+        J(i:i+7, j:j+7) = coeffs(i, j);
+    end
+end
+imagesc(J);
