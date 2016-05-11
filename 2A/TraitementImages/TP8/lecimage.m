@@ -11,3 +11,15 @@ else
 	disp('ERREUR')
 	return
 end
+figure('Name', 'Image originale');
+imshow(im/255);
+
+% Transformation en ihs
+im_ihs = rgb2ihs(im);
+figure('Name', 'Image ihs');
+imshow(im_ihs(:,:,3));
+
+% Transformation inverse en rgb
+im_rgb = ihs2rgb(im_ihs);
+figure('Name', 'Image inverse rgb');
+imshow(im_rgb/255);
