@@ -1,0 +1,8 @@
+function representation_temps_frequence_centree = centrage(representation_temps_frequence)
+
+% Recentrage de la frequence nulle :
+nb_echantilllons_en_frequence = size(representation_temps_frequence,1);
+nb_echantilllons_en_frequence_sur_2 = floor(size(representation_temps_frequence,1)/2);
+representation_temps_frequence_frequences_positives = representation_temps_frequence(1:nb_echantilllons_en_frequence_sur_2,:);
+representation_temps_frequence_frequences_negatives = representation_temps_frequence(nb_echantilllons_en_frequence-nb_echantilllons_en_frequence_sur_2+1: nb_echantilllons_en_frequence,:);
+representation_temps_frequence_centree = [representation_temps_frequence_frequences_negatives ; representation_temps_frequence_frequences_positives];
