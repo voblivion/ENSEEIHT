@@ -5,5 +5,5 @@
 	path = 2A/Intergiciel/Projet
 	url = git@git.inpt.fr:inp-net/tresorerie.git
 [submodule "2A/ModelisationEtRendu/TP2"]
-        path = 2A/ModelisationEtRendu/TP2
-        url = git@github.com:ModelisationEtRendu/TP2.git
+	path = 2A/ModelisationEtRendu/TP2
+	url = git@github.com:ModelisationEtRendu/TP2.git
