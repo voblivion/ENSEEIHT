@@ -20,12 +20,10 @@ for i = 1:nb_mesures
             max_spectre(k) = 0;
         end
     end
-    k1 = 
-    k2 = 
     
-	% Lignes utiles pour le script synthese.m :
-	indices_max = [indices_max indices(1:n)];
-	valeurs_sonagramme_a_conserver = [valeurs_sonagramme_a_conserver max_spectre];
+    % Lignes utiles pour le script synthese.m :
+    indices_max = [indices_max indices(1:n)];
+    valeurs_sonagramme_a_conserver = [valeurs_sonagramme_a_conserver max_spectre];
 end
 
 save exercice_4;
