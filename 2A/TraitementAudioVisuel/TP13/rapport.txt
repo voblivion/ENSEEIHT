@@ -1,0 +1,5 @@
+# Exercice 1
+La moyenne n'est pas un bon moyen pour distinguer trois espèces de fleurs
+car dans cet exemple les moyennes des euillets et des pensées sont
+presque les mêmes. Cependant on espère pour l'instant que la plus grande
+dispersion des pensées permettra de les distinguer.
