@@ -59,13 +59,11 @@ for i = 1:nb_bandes
     [maxs,ids] = max(sonagramme(indices_bornes(i):indices_bornes(i+1)-1, :));
     S = mean(maxs) + std(maxs);
     for j = 1:length(maxs)
-        if maxima(j) >= S
+        if maxs(j) >= S
             empreinte_sonore = [empreinte_sonore; valeurs_t(j) valeurs_f_sonagramme(ids(j)+indices_bornes(i)-1)];
         end
     end
 end
-
-
 
 % Affichage de l'empreinte sonore :
 figure('Name','Empreinte sonore','Position',[0.5*L,0,0.5*L,0.67*H]);
@@ -78,4 +76,25 @@ axis([valeurs_t(1) valeurs_t(end) 0 log(f_max/f_min)]);
 hold on;
 for b = 2:length(indices_bornes)-1
 	plot([valeurs_t(1) valeurs_t(end)],[log(bornes(b)/bornes(1)) log(bornes(b)/bornes(1))],'-r');
+end
+
+%% Calcul de la distance de l'extrait à l'empreinte dans nuages.mat
+[distance, padding, indices] = score(empreinte_sonore, empreinte_sonore_nuages);
+empreinte_sonore(:, 1) = empreinte_sonore(:, 1) + padding;
+
+% Affichage de l'extrait replacé
+f = figure('Name', 'Extrait replacé et morceau');
+plot(empreinte_sonore_nuages(:,1),log(empreinte_sonore_nuages(:,2)/f_min),...
+    'o','MarkerEdgeColor','b','MarkerFaceColor','b','MarkerSize',5);
+hold on;
+pause(2);
+figure(f);
+plot(empreinte_sonore(:,1),log(empreinte_sonore(:,2)/f_min),...
+    'o','MarkerEdgeColor','g','MarkerFaceColor','g','MarkerSize',5);
+for j = 1:size(empreinte_sonore, 1)
+    i = indices(j);
+    dx = [empreinte_sonore_nuages(i, 1); empreinte_sonore(j, 1)];
+    dy = log([empreinte_sonore_nuages(i, 2); empreinte_sonore(j, 2)]/f_min);
+    figure(f);
+    plot(dx, dy);
 end
