@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[frenchb]{babel}
+\usepackage{graphicx}
+
+\title{Traitement des données Audio-Visuelle\\Projet}
+\author{Victor Drouin Viallard}
+
+\begin{document}
+
+\maketitle
+\clearpage
+\tableofcontents
+\clearpage
+
+% Figures
+% \begin{figure}[h] <-- rendered as soon as possible
+%     \begin{center}
+%         \caption{\label{ex} Exemple}
+%         \includegraphics[scale=0.5]{image.png}
+%     \end{center}
+% \end{figure}
+% \ref{ex}
+
+\section{TP1 - Espaces de représentation des couleurs}
+\subsection{Exercice 1}
+\paragraph{Corrélation des espaces RVB}
+Ce premier exercice propose, sur une image particulière donnée, d'observer les corrélations existantes entre les différentes composantes colorimétriques. En effet, après calcul on obtient les coefficients de corrélation suivants entre les différentes couleurs~:
+\begin{itemize}
+    \item Rouge/Vert~: TODO
+    \item Rouge/Bleu~: TODO
+    \item Vert/Bleu~: TODO
+\end{itemize}
+
+\paragraph{Non corrélation locale}
+En outre, comme le suggère le sujet, on observe la disparition de l'arbre central de l'image sur sa composante bleu (figure~\ref{disparition_arbre}). Cela signifie que sur cette partie de l'image la corrélation entre la composante bleu et les autres composantes est assez faible.
+\begin{figure}[h]
+    \begin{center}
+        \caption{\label{disparition_arbre}Disparition de l'arbre central sur la composante bleu}
+        % \includegraphics[scale=1]{} TODO
+    \end{center}
+\end{figure}
+
+\paragraph{Contraste}
+Le calcul de la variance des différentes composantes puis du contraste de l'image permet d'observer son faible niveau. Il est de : TODO?
+
+\paragraph{Transformation d'une image couleur en image noir et blanc}
+Pour finir l'appel du script \emph{exercice\_2.m} sur l'image \emph{gantrycrane.png} permet, comme le laisse entendre le sujet, d'observer pourquoi le procédé de transformation d'une image couleur en image noir et blanc ne peut se faire par simple réduction à un canal choisi arbitrairement (figure~\ref{transmission_canal_bleu}). En effet, une image dont le contraste est, par exemple, dû à sa composante rouge ne pourra être transformée en noir et blanc en ne conservant que sa composante bleu sans quoi elle paraîtrait unie.
+\begin{figure}[h]
+    \begin{center}
+        \caption{\label{transmission_canal_bleu}Transformation en noir et blanc par conservation du canal bleu}
+        % \includegraphics[scale=1]{} TODO
+    \end{center}
+\end{figure}
+
+\subsection{Exercice 2}
+Lorem apsum 2
+
+\section{TP2}
+\subsection{Exercice 1}
+Lorem epsum
+
+\subsection{Exercice 2}
+Lorem opsum
+
+\section{TP3}
+\subsection{Exercice 1}
+Lorem upsum
+
+\subsection{Exercice 2}
+Lorem ypsum
+
+\end{document}
