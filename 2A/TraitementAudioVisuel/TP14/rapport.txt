@@ -1,0 +1,15 @@
+L'utilisation des spectres est très pertinante car elle permet d'améliorer
+sensiblement la qualité de la classification : elle passe de 71% à 89%.
+
+'a' :        1 4 1 1 1
+'e' :        8 7 8 8 8
+'e_aigu' :   2 2 9 9 9
+'e_grave' :  2 2 2 2 2
+'i' :        3 9 9 9 9
+'o' :        5 5 5 5 5
+'o_ouvert' : 4 4 4 4 4
+'ou' :       6 6 6 6 6
+'u' :        7 7 7 7 7
+
+Les sons i, é, et è sont confondus et mal distingués.
+Quelques soucis entre a et o_ouvert, et entre e et u.
