@@ -1,0 +1,11 @@
+# Exercice 1
+Erreur (moy. / 100 it.) : 0.796674
+
+# Exercice 2
+Erreur MC 1 (moy. / 100 it.) : 0.952745
+Erreur MC 2 (moy. / 100 it.) : 0.833167
+
+# Exercice 2
+Erreur MC 1 (moy. / 100 it.) : 0.964665
+Erreur MC 2 (moy. / 100 it.) : 0.861235
+Erreur MT (moy. / 100 it.) : 0.873797

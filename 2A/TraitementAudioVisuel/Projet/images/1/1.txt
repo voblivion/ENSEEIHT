@@ -1,0 +1,19 @@
+# Exercice 1
+## autumn.tif
+Cor : 0.9861 0.9690 0.9918
+c : 0.3795
+c_proportions : 0.3358 0.3462 0.3179
+
+## gentrycrane.png
+Cor : 0.7615 0.3086 0.8438
+c : 0.1565
+c_proportions : 0.1041 0.1519 0.7440
+
+# Exercice 2
+## gentrycrane.png
+c_proportions : 0.8753 0.1237 0.0010
+c : 0.1565
+
+# autumn.tif
+c_proportions : 0.9883 0.0103 0.0013
+c : 0.3795
