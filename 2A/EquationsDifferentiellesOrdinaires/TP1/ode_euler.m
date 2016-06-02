@@ -1,4 +1,16 @@
 function [T, Y] = ode_euler(phi, ts, y0, N)
+%% ode_euler
+%
+%  Applique le schéma de Runge-Kutta d'Euler entre ts(1) et ts(2) pour N
+%  subdivisions de cet intervalle et pour le système :
+%    - y'(t) = phi(t, y(t))
+%    - y(0) = y0
+%
+%  Params :
+%    - phi : la fonction de t et de y retournant la valeur de phi(t, y)
+%    - ts  : les bornes de l'intervalle d'intégration
+%    - y0  : la condition initiale
+%    - N   : le nombre de subdivisions de l'intervalle d'intégration  
 t0 = ts(1);
 tf = ts(2);
 n = length(y0);

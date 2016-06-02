@@ -10,9 +10,9 @@ Ns = [120:60:1080 1200:600:10800]/4;
 nphi_1 = zeros(size(Ns));
 nphi_2 = zeros(size(Ns));
 nphi_3 = zeros(size(Ns));
-err_gauss_1 = zeros(length(nphi), 2);
-err_gauss_2 = zeros(length(nphi), 2);
-err_gauss_3 = zeros(length(nphi), 2);
+err_gauss_1 = zeros(length(nphi_1), 2);
+err_gauss_2 = zeros(length(nphi_2), 2);
+err_gauss_3 = zeros(length(nphi_3), 2);
 for i = 1:length(Ns)
     N = Ns(i);
     % Euler (15, 10^-12)
