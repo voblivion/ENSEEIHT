@@ -3,7 +3,7 @@ close all;
 load exercice_1;
 
 % Matrice des q premieres eigenfaces (testez differentes valeurs de q) :
-q = 5;
+q = 6;
 Wq = W(:,1:q);			% Wq est de taille p x q
 
 % Calcul des q premieres composantes principales :

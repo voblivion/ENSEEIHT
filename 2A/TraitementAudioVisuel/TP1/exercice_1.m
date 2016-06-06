@@ -6,7 +6,7 @@ H = taille_ecran(4);
 
 % Lecture et affichage d'une image couleur :
 I = imread('autumn.tif');
-% I = I(75:110,133:190,:); % Pour ne sélectionner que l'arbre qui "disparait"
+I = I(75:110,133:190,:); % Pour ne sélectionner que l'arbre qui "disparait"
 [nb_lignes,nb_colonnes,nb_canaux] = size(I);
 figure('Name','Image couleur et canaux RVB','Position',[0.33*L,0,0.67*L,H]);
 subplot(2,2,1);
@@ -67,3 +67,9 @@ end
 Var = diag(VarCov);
 c = sum(Var);
 c_proportions = Var / c;
+
+disp('Matrice de variance / covariance :');
+disp(Cor);
+
+disp('Contraste :');
+disp(c);

@@ -9,7 +9,7 @@ images_originales = reshape(X(numeros_images,:)',nb_lignes,nb_colonnes,nb_images
 
 % Definition d'une bande situee au niveau des yeux :
 ligne_centrale = 210;
-epaisseur_bande = 30;
+epaisseur_bande = 90;
 bande_noire = ligne_centrale-epaisseur_bande:ligne_centrale+epaisseur_bande;
 
 % Mise a 0 des pixels situes a l'interieur de cette bande :

@@ -6,8 +6,8 @@ H = taille_ecran(4);
 	
 % Choix des images parmi 15 individus et 6 postures faciales :
 chemin = '/mnt/n7fs/ens/tp_queau/Images_TP2_TAV';
-numeros_individus = [1 2 3 5];
-numeros_postures = [1 2 3 5];
+numeros_individus = [1 2 3 4];
+numeros_postures = [1 2 3 4 5 6];
 
 % Nombre de lignes n de X (nombre d'images selectionnees) :
 nb_individus = length(numeros_individus);
