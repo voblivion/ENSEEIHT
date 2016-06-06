@@ -1,0 +1,34 @@
+\section{TP10 - Décomposition \emph{cartoon}+texture d'une image}
+Ce TP présente les différentes façon d'opérer sur une image une décomposition cartoon+texture.
+
+\subsection{Exercice 1 - Partition du spectre d'une image}
+Dans le premier exercice on opère simplement une décomposition entre les hautes et les basses fréquences, la fréquence de coupure étant choisie arbitrairement en fonction de l'image. En effet la fréquence des textures dépend fortement de l'image, de sa taille et du type d'informations qu'elle contient; dans tous les cas les fréquences hautes représentent la partie texture tandis que les fréquences basses représentent la partie \emph{cartoon} (figure~\ref{10-decomposition}). Dans ce cas la fréquence de coupure retenue est de 32.
+
+\begin{figure}
+% TODO 6 images
+\end{figure}
+
+On remarque qu'on ne pas a obtenir de résultat convainquant car dans certaines parties de l'image la texture est de fréquence plus haute que dans d'autres, d'où l'impossibilité de choisir une valeur adéquate pour la fréquence de coupure qui ne fasse pas retenir trop ou pas assez de fréquences pour la texture (et inversement pour le \emph{cartoon}) dans certaines parties de l'image.
+
+\subsection{Exercice 2 - Filtrage spectral}
+Afin de palier le problème ennoncé plus haut on décide alors non pas de choisir une fréquence de coupure mais de lisser la séparation entre les fréquences de la partie \emph{cartoon} et celles de la partie texture. On obtient les résultats de la figure~\ref{10-filtrage} qui sont plus convainquants.
+
+\begin{figure}
+% TODO 6 images
+\end{figure}
+
+\subsection{Exercice 3 - Modèle ROF}
+Une fois n'est pas coutûme on peut modéliser le problème de séparation des hautes et basses fréquences par une équation variationelle. En appliquant l'algorithme itératif suggéré par l'ennoncé à l'image de l'actrice on obtient un résultat encore meilleur que celui de l'exercice précédent. Cependant c'est bien sur l'image \emph{empreinte.png} que cela est le plus spéctaculaire puisqu'elle paraît parfaitement "reconnue" par l'algorithme tandis qu'un seuillage ne réussi pas du tout cette tâche (figure~\ref{10-empreinte}).
+
+\begin{figure}
+% TODO n images
+\end{figure}
+
+Cela est certainement dû au fait que la résolution de l'équation variationelle du modèle ROF permet de prendre en compte en chaque point de l'image une analyse de son environnement local pour le traiter au mieux.
+
+\subsection{Exercice 4 - Modèle TV-Hilbert}
+Dans cette dernière partie on applique un modèle variationelle qui diffère encore puisqu'il fait intervenir la transformée du Fourier du signal à retrouver (l'image \emph{cartoon}). La pronfonde non linéarité de la transformation de Fourier empèche une résolution aussi directe que précédement : on doit donc mettre en place une descente de gradient pour résoudre ce problème. Après résolution on obtient pour l'empreinte les résultats de la figure~\ref{10-hilbert}.
+
+\begin{figure}
+% TODO n images
+\end{figure}

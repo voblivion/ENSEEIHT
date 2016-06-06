@@ -1,0 +1,32 @@
+\section{TP 11 - Transformation de Gabor}
+On s'intéresse dans ce TP à différents cas d'utilisation pratiques de la transformée de Gabor qui permet de représenter sous la forme d'une image une empreinte accoustique d'un enregistrement audio.
+
+\subsection{Exercice 1 - Transformée de Gabor}
+\paragraph{La transformée de Gabor et son inverse
+Dans un premier temps on effectue la transformée de Gabor avec une fenêtre glissante dont l'image partitionne le temps d'enregistrement. On peut alors retrouver l'enregistrement initial à partir de la transformée de Gabor (figure~\ref{11-gabor}). On remarque que cela n'est pas possible avec la porteuse Gaussienne qu'utilisait Gabor à la place de la fenêtre glissante.
+
+\begin{figure}
+% TODO 3 images
+\end{figure}
+
+\paragraph{Altération}
+On se propose de ne conserver que la partie réelle de la transformée de Gabor puis que le module, et d'effectuer pour ces deux cas la transformée de Gabor inverse. On observe alors que TODO
+
+\subsection{Exercice 2 - Sonagramme}
+\paragraph{Restriction des fréquences}
+Cette fois ci on retire les fréquences négatives et les fréquences trop grandes. Le signal se dégrade assez rapidement lorsqu'on retire les hautes fréquences (figure~\ref{11-sonagramme} puisqu'il suffit de TODO pourcents pour entendre la différence. On a alors retiré au total TODO pourcents des fréquences : ce n'est pas si mal.
+
+\paragraph{Altération}
+Cette fois ci TODO(module/partie réelle)
+
+\subsection{Exercice 3 - Création de la partition à partir du sonagramme}
+Désormais on va compresser encore la représentation du sonagramme en le mettant sous la forme d'une partition. Pour cela on détermine pour chaque mesure la fréquence la plus importante et c'est celle qui correspondra à la note sur la partition (ce n'est en réalité pas exact car une note sur un instrument produit généralement plusieurs fréquences simultanément et parfois la plus audible n'est pas celle attendue). Après implémentation de l'algorithme, le résultat obtenu est celui présenté figure~\ref{11-partition}.
+
+\begin{figure}
+% TODO 1/2 images
+\end{figure}
+
+\subsection{Exercice 4 - Compression audio}
+Le but est d'utiliser la représentation sous la forme de partition comme enregistrement audio compressé. On peut alors à partir de celle-ci retrouver le sonagramme puis par transformation de Gabor inverse obtenir le son. Comme en conservant une note par mesure on perd trop d'informations, on décide de retenir pour chaque mesure un nombre n de notes (fréquences), à condition que leur coefficient dépasse un certain seuil.
+
+TODO

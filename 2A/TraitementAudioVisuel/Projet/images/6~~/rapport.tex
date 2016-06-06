@@ -1,0 +1,40 @@
+\section{TP6 - Détection et comptage d'objets}
+Comme son titre l'indique, ce TP nous intéresse à la détection et au comptage d'objets dans une image. En particulier on essaye de compter des flamants rose sur une image noir et blanc.
+
+\subsection{Exercice 0 - Algorithme naïf}
+\paragraph{Remarque}
+Les premiers algorithmes consistent à positionner correctement au mieux un nombre N donné de disques à l'endroit où l'on suspecte la position d'un flamant rose. On s'intéressera qu'à la fin du TP à l'augmentation et à la diminution de ce chiffre N de manière dynamique.
+
+\paragraph{Algorithme naïf}
+Cet exercice préliminaire qu'il nous est juste demandé d'exécuter est là pour nous faire remarquer les défauts de la recherche naïve qui consiste à placer des disques là où on pense trouver un flamant rose, mais ce de manière indépendante d'un disque à l'autre. On obtient alors le résultat figure~\ref{6-naif}.
+
+\begin{figure}
+% TODO 2 images
+\end{figure}
+
+Le soucis relevé par cette méthode est que chaque disque va essayer, indépendament de la position des autres, de se positionner là où le niveau de gris de l'image est le plus élevé. Cette non dépendance entre les disques entraine que in-fine tous les disques devraient se retrouver exactement au même endroit. Il apparaît donc comme nécessaire d'empêcher les disques de se chevaucher, c'est ce qu'on fera par la suite.
+
+\subsection{Exercice 1 - Champ de markov}
+\paragraph{Prévenir le recouvrement des disques}
+Dans un deuxième temps on cherche donc à maîtriser la distance entre deux disques pour éviter qu'ils se chevauchent et se retrouvent donc au même endroit. En imposant une distance minimale entre les disques, qui leur permet néanmoins de se chevaucher partiellement, on obtient des résultats bien plus intéressants que l'on peut observer figure~\ref{6-markov}.
+
+\begin{figure}
+% TODO 2 images
+\end{figure}
+
+\paragraph{Le nombre de flamants rose}
+Le principal problème de cette méthode est qu'elle impose de donner à priori le nombre de flamants roses dans l'image, l'algorithme se contentant simplement de les placer correctement. Il faut donc le relancer plusieurs fois avec des paramètres différents pour obtenir un résultat concluant.
+
+\subsection{Exercice 2 - Processus ponctuel marqué}
+\paragraph{Principe}
+Le principe du décompte de flamants roses par processus ponctuel marqué est de calculer l'énergie d'une configuration et de chercher à la minimiser, cette énergie étant la somme d'un terme d'attache aux données (est-ce que le disque est placé sur un flamant rose ?) et d'un terme d'a priori (est-ce qu'un disque identifie déjà ce flamant rose ?). En jouant sur les paramètres et sur le rapport de ces deux termes, on espère parvenir à compter le nombre de flamants roses.
+
+\paragraph{Naissances et morts multiples}
+Si l'on s'en tient au processus ponctuel marqué, on ne corrige pas le problème du nombre de flamants roses à trouver. L'initiative retenue est donc de rajouter à chaque itération un certain nombre de disques puis de retirer ceux les moins bien placés.
+
+\paragraph{Résultat}
+Après implémentation de l'algorithme complet, on obtient le résultat figure~\ref{6-marque}, qui compte TODO flamants roses. Cependant il faut au préalable jouer sur les différents paramètres ($\beta$ pour donner plus ou moins d'importance au recouvrement des disques, $S$ pour déterminer la taille a priori d'un flamant rose, $\gamma$ pour jouer sur l'intérêt porté à la couleur des flamants (plus $\gamma$ est élevé, moins l'image nécessite d'être contrastée pour détecter correctement les flamants roses), $T_0$ pour jouer sur le nombre de naissances initial, $\lambda_0$ pour jouer sur la vitesse initiale de variation du nombre de naissances et de morts, et $\alpha$ pour jouer sur la variation au cours du temps de la vitesse de changement du nombre de naissances et de morts).
+
+\begin{figure}
+% TODO n figures
+\end{figure}

@@ -1,0 +1,10 @@
+# Exercice 0
+Niveau de gris moyen : ~220
+
+# Exercice 1
+Niveau de gris moyen : ~180
+
+# Exercice 2
+Flamants détectés : ~350
+Energie finale : ~-215
+Itérations : 120
