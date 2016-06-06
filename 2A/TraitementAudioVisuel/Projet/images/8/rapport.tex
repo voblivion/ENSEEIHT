@@ -1,0 +1,42 @@
+\section{TP8 - Restauration d'images}
+On a déjà dans un TP précédent étudier une méthode de restauration d'image qui consistait à projeter les parties préservées dans une base connue pour considérer alors la projection comme image restaurée. Cette fois ci on s'intéresse à un mécanisme indépendant d'une base préalable et capable de remplacer les zones altérées d'une image à partir de la connaissance du reste de l'image uniquement.
+
+\subsection{Exercice 1 - Tikhonov}
+\paragraph{Modélisation variationelle}
+Dans un premier temps on s'intéresse à la restauration d'une image bruitée. Pour cela on va utiliser une approche variationelle après modélisation du problème. La proximité de l'image originale avec l'image restauré ainsi que le caractère "lisse" de celle restaurée conduit à l'établissement de l'énergie dite de Tikhonov présentée dans le sujet. La minimiser dans le cas d'une image numérique conduit à la résolution de l'équation d'Euler-Lagrange discrète :
+\[\lambda [I_N - (-D_x^TD_x - D_y^TD_y)]u = \lambda u_0\]
+
+\paragraph{Influence de $\lambda$}
+Après implémentation on observe les résultats figure~\ref{8-tikhonov}.
+
+\begin{figure}
+% TODO 3/4 figures
+\end{figure}
+
+On remarque que plus $\lambda$ est petit, plus le bruit disparait mais plus les contours sont floutés; cela n'est pas étonnant à la vue de l'équation variationelle qui rend alors prédominant le terme dû au gradient de l'image (qui est alors minimisé ce qui floute l'image).
+
+\subsection{Exercice 2 - Débruitage par variation totale}
+\paragraph{Variation totale}
+Pour palier le problème des contours que la minimisation de l'équation de Tikhonov tend à faire disparaître on décide de remplacer le carré de la norme du gradient par la norme du gradient. La norme n'étant pas différentiable on choisit de la remplacer par une fonctione approximante qui est différentiable puis on résoud l'équation variationelle induite. On observe alors les résultats figure~\ref{8-variation-totale}.
+
+\begin{figure}
+% TODO 2/3 images
+\end{figure}
+
+\paragraph{Image RVB}
+Dans le cas des images RVG l'algorithme peut être appliqué à chaque canal séparément pour obtenir une image moins bruitée. En l'appliquant sur \emph{lena.bmp} on obtient le résultat de la figure~\ref{8-lena}.
+
+\begin{figure}
+% TODO 2/3 images
+\end{figure}
+
+\subsection{Exercice 3 - Inpainting}
+\paragraph{Équation variationelle}
+L'inpainting consiste à remplacer une partie d'une image par une texture calculée à partir de ce qui entoure cette partie. On peut là encore modéliser ce problème sous la forme d'une équation variationelle que présente et résoud le sujet. On obtient des résultats très concluants lorsque l'on dispose du masque à enlever (figure~\ref{8-inpainting}).
+
+\begin{figure}
+% TODO 2/3 images
+\end{figure}
+
+\paragraph{Calcul du masque}
+Dans le cas où l'on ne dispose pas au préalable du masque à remplacer on peut calculer celui-ci par exemple en effectuant un seuillage de l'image. Cela fonctionne très bien pour l'image \emph{grenouille.png} figure~\ref{8-grenouille}.

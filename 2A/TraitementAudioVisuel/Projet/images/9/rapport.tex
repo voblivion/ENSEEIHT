@@ -1,0 +1,21 @@
+\section{TP9 - Retouche d'images}
+Dans la lignée des TPs précédents, celui-ci montre comment les équations variationelles peuvent être utilisée pour faire de la retouche d'image consistant en le remplacement d'une partie d'une image par une autre image.
+
+\subsection{Introduction}
+La solution naïve consiste à simplement placer la nouvelle image à la place de la partie à remplacer (figure~\ref{9-naive}). Cependant comme on peut le voir cela ne rend pas du tout bien : d'une part la chromatographie n'est pas respectée de l'image originale à l'image remplaçante, d'autre part le gradient à l'endroit de la jonction est très élevé donc irréaliste.
+
+\begin{figure}
+% TODO 1 image
+\end{figure}
+
+\subsection{Exercice 1 - Condition de Neumann}
+L'implémentation de l'algorithme donné par le sujet donne le résultat figure~\ref{9-neumann}. Afin de palier le fait que le rang de A ne soit pas maximal, j'ai choisis d'appliquer la contrainte qui impose de conserver la moyenne de la couleur sur le bord de la zone à remplacer.
+
+\begin{figure}
+% TODO 1 image
+\end{figure}
+
+Le résultat est cette fois-ci bien meilleur puisque la chromatographie semble la même sur les deux parties de la nouvelle image. Cependant il y a encore le problème de la jonction entre ces deux parties qui n'a pas été traité. La raison est que l'équation variationelle tient ne tient compte que de la zone à remplacer et non de sa jonction avec le reste de l'image.
+
+\subsection{Exercice 2 - Condition de Dirichlet}
+La condition de Dirichlet permet de résoudre le problème ennoncé plus haut en imposant une condition sur le bord de l'imagette à coller. Après implémentation on obtient un résultat presque impécable (figure~\ref{9-dirichlet}).

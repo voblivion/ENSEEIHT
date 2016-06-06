@@ -1,0 +1,43 @@
+\section{TP4 - Estimation des paramètres d'une ellipse}
+Dans ce TP on s'intéresse à l'estimation des paramètres d'une ellipse à partir de l'enregistrement d'une ensemble de ses points. Le but in-fine est par exemple de déterminer l'orientation d'un mur, sur lequel aurait été positionné un cercle, par rapport à l'objectif en estimant les paramètres de l'ellipse alors formée sur l'image.
+
+\subsection{Exercice 1 - Maximum de vraisemblance}
+\paragraph{Recherche par tirages aléatoires}
+L'idée est donc de trouver une ellipse qui approche au mieux les différents points dont on dispose, ceci en essayant de maximiser la vraisemblance des données observées par rapport à l'ellipse retenue. Pour cela on cherche donc une ellipse qui minimise la distance en norme 2 à l'ensemble des points à notre disposition. Ce premier exercice nous invite à procéder par tirages aléatoires pour trouver une ellipse qui approche les-dits points. On peut voir quelques résultats figure~\ref{3-tirages-aleatoires}.
+
+\begin{figure}
+% TODO Deux figures
+\end{figure}
+
+\paragraph{Résultat très variables}
+Cependant on observe aisément que cette méthode n'est pas toujours efficace car elle est sujette au tirage aléatoire auquel nous procédons. Dans la figure~\ref{3-tirages-aleatoires-erreur} on voit par exemple que l'ellipse estimée est très loin de celle originale. L'erreur faite peut alors très fortement varier et se situe en moyenne pour 500 tirages aux alentours de 0.2.
+
+\subsection{Exercice 2 - Moindres carrés ordinaires}
+\paragraph{Système linéaire issu de l'équation d'une conique et d'une contrainte linéaire}
+Dans un deuxième temps on s'intéresse à l'équation cartésienne de l'ellipse, celle qui est commune avec les autres coniques. Si celle-ci fait jouer 6 paramètres, deux sont pourtant liés dans le cas de l'ellipse car celle-ci ne demande que 5 paramètres pour être définie. Ainsi on propose de rajouter une contraintes (soit $\alpha + \gamma = 1$ soit $\Phi = 1$) puis de résoudre approximativement le système linéaire sur-contraint au sens des moindres carrés ordinaires. On obtient alors les résultats de la figure~\ref{3-moindres-carres-ordinaires} pour les deux contraintes envisagées.
+
+\begin{figure}
+% TODO Quatre figures
+\end{figure}
+
+\paragraph{Erreur}
+Ici l'erreur faite par rapport à l'ellipse originale varie quelque peu mais se trouve généralement aux alentours de 0.05 pour la première contrainte et de 0.15 pour la deuxième contrainte.
+
+\subsection{Exercice 3 - Moindres carrés totax}
+\paragraph{Contrainte non linéaire et problème de minimisation induit}
+Dans le but d'éviter les problèmes de non résolvabilité induits par les contraintes linéaires proposées dans l'exercice précédent, on s'intéresse ici à la même équation de conique à laquelle on rajoute la contrainte $\norm{X} = 1$ qui n'est cette fois ci pas linéaire. Le problème de minimisation admet alors toujours une solution et c'est la théorie Lagrangienne qui nous permet de la trouver. Après implémentation de l'algorithme, on obtient les résultats de la figure~\ref{3-moindres-carres-totaux}.
+
+\begin{figure}
+% TODO 2 figures
+\end{figure}
+
+\paragraph{Erreur}
+Assez surpris j'observe que dans ce cas l'erreur est souvent supérieure à celle obtenue pour le cas des moindres carrés ordinaires dans le cas de la contrainte $\alpha + \gamma = 1$. En effet je m'attendais à trouver une erreur meilleur puisque la contrainte semble moins contraignante, mais ça n'est pas le cas. Elle se situe aux alentours de 0.12. Finalement les erreurs moyennes pour les différentes méthodes par moindres carrés sont :
+\begin{itemize}
+    \item $\alpha + \gamma = 1$ : 0.05
+    \item $\Phi = 1$ : 0.15
+    \item $\norm{X} = 1$ : 0.12
+\end{itemize}
+
+\paragraph{Application à la réalité augmentée}
+Pour l'application à la réalité augmenté j'ai choisi de prendre le risque de rendre le système sans solution on utilisant la méthode des moindres carrés ordinaires sous la contrainte $\alpha + \gamma = 1$ puisque c'est celle qui m'a donné les résultats les plus précis. J'ai misé en outre sur le fait qu'il n'est finalement pas si probable de tomber dans un cas où le problème n'admet pas de solution. J'ai alors obtenu des résultats très concluants.

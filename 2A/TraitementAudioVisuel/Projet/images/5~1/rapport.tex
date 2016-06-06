@@ -1,0 +1,44 @@
+\section{TP5 - Détection de la ligne d'horizon dans une image}
+Ce TP traite de la détection de lignes dans une image et de comment cela peut être utilisé pour obtenir ses points de fuites et ainsi retrouver sa ligne d'horizon.
+
+\subsection{Exercice 1 - Transformation de Hough}
+\paragraph{Détection des lignes d'une image}
+Dans un premier temps on s'intéresse à la détection des lignes d'une image. Pour ce faire on commence par trouver les contours dans l'image (algorithmes vus en traitement d'image, résultat figure~\ref{5-contours}) puis on tente, par transformation de Hough, de placer des droites dans l'image qui passent par le plus de points de contours possible. L'idée est assez simple et consiste à paramétriser des droites par leur angle avec l'axe des abcisse et leur distance à une origine quelconque.
+
+\begin{figure}
+% TODO 2 figures : 5-contours
+\end{figure}
+
+\paragraph{La matrice C}
+Durant cet exercice on introduit la matrice C. Celle-ci contient le nombre de points de contours par lesquels passent les droites paramètrées par les différentes valeurs de $\theta$ et $\rho$ respectivement en abcisse et en ordonnée. On peut voir une représentation de cette matrice figure~\ref{5-C}.
+
+\subsection{Exercice 2 - Maxima locaux de la matrice C}
+\paragraph{Choix des lignes}
+Pour choisir les lignes à conserver, c'est à dire celles qui suivent réellement des contours de l'image, il faut procéder avec précaution car on pourraît être amené à choisir deux lignes très proches (donc n'apportant que peu de détail nouveau) si on sélectionne uniquement celles ayant obtenu le meilleur score. L'idée est donc de sélectionner une à une les lignes de plus grand score tout en prenant soin d'annuler le score de ces lignes et de celles qui leur sont trop proches à mesure qu'on les sélectionne. Pour cela on choisi un maximum de C, on annule une petite zone autour de ce maximum, et on recommence. On conserve alors un nombre arbitraire n de lignes comme on peut le voir figure~\ref{5-lignes}.
+
+\begin{figure}
+% TODO 2 figures
+\end{figure}
+
+\paragraph{Zone de C à annuler}
+Lorsque l'on choisi une ligne, on s'empèche de prendre celles voisines. Il faut faire attention à annuler une zone suffisament grande pour ne pas faire un calcul des points de fuite erroné plus tard, mais pas trop sinon on risque de perdre de l'information. On peut par exemple voir ce qui arrive avec une fenêtre trop petite figure~\ref{5-T-petit} et avec une fenêtre trop grande figure~\ref{5-T-grand}.
+
+\begin{figure}
+% TODO 2 figures
+\end{figure}
+
+\subsection{Exercice 5 - Localisation des points de fuite}
+\paragraph{Les points de fuite}
+Dans une image, les droites parallèles et orthogonales d'un plan devraient se croiser en deux points de fuite. Un tel point de fuite se trouvant alors sur plusieurs droites, il vérifie pour celles-ci :
+\[\rho = \rho_Fcos(\theta - \theta_F)\]
+où $\rho_F$ et $\theta_F$ sont les coordonnées polaires du point de fuite et $\rho$ et $\theta$ les coordonnées de la droite considérée. De cette façon l'ensemble des droites passant par ces points de fuitent devraient se répartir sur la matrice C selon une courbe sinusoïdale (deux en fait, une pour chaque point de fuite) et c'est bien le cas.
+
+\paragraph{Scinder les droites en deux classes}
+Il se trouve que, par hasard, les droites dans l'image sont principalement orientées selon des angles d'environ 45°. De cette façon, et dans ce cas uniquement, les points dans C de ces droites sont principalement positionnés sur des parties "droites" des courbes sinusoïdales. Ainsi on peut trouver deux droites dans la matrice C de façon à ce que chaque point retenu passe par l'une ou l'autre de ces deux droites, ou encore plus simplement - puisque de toute façon on fait déjà une hypothèse forte - remarquer que les droites sont séparable selon le signe de l'angle $\theta - \pi/2$ qui les paramètre puisque l'origine du repère a été choisie entre les deux points de fuite de l'image. On obtient alors la répartition figure~\ref{5-repartition}.
+
+\begin{figure}
+% TODO 2 figures
+\end{figure}
+
+\paragraph{Ligne d'horizon}
+Pour conclure on relie les deux points de fuite et on s'apperçoit que, malgré le calme apparent de la mer, le bateau n'était pas vraiment à l'horizontal lors de la prise de vue, l'horizon "visuel" ne correspondant pas avec celui calculé.

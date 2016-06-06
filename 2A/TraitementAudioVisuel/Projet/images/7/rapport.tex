@@ -1,0 +1,49 @@
+\section{TP7 - Contours actifs}
+Le but de ce TP est d'étudier l'algorithme du contour actif qui permet d'isoler le contour d'une forme dans une image.
+
+\subsection{Introduction}
+Il s'agit d'un problème qui peut se mettre sous une forme variationnelle pour laquelle on connaît un moyen de résolution. Il faut donc commencer par modéliser le problème puis entamer la résolution, comme le propose le sujet dans une étude préliminaire.
+
+\subsection{Exercice 1 - Énergie externe}
+\paragraph{Énergie externe}
+L'équation $E_{ext}(P(s)) = - \norm{\Nabla I(P(s))}^2$ défini l'énergie $E_{ext}$ qu'il nous faut minimiser pour résoudre le problème variationnel associé à la détection de contours. On commence donc par afficher, pour une image donnée, la valeur de cette énergie en tous points (figure~\ref{7-energie}). On remarque ici que loin des contours réels dans l'image cette énergie est très faible (puisqu'elle dépend du gradient qui y est nul) ce qui fait qu'un snake mal initialisé pourraît ne pas bouger (ne sachant pas dans quelle direction se déplacer).
+
+\begin{figure}
+% TODO image_originale + champs_forces_externe + energie_externe
+\end{figure}
+
+\paragraph{Solution}
+La solution proposée par le sujet consiste donc à appliquer un flou gaussien à l'image pour étaler les zones de contours de façon à étaler les zones de variation de l'énergie externe. On obtient alors le résultat présenté figure~\ref{7-gaussien}. De cette façon si le flou gaussien est peu étalé (T trop petit) alors on aura le même problèème que précédemment et inversement si il est trop étalé ou trop prononcé (T grand ou $\sigma$ grand) alors les zones d'énergie élevée seront trop étalées ce qui rendra le mouvement du contour pas assez important.
+
+\begin{figure}
+% TODO 2/3 images
+\end{figure}
+
+\paragraph{Bords de l'image}
+Le problème des bords de l'image est qu'ils ne repoussent pas pour l'instant le \emph{snake} or celui-ci ne devrait pas s'en approcher puisqu'on recherche les contours à l'intérieur de l'image. Pour résoudre ce problème il peut être pratique d'appliquer une force aux bords de l'image qui ramène le \emph{snake} vers l'intérieur de l'image.
+
+\subsection{Exercice 2 - Implémentation du \emph{snake}}
+\paragrpah{Application à \emph{coins.png}}
+Après implémentation de l'algorithme, on peut l'appliquer sur \emph{coins.png} et observer le résultat figure~\ref{7-coins}. Néanmoins les résultats varient beaucoup d'une pièce à l'autre car toutes n'ont pas le même contraste avec le fond.
+
+\begin{figure}
+% TODO 2/3 figures
+\end{figure}
+
+\paragraph{Application à \emph{IRM.png}}
+De la même façon on peut appliquer l'algorithme pour détourer la tumeur sur \emph{IRM.png}; résultat figure~\ref{7-IRM}. On observe à nouveau une très forte variation de la qualité de l'algorithme selon comment est placé initialement le contour actif.
+
+\begin{figure}
+% TODO 2/3 figures
+\end{figure}
+
+\subsection{Exercice 3 - Diffusion vers les contours}
+\paragraph{Prolongement du champs de force}
+Ici l'idée est de prolonger le champs de force là où il est faible par la valeur du champs de force élevé le plus proche. On crée donc une sorte de diagramme de voronoï avec le champs de force qui assurera que le \emph{snake} se déplace même si il est initialement mal placé. Près des bords le champs de force se comporte parfois étrangement et est très sujets aux petites perturbations. On peut observer ce nouveau champs de force et le résultat qu'il induit sur l'algorithme figure~\ref{7-diffusion}.
+
+\begin{figure}
+% TODO 3/4 figures
+\end{figure}
+
+\paragraph{Inconvénients}
+On observe que si les paramètres sont mal choisis le snake peut facilement se recroqueviller sur lui même. De plus les contours sont détectés très approximativement (à cause du flou gaussien). Enfin des snakes initiaux mals choisis peuvent faire se comporter étrangement l'algorithme qui va alors tenter de couvrir plusieurs contours simultanément.
