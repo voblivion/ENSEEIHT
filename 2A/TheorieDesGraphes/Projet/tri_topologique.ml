@@ -4,6 +4,12 @@ module M = G.Mark;;
 module S = Set.Make(G.V);;
 module E = G.E;;
 
+(* creer_graph_oriente
+ * Crée un graphe orienté avec des poids sur les arrêtes.
+ *
+ * IN : lv la liste des sommets, lp la liste des arrêtes (triplets) avec poids
+ * OUT : g le graph orienté créé
+ *)
 let creer_graph_oriente lv lep =
     let go = G.create () in begin
         List.iter (fun t -> G.add_vertex go (V.create t)) lv;
@@ -13,6 +19,9 @@ let creer_graph_oriente lv lep =
     end
 ;;
 
+(* print_vertex
+ * Affiche un sommet d'un graphe.
+ *)
 let print_vertex fmt v = Format.fprintf fmt "%i" (V.label v);;
 
 (* sans_dependance
@@ -35,6 +44,12 @@ let a_pred_numerotes g z v = List.for_all (fun v ->
     List.mem v z) (G.pred g v)
 ;;
 
+(* tri_topologique
+ * Effectue le tri topologique d'un graphe donné.
+ *
+ * IN : g le graphe à trier.
+ * OUT : l la liste des noeuds triés.
+ *)
 let tri_topologique g =
     let y = sans_dependance g in
     let rec aux z = function
