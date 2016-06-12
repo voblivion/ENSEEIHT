@@ -11,6 +11,8 @@ hx = xlabel('$x$','FontSize',20);
 set(hx,'Interpreter','Latex');
 hy = ylabel('$y$','FontSize',20);
 set(hy,'Interpreter','Latex');
+affichage_ellipse(C,theta_0,a,b,theta_points_ellipse,'g-');
+hold on;
 plot(xy_donnees_bruitees(1,:),xy_donnees_bruitees(2,:),'r*');
 
 x = transpose(xy_donnees_bruitees(1,:));
@@ -79,7 +81,7 @@ p = V(:, i);
 [C_3,theta_0_3,a_3,b_3] = conversion(p);
 affichage_ellipse(C_3,theta_0_3,a_3,b_3,theta_points_ellipse,'y-');
 axis(echelle);
-lg = legend('Donnees bruitees','MC ordinaires 1','MC ordinaires 2','MC totaux','Location','Best');
+lg = legend('Ellipse originale', 'Donnees bruitees','MC ordinaires 1','MC ordinaires 2','MC totaux','Location','Best');
 set(lg,'FontSize',15);
 
 % Calcul du score sous la contrainte ||X|| = 1 :
