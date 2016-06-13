@@ -1,3 +1,5 @@
+%% Distingue un ensemble d'enregistrements et les regroupe par voyelle reconnue
+
 clear;
 close all;
 
@@ -27,6 +29,14 @@ end
 % Classification non supervisée
 idx_spectres = kmeans(spectres, nb_voyelles, 'start', spectres_moyens);
 idx_cepstres = kmeans(cepstres, nb_voyelles, 'start', cepstres_moyens);
+disp('Classification avant ACP :');
+for i = 1:nb_voyelles
+    for j = 1:nb_enregistrements
+        fprintf('%d ', idx_cepstres((i-1)*nb_enregistrements+j));
+    end
+    fprintf('| ');
+end
+fprintf('\n');
 
 % Calcul du nombre de bonnes classifications
 bons_spectres = 0;
@@ -63,7 +73,15 @@ proj_cepstres = cepstres * V_c(:, I_c(1:3));
 
 % Classification non supervisée
 idx_spectres = kmeans(proj_spectres, nb_voyelles, 'start', spectres_moyens * V_s(:, I_s(1:3)));
-idx_cepstres = kmeans(proj_cepstres, nb_voyelles, 'start', cepstres_moyens * V_c(:, I_c(1:3)));
+[idx_cepstres, C_cepstres] = kmeans(proj_cepstres, nb_voyelles, 'start', cepstres_moyens * V_c(:, I_c(1:3)));
+disp('Classification après ACP :');
+for i = 1:nb_voyelles
+    for j = 1:nb_enregistrements
+        fprintf('%d ', idx_cepstres((i-1)*nb_enregistrements+j));
+    end
+    fprintf('| ');
+end
+fprintf('\n');
 
 % Calcul du nombre de bonnes classifications
 bons_spectres = 0;
@@ -71,6 +89,7 @@ bons_s = zeros(size(idx_spectres));
 bons_c = zeros(size(idx_cepstres));
 bons_cepstres = 0;
 colors = [0 0 0; 0 0 1; 0 1 0; 0 1 1; 1 0 0; 1 0 1; 1 1 0; 0.5 0.5 0; 0 0.5 0.5];
+
 fo = figure('Name', 'Original spectres');
 f = figure('Name', 'Spectres');
 go = figure('Name', 'Original cepstres');
@@ -118,4 +137,5 @@ for i = 1:nb_voyelles
     end
 end
 
+save exercice_1;
 
