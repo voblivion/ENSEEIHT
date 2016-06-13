@@ -446,14 +446,14 @@ Il s'agit d'un problème qui peut se mettre sous une forme variationnelle pour l
 L'équation $E_{ext}(P(s)) = - ||\nabla I(P(s))||^2$ défini l'énergie $E_{ext}$ qu'il nous faut minimiser pour résoudre le problème variationnel associé à la détection de contours. On commence donc par afficher, pour une image donnée, la valeur de cette énergie en tous points (figure~\ref{7-energie}). On remarque ici que loin des contours réels dans l'image cette énergie est très faible (puisqu'elle dépend du gradient qui y est nul) ce qui fait qu'un snake mal initialisé pourraît ne pas bouger (ne sachant pas dans quelle direction se déplacer).
 \begin{figure}[!ht]
     \centering
-    \begin{subfigure}[c]{0.32\linewidth}
+    \begin{subfigure}[c]{0.49\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{images/5-C_repartition.png}
+        \includegraphics[width=\linewidth]{images/7-pieces.png}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[c]{0.32\linewidth}
+    \begin{subfigure}[c]{0.49\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{images/5-lines_repartition.png}
+        \includegraphics[width=\linewidth]{images/7-champ_forces_externe.png}
     \end{subfigure}
     \caption{Répartition des droites selon les deux points de fuite}
     \label{5-T-grand}
