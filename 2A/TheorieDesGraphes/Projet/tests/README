@@ -1,0 +1,7 @@
+ - Créer un dossier contenant les divers fichiers de Moodle
+ - chmod +x ./eval.sh
+ - Renommer votre fichier contenant les fonctions en projet.ml
+ - Supprimer tous les #use "[...]";; de votre fichier
+ - Ajouter "open DAG.DAG" avant "open DAG"
+ - Executer eval.sh, les resultats des tests sortent sous la forme du ficher res.txt
+ - Si besoin, corrigez !
