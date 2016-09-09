@@ -449,22 +449,24 @@ L'équation $E_{ext}(P(s)) = - ||\nabla I(P(s))||^2$ défini l'énergie $E_{ext}
     \begin{subfigure}[c]{0.49\linewidth}
         \centering
         \includegraphics[width=\linewidth]{images/7-pieces.png}
+        \subcaption{Image originale}
     \end{subfigure}
     \hfill
     \begin{subfigure}[c]{0.49\linewidth}
         \centering
         \includegraphics[width=\linewidth]{images/7-champ_forces_externe.png}
+        \subcaption{Champ de forces externe}
     \end{subfigure}
-    \caption{Répartition des droites selon les deux points de fuite}
-    \label{5-T-grand}
+    \caption{Image et son champ de forces externe}
+    \label{7-energie}
 \end{figure}
 
 \paragraph{Solution}
 La solution proposée par le sujet consiste donc à appliquer un flou gaussien à l'image pour étaler les zones de contours de façon à étaler les zones de variation de l'énergie externe. On obtient alors le résultat présenté figure~\ref{7-gaussien}. De cette façon si le flou gaussien est peu étalé (T trop petit) alors on aura le même problèème que précédemment et inversement si il est trop étalé ou trop prononcé (T grand ou $\sigma$ grand) alors les zones d'énergie élevée seront trop étalées ce qui rendra le mouvement du contour pas assez important.
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{images/1/1-1-autumn_b.png}
-% TODO 2/3 images
+\includegraphics[width=\textwidth]{images/7-energie_externe.png}
+% TODO 3 images
 \end{figure}
 
 \paragraph{Bords de l'image}
@@ -546,6 +548,10 @@ L'inpainting consiste à remplacer une partie d'une image par une texture calcul
 \paragraph{Calcul du masque}
 Dans le cas où l'on ne dispose pas au préalable du masque à remplacer on peut calculer celui-ci par exemple en effectuant un seuillage de l'image. Cela fonctionne très bien pour l'image \emph{grenouille.png} figure~\ref{8-grenouille}.
 
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{images/1/1-1-autumn_b.png}
+% TODO 2/3 images
+\end{figure}
 
 \section{TP 9 - Retouche d'images}
 Dans la lignée des TPs précédents, celui-ci montre comment les équations variationelles peuvent être utilisée pour faire de la retouche d'image consistant en le remplacement d'une partie d'une image par une autre image.

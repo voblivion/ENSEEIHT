@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.1.12)  18 MAY 2016 21:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.1.12)  18 JUN 2016 20:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -345,53 +345,151 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen106
 \Gin@req@width=\dimen107
 )
-(build/rapport.aux)
-\openout1 = `rapport.aux'.
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 11.
- (/usr/share/texmf/tex/latex/lm/t1lmr.fd
-File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-LaTeX Info: Redefining \degres on input line 11.
-LaTeX Info: Redefining \dots on input line 11.
-LaTeX Info: Redefining \up on input line 11.
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count93
+\Gm@cntv=\count94
+\c@Gm@tempcnt=\count95
+\Gm@bindingoffset=\dimen108
+\Gm@wd@mp=\dimen109
+\Gm@odd@mp=\dimen110
+\Gm@even@mp=\dimen111
+\Gm@layoutwidth=\dimen112
+\Gm@layoutheight=\dimen113
+\Gm@layouthoffset=\dimen114
+\Gm@layoutvoffset=\dimen115
+\Gm@dimlist=\toks17
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
 
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count93
-\scratchdimen=\dimen108
-\scratchbox=\box26
-\nofMPsegments=\count94
-\nofMParguments=\count95
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count96
-\MPscratchDim=\dimen109
-\MPnumerator=\count97
-\makeMPintoPDFobject=\count98
-\everyMPtoPDFconversion=\toks18
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen116
+\captionmargin@=\dimen117
+\captionwidth=\dimen118
+\caption@tempdima=\dimen119
+\caption@indent=\dimen120
+\caption@parindent=\dimen121
+\caption@hangindent=\dimen122
 )
+\c@ContinuedFloat=\count96
+)
+\c@subfigure=\count97
+\c@subtable=\count98
+)
+(/usr/share/texlive/texmf-dist/tex/latex/morefloats/morefloats.sty
+Package: morefloats 2012/01/28 v1.0f Raise limit of unprocessed floats (HMM; DH
+)
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package morefloats Info: Maximum number of possible floats asked for: 36.
+(morefloats)             LaTeX might run out of memory before this
+(morefloats)             (in which case it will notify you).
+(morefloats)              on input line 171.
+\bx@S=\insert233
+\bx@T=\insert232
+\bx@U=\insert231
+\bx@V=\insert230
+\bx@W=\insert229
+\bx@X=\insert228
+\bx@Y=\insert227
+\bx@Z=\insert226
+\bx@AA=\insert225
+\bx@AB=\insert224
+\bx@AC=\insert223
+\bx@AD=\insert222
+\bx@AE=\insert221
+\bx@AF=\insert220
+\bx@AG=\insert219
+\bx@AH=\insert218
+\bx@AI=\insert217
+\bx@AJ=\insert216
+)
+(build/rapport.aux
+
+LaTeX Warning: Label `3-moindres-carres-ordinaires' multiply defined.
+
+
+LaTeX Warning: Label `5-contours' multiply defined.
+
+
+LaTeX Warning: Label `5-T-grand' multiply defined.
+
+
+LaTeX Warning: Label `6-naif' multiply defined.
+
+)
+\openout1 = `rapport.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 14.
+ (/usr/share/texmf/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Info: Redefining \degres on input line 14.
+LaTeX Info: Redefining \dots on input line 14.
+LaTeX Info: Redefining \up on input line 14.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count99
+\scratchdimen=\dimen123
+\scratchbox=\box26
+\nofMPsegments=\count100
+\nofMParguments=\count101
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count102
+\MPscratchDim=\dimen124
+\MPnumerator=\count103
+\makeMPintoPDFobject=\count104
+\everyMPtoPDFconversion=\toks19
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -407,19 +505,6 @@ Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
@@ -429,76 +514,567 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 13.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=681.15898pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 16.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 13.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 16.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 13.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 16.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 13.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 16.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 13.
+(Font)              <12> on input line 16.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 13.
+(Font)              <8> on input line 16.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 13.
+(Font)              <6> on input line 16.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (build/rapport.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 3.
+(Font)              <10> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 3.
+(Font)              <7> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 3.
-)
+(Font)              <5> on input line 4.
+ [2
+
+])
 \tf@toc=\write3
 \openout3 = `rapport.toc'.
 
- [2
+ [3]
+<images/1-autumn_rgb.png, id=19, 344.78813pt x 303.38344pt>
+File: images/1-autumn_rgb.png Graphic file (type png)
+
+<use images/1-autumn_rgb.png>
+Package pdftex.def Info: images/1-autumn_rgb.png used on input line 40.
+(pdftex.def)             Requested size: 225.21626pt x 198.17366pt.
+
+<images/1-autumn_b.png, id=20, 421.575pt x 316.18124pt>
+File: images/1-autumn_b.png Graphic file (type png)
+
+<use images/1-autumn_b.png>
+Package pdftex.def Info: images/1-autumn_b.png used on input line 46.
+(pdftex.def)             Requested size: 225.21626pt x 168.91647pt.
+
+<images/1-gantrycrane_b.png, id=21, 421.575pt x 316.18124pt>
+File: images/1-gantrycrane_b.png Graphic file (type png)
+
+<use images/1-gantrycrane_b.png>
+Package pdftex.def Info: images/1-gantrycrane_b.png used on input line 75.
+(pdftex.def)             Requested size: 300.29344pt x 225.22357pt.
+ [4
+
+ <./images/1-autumn_rgb.png (PNG copy)> <./images/1-autumn_b.png (PNG copy)>]
+<images/1-gantrycrane_c1.png, id=27, 421.575pt x 316.18124pt>
+File: images/1-gantrycrane_c1.png Graphic file (type png)
+
+<use images/1-gantrycrane_c1.png>
+Package pdftex.def Info: images/1-gantrycrane_c1.png used on input line 88.
+(pdftex.def)             Requested size: 160.15854pt x 120.12117pt.
+
+<images/1-gantrycrane_c2.png, id=28, 421.575pt x 316.18124pt>
+File: images/1-gantrycrane_c2.png Graphic file (type png)
+
+<use images/1-gantrycrane_c2.png>
+Package pdftex.def Info: images/1-gantrycrane_c2.png used on input line 93.
+(pdftex.def)             Requested size: 160.15854pt x 120.12117pt.
+
+<images/1-gantrycrane_c3.png, id=29, 421.575pt x 316.18124pt>
+File: images/1-gantrycrane_c3.png Graphic file (type png)
+
+<use images/1-gantrycrane_c3.png>
+Package pdftex.def Info: images/1-gantrycrane_c3.png used on input line 98.
+(pdftex.def)             Requested size: 160.15854pt x 120.12117pt.
+ [5 <./images/1-gantrycrane_b.png (PNG copy)> <./images/1-gantrycrane_c1.png (P
+NG copy)> <./images/1-gantrycrane_c2.png (PNG copy)> <./images/1-gantrycrane_c3
+.png (PNG copy)>]
+<images/1-uniform.png, id=33, 640.64343pt x 462.22687pt>
+File: images/1-uniform.png Graphic file (type png)
+
+<use images/1-uniform.png>
+Package pdftex.def Info: images/1-uniform.png used on input line 120.
+(pdftex.def)             Requested size: 225.21626pt x 162.49417pt.
+
+<images/1-rgb2gray.png, id=34, 450.18187pt x 264.23718pt>
+File: images/1-rgb2gray.png Graphic file (type png)
+
+<use images/1-rgb2gray.png>
+Package pdftex.def Info: images/1-rgb2gray.png used on input line 126.
+(pdftex.def)             Requested size: 225.21626pt x 132.19083pt.
+ [6 <./images/1-uniform.png (PNG copy)> <./images/1-rgb2gray.png (PNG copy)>]
+<images/2-acp_faces.png, id=39, 968.86969pt x 727.21687pt>
+File: images/2-acp_faces.png Graphic file (type png)
+
+<use images/2-acp_faces.png>
+Package pdftex.def Info: images/2-acp_faces.png used on input line 145.
+(pdftex.def)             Requested size: 450.43253pt x 338.08577pt.
+
+<images/2-proj6.png, id=40, 968.86969pt x 727.21687pt>
+File: images/2-proj6.png Graphic file (type png)
+
+<use images/2-proj6.png>
+Package pdftex.def Info: images/2-proj6.png used on input line 156.
+(pdftex.def)             Requested size: 450.43253pt x 338.08577pt.
+ [7
+
+ <./images/2-acp_faces.png (PNG copy)>]
+<images/2-rmse.png, id=45, 477.28313pt x 433.62pt>
+File: images/2-rmse.png Graphic file (type png)
+ <use images/2-rmse.png>
+Package pdftex.def Info: images/2-rmse.png used on input line 167.
+(pdftex.def)             Requested size: 300.29344pt x 272.81813pt.
+
+<images/2-bande_5.png, id=46, 974.89218pt x 727.21687pt>
+File: images/2-bande_5.png Graphic file (type png)
+
+<use images/2-bande_5.png>
+Package pdftex.def Info: images/2-bande_5.png used on input line 179.
+(pdftex.def)             Requested size: 350.33727pt x 261.33182pt.
+
+<images/2-bande_30.png, id=47, 974.89218pt x 727.21687pt>
+File: images/2-bande_30.png Graphic file (type png)
+
+<use images/2-bande_30.png>
+Package pdftex.def Info: images/2-bande_30.png used on input line 184.
+(pdftex.def)             Requested size: 350.33727pt x 261.33182pt.
+ [8 <./images/2-proj6.png (PNG copy)>] [9 <./images/2-rmse.png (PNG copy)>] [10
+ <./images/2-bande_5.png (PNG copy)> <./images/2-bande_30.png (PNG copy)>] [11
 
 ]
-Overfull \hbox (8.09148pt too wide) in paragraph at lines 47--48
- \T1/lmr/bx/n/10 Contraste[] \T1/lmr/m/n/10 Le cal-cul de la va-riance des dif-
-fé-rentes com-po-santes puis du contraste
- []
+<images/4-hasard_ok.png, id=60, 478.03593pt x 433.62pt>
+File: images/4-hasard_ok.png Graphic file (type png)
 
-[3
+<use images/4-hasard_ok.png>
+Package pdftex.def Info: images/4-hasard_ok.png used on input line 204.
+(pdftex.def)             Requested size: 245.2399pt x 222.45334pt.
 
-] [4] (build/rapport.aux) ) 
+<images/4-hasard_error.png, id=61, 478.03593pt x 433.62pt>
+File: images/4-hasard_error.png Graphic file (type png)
+
+<use images/4-hasard_error.png>
+Package pdftex.def Info: images/4-hasard_error.png used on input line 209.
+(pdftex.def)             Requested size: 245.2399pt x 222.45334pt.
+
+<images/4-mco_1.png, id=62, 478.03593pt x 433.62pt>
+File: images/4-mco_1.png Graphic file (type png)
+ <use images/4-mco_1.png>
+Package pdftex.def Info: images/4-mco_1.png used on input line 227.
+(pdftex.def)             Requested size: 245.2399pt x 222.45334pt.
+
+<images/4-mco_2.png, id=63, 478.03593pt x 433.62pt>
+File: images/4-mco_2.png Graphic file (type png)
+ <use images/4-mco_2.png>
+Package pdftex.def Info: images/4-mco_2.png used on input line 232.
+(pdftex.def)             Requested size: 245.2399pt x 222.45334pt.
+
+
+LaTeX Warning: Reference `3-moindres-carres-totaux' on page 12 undefined on inp
+ut line 244.
+
+File: images/4-mco_1.png Graphic file (type png)
+<use images/4-mco_1.png>
+Package pdftex.def Info: images/4-mco_1.png used on input line 249.
+(pdftex.def)             Requested size: 245.2399pt x 222.45334pt.
+File: images/4-mco_2.png Graphic file (type png)
+ <use images/4-mco_2.png>
+Package pdftex.def Info: images/4-mco_2.png used on input line 254.
+(pdftex.def)             Requested size: 245.2399pt x 222.45334pt.
+ [12
+
+ <./images/4-hasard_ok.png (PNG copy)> <./images/4-hasard_error.png (PNG copy)>
+] [13 <./images/4-mco_1.png (PNG copy)> <./images/4-mco_2.png (PNG copy)>]
+<images/5-original.png, id=74, 389.20406pt x 248.42813pt>
+File: images/5-original.png Graphic file (type png)
+
+<use images/5-original.png>
+Package pdftex.def Info: images/5-original.png used on input line 283.
+(pdftex.def)             Requested size: 245.2399pt x 156.54086pt.
+
+<images/5-contours.png, id=75, 389.20406pt x 248.42813pt>
+File: images/5-contours.png Graphic file (type png)
+
+<use images/5-contours.png>
+Package pdftex.def Info: images/5-contours.png used on input line 288.
+(pdftex.def)             Requested size: 245.2399pt x 156.54086pt.
+
+
+Package caption Warning: \label without proper \caption on input line 299.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `5-C' on page 14 undefined on input line 295.
+
+<images/5-C.png, id=76, 722.7pt x 406.51875pt>
+File: images/5-C.png Graphic file (type png)
+ <use images/5-C.png>
+Package pdftex.def Info: images/5-C.png used on input line 298.
+(pdftex.def)             Requested size: 350.33727pt x 197.0621pt.
+
+
+LaTeX Warning: Reference `5-lignes' on page 14 undefined on input line 305.
+
+<images/5-C_lines.png, id=77, 722.7pt x 406.51875pt>
+File: images/5-C_lines.png Graphic file (type png)
+
+<use images/5-C_lines.png>
+Package pdftex.def Info: images/5-C_lines.png used on input line 310.
+(pdftex.def)             Requested size: 245.2399pt x 137.94781pt.
+
+<images/5-lines.png, id=78, 389.95688pt x 249.18094pt>
+File: images/5-lines.png Graphic file (type png)
+
+<use images/5-lines.png>
+Package pdftex.def Info: images/5-lines.png used on input line 315.
+(pdftex.def)             Requested size: 245.2399pt x 156.70724pt.
+ <images/5-C_Tpetit.png, id=79, 722.7pt x 406.51875pt>
+File: images/5-C_Tpetit.png Graphic file (type png)
+
+<use images/5-C_Tpetit.png>
+Package pdftex.def Info: images/5-C_Tpetit.png used on input line 327.
+(pdftex.def)             Requested size: 245.2399pt x 137.94781pt.
+
+<images/5-lines_Tpetit.png, id=80, 389.95688pt x 249.18094pt>
+File: images/5-lines_Tpetit.png Graphic file (type png)
+
+<use images/5-lines_Tpetit.png>
+Package pdftex.def Info: images/5-lines_Tpetit.png used on input line 332.
+(pdftex.def)             Requested size: 245.2399pt x 156.70724pt.
+
+<images/5-C_Tgrand.png, id=81, 722.7pt x 406.51875pt>
+File: images/5-C_Tgrand.png Graphic file (type png)
+
+<use images/5-C_Tgrand.png>
+Package pdftex.def Info: images/5-C_Tgrand.png used on input line 341.
+(pdftex.def)             Requested size: 245.2399pt x 137.94781pt.
+
+<images/5-lines_Tgrand.png, id=82, 389.95688pt x 249.93375pt>
+File: images/5-lines_Tgrand.png Graphic file (type png)
+
+<use images/5-lines_Tgrand.png>
+Package pdftex.def Info: images/5-lines_Tgrand.png used on input line 346.
+(pdftex.def)             Requested size: 245.2399pt x 157.1807pt.
+ [14 <./images/5-original.png (PNG copy)> <./images/5-contours.png (PNG copy)>]
+
+
+LaTeX Warning: Reference `5-repartition' on page 15 undefined on input line 361
+.
+
+<images/5-C_repartition.png, id=86, 722.7pt x 406.51875pt>
+File: images/5-C_repartition.png Graphic file (type png)
+
+<use images/5-C_repartition.png>
+Package pdftex.def Info: images/5-C_repartition.png used on input line 366.
+(pdftex.def)             Requested size: 245.2399pt x 137.94781pt.
+
+<images/5-lines_repartition.png, id=87, 389.20406pt x 249.18094pt>
+File: images/5-lines_repartition.png Graphic file (type png)
+
+<use images/5-lines_repartition.png>
+Package pdftex.def Info: images/5-lines_repartition.png used on input line 371.
+
+(pdftex.def)             Requested size: 245.2399pt x 157.01523pt.
+ [15 <./images/5-C.png (PNG copy)> <./images/5-C_lines.png (PNG copy)> <./image
+s/5-lines.png (PNG copy)>]
+<images/5-houle.png, id=92, 1443.89438pt x 727.21687pt>
+File: images/5-houle.png Graphic file (type png)
+
+<use images/5-houle.png>
+Package pdftex.def Info: images/5-houle.png used on input line 381.
+(pdftex.def)             Requested size: 500.484pt x 252.0663pt.
+ [16 <./images/5-C_Tpetit.png (PNG copy)> <./images/5-lines_Tpetit.png (PNG cop
+y)> <./images/5-C_Tgrand.png (PNG copy)> <./images/5-lines_Tgrand.png (PNG copy
+)> <./images/5-C_repartition.png (PNG copy)> <./images/5-lines_repartition.png 
+(PNG copy)>] [17 <./images/5-houle.png (PNG copy)>]
+<images/6-naif.png, id=99, 1445.4pt x 724.95844pt>
+File: images/6-naif.png Graphic file (type png)
+ <use images/6-naif.png>
+Package pdftex.def Info: images/6-naif.png used on input line 398.
+(pdftex.def)             Requested size: 500.484pt x 251.018pt.
+
+<images/6-markov.png, id=100, 1445.4pt x 724.95844pt>
+File: images/6-markov.png Graphic file (type png)
+
+<use images/6-markov.png>
+Package pdftex.def Info: images/6-markov.png used on input line 410.
+(pdftex.def)             Requested size: 500.484pt x 251.018pt.
+ [18
+
+ <./images/6-naif.png (PNG copy)>]
+
+LaTeX Warning: Reference `6-marque' on page 19 undefined on input line 426.
+
+<images/6-best.png, id=104, 1445.4pt x 724.95844pt>
+File: images/6-best.png Graphic file (type png)
+ <use images/6-best.png>
+Package pdftex.def Info: images/6-best.png used on input line 429.
+(pdftex.def)             Requested size: 500.484pt x 251.018pt.
+
+[19 <./images/6-markov.png (PNG copy)>]
+<images/7-pieces.png, id=110, 421.575pt x 316.18124pt>
+File: images/7-pieces.png Graphic file (type png)
+
+<use images/7-pieces.png>
+Package pdftex.def Info: images/7-pieces.png used on input line 451.
+(pdftex.def)             Requested size: 245.2399pt x 183.93042pt.
+
+<images/7-champ_forces_externe.png, id=111, 421.575pt x 316.18124pt>
+File: images/7-champ_forces_externe.png Graphic file (type png)
+
+<use images/7-champ_forces_externe.png>
+Package pdftex.def Info: images/7-champ_forces_externe.png used on input line 4
+57.
+(pdftex.def)             Requested size: 245.2399pt x 183.93042pt.
+
+
+LaTeX Warning: Reference `7-gaussien' on page 20 undefined on input line 465.
+
+[20 <./images/6-best.png (PNG copy)> <./images/7-pieces.png (PNG copy)> <./imag
+es/7-champ_forces_externe.png (PNG copy)>]
+<images/7-energie_externe.png, id=115, 421.575pt x 316.18124pt>
+File: images/7-energie_externe.png Graphic file (type png)
+
+<use images/7-energie_externe.png>
+Package pdftex.def Info: images/7-energie_externe.png used on input line 468.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `7-coins' on page 21 undefined on input line 477.
+
+<images/1/1-1-autumn_b.png, id=116, 421.575pt x 316.18124pt>
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 480.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `7-IRM' on page 21 undefined on input line 485.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 488.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `7-diffusion' on page 21 undefined on input line 494.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 497.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+ [21 <./images/7-energie_externe.png (PNG copy)>] [22 <./images/1/1-1-autumn_b.
+png (PNG copy)>]
+
+LaTeX Warning: Reference `8-tikhonov' on page 23 undefined on input line 513.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 516.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `8-variation-totale' on page 23 undefined on input lin
+e 524.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 527.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `8-lena' on page 23 undefined on input line 532.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 535.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `8-inpainting' on page 23 undefined on input line 541.
+
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 544.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `8-grenouille' on page 23 undefined on input line 549.
+
+
+[23]
+
+LaTeX Warning: Reference `9-naive' on page 24 undefined on input line 556.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 559.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `9-neumann' on page 24 undefined on input line 564.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 567.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `9-dirichlet' on page 24 undefined on input line 574.
+
+[24]
+
+LaTeX Warning: Reference `10-decomposition' on page 25 undefined on input line 
+581.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 584.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `10-filtrage' on page 25 undefined on input line 591.
+
+[25]
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+ <use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 594.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `10-empreinte' on page 26 undefined on input line 599.
+
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 602.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `10-hilbert' on page 26 undefined on input line 609.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 612.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+ [26]
+
+LaTeX Warning: Reference `11-gabor' on page 27 undefined on input line 624.
+
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+<use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 627.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `11-sonagramme' on page 27 undefined on input line 636
+.
+
+
+LaTeX Warning: Reference `11-partition' on page 27 undefined on input line 642.
+
+
+[27]
+File: images/1/1-1-autumn_b.png Graphic file (type png)
+ <use images/1/1-1-autumn_b.png>
+Package pdftex.def Info: images/1/1-1-autumn_b.png used on input line 645.
+(pdftex.def)             Requested size: 500.484pt x 375.37263pt.
+
+
+LaTeX Warning: Reference `12-007' on page 28 undefined on input line 667.
+
+[28]
+
+LaTeX Warning: Reference `12-euclidienne' on page 29 undefined on input line 68
+7.
+
+[29]
+
+LaTeX Warning: Reference `12-distance' on page 30 undefined on input line 716.
+
+[30] [31] [32] [33] [34] [35] [36] (build/rapport.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3094 strings out of 494950
- 42551 string characters out of 6179040
- 99408 words of memory out of 5000000
- 6262 multiletter control sequences out of 15000+600000
- 54266 words of font info for 43 fonts, out of 8000000 for 9000
+ 4940 strings out of 494950
+ 75023 string characters out of 6179040
+ 141175 words of memory out of 5000000
+ 8043 multiletter control sequences out of 15000+600000
+ 74339 words of font info for 48 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 37i,6n,30p,576b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr
-/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pub
-lic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmri10.pfb>
-Output written on build/rapport.pdf (4 pages, 167023 bytes).
+ 42i,8n,40p,974b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmc
+sc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmsy10.pfb>
+Output written on build/rapport.pdf (36 pages, 4841131 bytes).
 PDF statistics:
- 46 PDF objects out of 1000 (max. 8388607)
- 32 compressed objects within 1 object stream
+ 218 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 
